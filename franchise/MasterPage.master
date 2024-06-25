@@ -1,0 +1,703 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="user_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Franchise Panel</title>
+    <%--<link rel="shortcut icon" href="images/favicon.png">--%>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%--start date picker link--%>
+    <%------------------toptime--------------%>
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="css/nice-select.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/metisMenu.min.css?v=0.4" rel="stylesheet">
+    <!-- Style css -->
+    <link href="css/style.css?v=1.2" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
+    <link href="css/flaticon_1.css" rel="stylesheet">
+    <%--<link href="../css/preloader.css" rel="stylesheet" />
+    <script>
+        // Preloader
+
+        setTimeout(function () {
+            $('#preloader').addClass('hide');
+        }, 700);
+
+        $("#preloader").append('<div class="hide-loader">Hide Preloader</div>');
+        $('.hide-loader').click(function (e) {
+            $(this).parent().addClass('hide');
+        });
+
+    </script>--%>
+</head>
+<body>
+    <form id="ff" runat="server" autocomplete="off">
+        <!--*******************
+        Preloader start
+    ********************-->
+        <%--  <div id="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>--%>
+        <%-- <div id="preloader">
+            <div class="preloader-inner">
+                <div class="spinner"></div>
+                <div class="loading-text">
+                   <span data-preloader-text="T" class="characters logo_red">T</span>
+                    <span data-preloader-text="r" class="characters logo_red">r</span>
+                    <span data-preloader-text="i" class="characters logo_red">i</span>
+                    <span data-preloader-text="p" class="characters logo_red">p</span>
+                    <span data-preloader-text="t" class="characters logo_blue">t</span>
+                    <span data-preloader-text="a" class="characters logo_blue">a</span>
+                    <span data-preloader-text="l" class="characters logo_blue">l</span>
+                    <span data-preloader-text="e" class="characters logo_blue">e</span>
+                    <span data-preloader-text="s" class="characters logo_blue">s</span>
+                </div>
+            </div>
+        </div>--%>
+        <!--*******************
+        Preloader end
+    ********************-->
+        <!--**********************************
+        Main wrapper start
+    ***********************************-->
+        <div id="main-wrapper">
+            <!--**********************************
+            Nav header start
+        ***********************************-->
+            <div class="nav-header">
+                <a href="welcome.aspx" class="brand-logo">
+                    <%-- <img src="images/icon.png" class="logo-abbr" />--%>
+
+                    <img src="../images/logo.png" width="75%" />
+                </a>
+                <div class="nav-control d-none d-lg-block">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!--**********************************
+            Nav header end
+        ***********************************-->
+
+            <!--**********************************
+            Header start
+        ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="nav-item d-flex align-items-center">
+                                </div>
+                            </div>
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <a class="nav-link back" href="javascript:history.go(-1)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+                                            <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"></path>
+                                        </svg><span class="text-black"> Back</span>
+                                    </a>
+                                </li>
+                                <%--  <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+									  <g data-name="Layer 2" transform="translate(-2 -2)">
+										<path id="Path_20" data-name="Path 20" d="M22.571,15.8V13.066a8.5,8.5,0,0,0-7.714-8.455V2.857a.857.857,0,0,0-1.714,0V4.611a8.5,8.5,0,0,0-7.714,8.455V15.8A4.293,4.293,0,0,0,2,20a2.574,2.574,0,0,0,2.571,2.571H9.8a4.286,4.286,0,0,0,8.4,0h5.23A2.574,2.574,0,0,0,26,20,4.293,4.293,0,0,0,22.571,15.8ZM7.143,13.066a6.789,6.789,0,0,1,6.78-6.78h.154a6.789,6.789,0,0,1,6.78,6.78v2.649H7.143ZM14,24.286a2.567,2.567,0,0,1-2.413-1.714h4.827A2.567,2.567,0,0,1,14,24.286Zm9.429-3.429H4.571A.858.858,0,0,1,3.714,20a2.574,2.574,0,0,1,2.571-2.571H21.714A2.574,2.574,0,0,1,24.286,20a.858.858,0,0,1-.857.857Z"></path>
+									  </g>
+									</svg>
+                                    <span class="badge light text-white bg-primary rounded-circle">4</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end bg-white">
+                                    <div id="DZ_W_Notification1" class="widget-media dlab-scroll p-3 ps" style="height:380px;">
+										<ul class="timeline">
+											<li>
+												<div class="timeline-panel">
+													<div class="media me-2">
+														<img alt="image" width="50" src="images/avatar/1.jpg">
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Dr sultads Send you Photo</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="timeline-panel">
+													<div class="media me-2 media-info">
+														KG
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Resport created successfully</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="timeline-panel">
+													<div class="media me-2 media-success">
+														<i class="fa fa-home"></i>
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Reminder : Treatment Time!</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>
+											 <li>
+												<div class="timeline-panel">
+													<div class="media me-2">
+														<img alt="image" width="50" src="images/avatar/1.jpg">
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Dr sultads Send you Photo</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>
+                                             <li>
+												<div class="timeline-panel">
+													<div class="media me-2">
+														<img alt="image" width="50" src="images/avatar/1.jpg">
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Dr sultads Send you Photo</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>
+                                             <li>
+												<div class="timeline-panel">
+													<div class="media me-2">
+														<img alt="image" width="50" src="images/avatar/1.jpg">
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1">Dr sultads Send you Photo</h6>
+														<small class="d-block">29 July 2020 - 02:26 PM</small>
+													</div>
+												</div>
+											</li>										
+										</ul>
+									<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                                    <a class="all-notification" href="javascript:void(0);">See all notifications <i class="ti-arrow-end"></i></a>
+                                </div>
+                            </li>--%>
+                                <li class="nav-item dropdown notification_dropdown d-none">
+                                    <a id="lbl_typeImg" runat="server" class="nav-link" href="javascript:history.go(-1)"></a>
+                                </li>
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <%--<img id="ctl00_MobProfileImg" class="rounded-circle" src="../images/KYC/ProfileImage/69757760SampleJPGImage_200kbmb.jpg" style="height:48px;width:48px;border-width:0px;">--%>
+                                        <asp:Image ID="MobProfileImg" runat="server" CssClass="rounded-circle" Width="150px" Style="height: 48px; width: 48px; border-width: 0px;"></asp:Image>
+                                        <div class="first-latter1" id="div_FirstNameHead" runat="server"></div>
+                                        &nbsp;&nbsp;
+                                        <span class="text-light d-none">
+                                            <asp:Label ID="lblUserName" runat="server" Style="color: #838383;"></asp:Label></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="#" class="dropdown-item ai-icon text-white">Your Id:
+                                            <asp:Label ID="lblUserId" runat="server"></asp:Label></a>
+                                        <a href="#" class="dropdown-item ai-icon text-white d-none">Franchise Type:
+                                            <asp:Label ID="lbl_FranType" runat="server"></asp:Label></a>
+                                        <a href="#" class="dropdown-item ai-icon text-white">Your Bal: <strong>
+                                            <asp:Label ID="lbl_Balance" runat="server">0</asp:Label></strong></a>
+                                        <a href="FranchisePayoutDetails.aspx" class="dropdown-item ai-icon"><span>Your Commission Report</span></a>
+                                        <%--<a href="#" class="dropdown-item ai-icon"><span class="ms-2">Your Documents</span></a>--%>
+                                        <%--  <a href="Certificate.aspx" class="dropdown-item ai-icon"><span>Franchise Certificate</span></a>--%>
+                                        <%--<a href="#" class="dropdown-item ai-icon"><span class="ms-2">TDS Form</span></a>--%>
+                                        <a href="news.aspx" class="dropdown-item ai-icon"><span>News</span></a>
+                                        <a href="edit.aspx" class="dropdown-item ai-icon"><span>Change Profile</span></a>
+                                        <a href="UpdateprofilePic.aspx" class="dropdown-item ai-icon"><span>Change Profile Picture</span></a>
+                                        <a href="../Login.aspx" class="dropdown-item ai-icon"><span>Logout</span></a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <div class="nav-control d-sm-block d-lg-none">
+                                        <div class="hamburger">
+                                            <span class="line"></span><span class="line"></span><span class="line"></span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+            <!--**********************************
+            Sidebar start
+        ***********************************-->
+            <div class="dlabnav">
+                <div class="dlabnav-scroll">
+                    <div class="sidebar-user text-center">
+                        <%-- <a class="setting-primary" href="javascript:void(0)" data-bs-original-title="" title="">
+                            <i class="fa fa-cog"></i></a>--%>
+                        <%-- <img class="img-90 img-fluid rounded-circle" src="../images/KYC/ProfileImage/69757760SampleJPGImage_200kbmb.jpg" width="150px">--%>
+                        <asp:Image ID="ProfileImage" runat="server" CssClass="img-90 img-fluid rounded-circle" Style="height: 150px; width: 150px;"></asp:Image>
+
+                        <div class="first-latter" id="div_firstname" runat="server"></div>
+
+                        <h6 class="mt-1 mb-0">
+                            <asp:Label ID="lblLeft_UserName" runat="server"></asp:Label></h6>
+                        <p class="mb-0" id="lblLeft_Userid" runat="server"></p>
+
+                        <ul>
+                            <li><span class="counter" id="lbl_DOJ" runat="server"></span>
+                                <p>DOJ</p>
+                            </li>
+                            <li><span class="counter" id="lbl_Experiences" runat="server"></span>
+                                <p>Experience </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="metismenu" id="menu">
+                        <li>
+                            <a href="welcome.aspx" class="" aria-expanded="false">
+                                <%--  <i class="flaticon-013-checkmark"></i>--%>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow " href="billing.aspx" aria-expanded="false">
+                                <span class="nav-text">Billing</span>
+                            </a>
+                            <%--<ul aria-expanded="false">
+                                <li><a href="BarcodeBilling.aspx">Generate Invoice & PO</a> </li>
+                                <li id="id_Menu_SalesReturn" runat="server" visible="false"><a href="ReturnProduct.aspx">Sales Return Product</a></li>
+                                <li><a href="ReturnSalesList.aspx">Sales Return Made</a></li>
+                                <li><a href="SalesReturnReceived.aspx">Sales Return Received</a></li>
+                                <li><a href="POList.aspx">Create Purchase Order</a></li>
+                                <li><a href="PO-Received.aspx">Purchase Order</a></li>
+
+                                <li>    <a href="PurchaseOrderForm.aspx" target="_blank">STOCK TRANSFER</a> </li> 
+                                 <li>    <a href="OrderList.aspx" target="_blank">OUTGOING PO</a> </li> 
+                                <li>    <a href="CancelFranchiseStockBill.aspx" target="_blank">CANCELLED STOCK TRANSFER</a></li>  
+                                <li>    <a href="MakeNewPayment.aspx" target="_blank">MAKE PAYMENT</a></li>  
+                                <li>    <a href="PayOrderDetail.aspx" target="_blank">VIEW OUTGOING PAYMENT</a></li>  
+                                <li>    <a href="InPayOrderDetail.aspx" target="_blank">VIEW INCOMING PAYMENT</a></li>
+                                <li>    <a href="DispatchCourier.aspx">Courier entry</a></li>
+                                <li>    <a href="CourierEntries.aspx">Courier Details</a></li> 
+                                 <li> <a href="ProductStock.aspx">Stock In Hand</a></li>  
+                                 <li> <a href="branches-list.aspx">FRANCHISE LIST</a></li>
+                                 <li> <a href="StockAndTrans.aspx">Stock In Hand</a></li>  
+                                 <li> <a href="StockTranReports.aspx">GIT Report</a></li> 
+                            </ul>--%>
+                        </li>
+                        <%--<li>
+                            <a class="has-arrow " href="reports.aspx" aria-expanded="false">
+                                <span class="nav-text">Reports</span>
+                            </a>--%>
+                        <%-- <ul aria-expanded="false">
+                                <li><a href="AssociateInvoiceList.aspx">Associate Invoice List</a> </li>
+                                <li><a href="FranchisePurchaseList.aspx">Franchise Purchase List</a></li>
+                                <li><a href="StockTranList.aspx">Franchise Invoice List</a></li>
+                                <li><a href="PerformanceReport.aspx">Performance Report</a></li>
+                                <li><a href="BatchList.aspx">Product Batch List</a></li>
+                                <li><a href="PriceList.aspx">Price List</a></li>
+                            </ul>--%>
+                        <%-- </li>--%>
+                        <li>
+                            <a class="has-arrow " href="stock_reports.aspx" aria-expanded="false">
+                                <span class="nav-text">Stock Reports</span>
+                            </a>
+                            <%-- <ul aria-expanded="false">
+                                <li><a href="StockSummaryReport.aspx">Stock Summary Report</a></li>
+                                <li><a href="ClosingStock.aspx">Closing Stock Report</a></li>
+                            </ul>--%>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="compliance.aspx" aria-expanded="false">
+                                <span class="nav-text">Compliance</span>
+                            </a>
+                            <%-- <ul aria-expanded="false">
+
+                                <li><a href="Franchise_GST_Turnover.aspx">GST Turnover Report</a></li>
+                                <li><a href="GSTReports.aspx">GST Report</a></li>
+
+                            </ul>--%>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="dispatch.aspx" aria-expanded="false">
+                                <%--  <i class="flaticon-093-waving"></i>--%>
+                                <span class="nav-text">Dispatch</span>
+                            </a>
+                            <%--<ul aria-expanded="false">
+                                <li><a href="Add_Transporter.aspx">Add Transporter</a></li>
+                                <li><a href="TransporterList.aspx">Transporter List</a></li>
+                            </ul>--%>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="offer_reports.aspx" aria-expanded="false">
+                                <%--  <i class="flaticon-093-waving"></i>--%>
+                                <span class="nav-text">Offer Reports</span>
+                            </a>
+                            <%-- <ul aria-expanded="false">
+                                <li><a href="OfferProdReporta.aspx">Offer Product Reports</a></li>
+                                <li><a href="StockScheme.aspx">Scheme Distributed</a></li>
+
+                                 <li><a href="StockScheme.aspx">Scheme Distributed</a></li>
+                            </ul>--%>
+                        </li>
+                        <li id="div_PO" runat="server" visible="false">
+                            <a class="has-arrow " href="purchase.aspx" aria-expanded="false">
+                                <%-- <i class="flaticon-093-waving"></i>--%>
+                                <span class="nav-text">Purchase</span>
+                            </a>
+                            <%--  <ul aria-expanded="false" class="mm-collapse left" style="">
+                                <li><a href="AddVendor.aspx">Add Vendor</a></li>
+                                <li><a href="Vendorlist.aspx">Vendor List</a></li>
+                                <li><a href="Purchase-order.aspx">Create Purchase Order</a></li>
+                                <li><a href="Purchase-order-List.aspx">Purchase Order List</a></li>
+                                <li><a href="Stock-GIT.aspx">GRN Stock</a></li>
+                                <li><a href="Recieved_PO_List.aspx">Purchase Invoice List</a></li>
+                                <li><a href="AddEditQuantity.aspx">Add Batch</a></li>
+                                <li id="li_PackedUnpacked" runat="server" visible="false"><a href="AddPacked.aspx">Packed/ Unpacked</a></li>
+                                <li><a href="ProductwisePendingPO.aspx">Product Wise Pending Order</a></li> 
+                            </ul>--%>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="wallet.aspx" aria-expanded="false">
+                                <span class="nav-text">Wallet</span>
+                            </a>
+                            <%--<ul aria-expanded="false" class="mm-collapse left" style="">
+                                 <li><a href="DwalletToUwallet.aspx" target="_blank">WALLET TO UNIT WALLET</a></li> 
+                                <li><a href="UWallet.aspx">Franchise Passbook</a></li>
+                                <li><a href="UWalletRequest.aspx">Franchise Wallet Request</a></li>
+                                 <li><a href="withdrawrequest.aspx" target="_blank">UNIT WITHDRAW REQUEST</a></li> 
+                               <li><a href="withdrawreport.aspx" target="_blank">UNIT WITHDRAW REQUEST REPORT</a></li> 
+                                <li><a href="OD_Wallet.aspx">OD Passbook</a></li>
+                            </ul>--%>
+                        </li>
+                        <%-- <li>
+                            <a href="download.aspx" class="" aria-expanded="false">
+                                <span class="nav-text">Download</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="help.aspx" class="" aria-expanded="false">
+                                <span class="nav-text">Help</span>
+                            </a>
+                        </li>--%>
+                    </ul>
+                    <div class="plus-box" id="lblMst_Datetime">
+                        <%-- <p class="fs-14 font-w600 mb-2">
+                            Monday 24 Jun 20021<br>
+                        </p>
+                        <h1 class="text-white">2:55 <span>PM</span></h1>--%>
+                    </div>
+
+                </div>
+            </div>
+            <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+
+            <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+                    <form method="post">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-- <div class="footer">
+            <div class="copyright">
+                <p>Active Aamla Juice 500m Active Aamla Juice 500m Active Aamla Juice 500m </p>
+            </div>
+        </div>--%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="js/global.min.js"></script>
+        <%--<script src="js/Chart.bundle.min.js"></script>--%>
+        <script src="js/jquery.nice-select.min.js"></script>
+
+        <!-- Apex Chart -->
+        <%--  <script src="js/apexchart.js"></script>--%>
+        <!-- Chart piety plugin files -->
+        <script src="js/jquery.peity.min.js"></script>
+
+        <!-- Dashboard 1 -->
+        <script src="js/dashboard-1.js"></script>
+
+        <%--<script src="js/owl.carousel.js"></script>--%>
+        <script src="js/custom.min.js"></script>
+        <script src="js/dlabnav-init.js?v=0.1"></script>
+        <script src="js/demo.js"></script>
+        <script src="js/styleSwitcher.js"></script>
+        <%--<script>
+            function JobickCarousel() {
+
+                /*  testimonial one function by = owl.carousel.js */
+                jQuery('.front-view-slider').owlCarousel({
+                    loop: false,
+                    margin: 30,
+                    nav: true,
+                    autoplaySpeed: 3000,
+                    navSpeed: 3000,
+                    autoWidth: true,
+                    paginationSpeed: 3000,
+                    slideSpeed: 3000,
+                    smartSpeed: 3000,
+                    autoplay: false,
+                    animateOut: 'fadeOut',
+                    dots: true,
+                    navText: ['', ''],
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+
+                        480: {
+                            items: 1
+                        },
+
+                        767: {
+                            items: 3
+                        },
+                        1750: {
+                            items: 3
+                        }
+                    }
+                })
+            }
+
+            jQuery(window).on('load', function () {
+                setTimeout(function () {
+                    JobickCarousel();
+                }, 1000);
+            });
+        </script>--%>
+
+        <%--        <script>
+
+            $(window).on('load', function () {
+                $('.acr-preloader').addClass('hidden');
+            });
+
+        </script>--%>
+
+
+        <script language="javascript">
+            $(function () {
+                getFormattedDate();
+                setInterval(function () {
+                    getFormattedDate();
+                }, 1000);
+            });
+            function getFormattedDate() {
+                var today = new Date();
+                var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+                var day = week[today.getDay()];
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var Month = today.toLocaleString('default', { month: 'short' });
+                var yyyy = today.getFullYear();
+                var hour = today.getHours();
+                var minu = today.getMinutes();
+                var AMPM = hour >= 12 ? 'PM' : 'AM';
+                if (hour > 12)
+                    hour = (hour - 12);
+
+                if (dd < 10) { dd = '0' + dd }
+                if (mm < 10) { mm = '0' + mm }
+                if (minu < 10) { minu = '0' + minu }
+                $('#lblMst_Datetime').html("<p class='fs-14 font-w600 mb-2'>" + day + " " + dd + " " + Month + " " + yyyy + "<br> </p> <h1>" + hour + ":" + minu + "<span> " + AMPM + "</span></h1>");
+            }
+        </script>
+
+        <style>
+            [data-sidebar-position=fixed][data-layout=vertical] .nav-header {
+                z-index: 999;
+            }
+        </style>
+
+        <asp:HiddenField ID="hnd_OTP_VFYD" runat="server" Value="1" />
+        <asp:HiddenField ID="hnd_GST_VFYD" runat="server" Value="1" />
+        <asp:HiddenField ID="hnd_FranType_VFYD" runat="server" Value="1" />
+
+        <div id="Popup_OTP" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-md modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-orange">
+                        <h5 class="modal-title text-white">Please Verify OTP!</h5>
+                    </div>
+                    <div class="modal-body p-0 bg-grey">
+                        <div class="alert" role="alert">
+                            <div class="form-group row">
+                                <div class="col-sm-3 label-control ">
+                                    User Name
+                                </div>
+                                <div class="col-sm-5">
+                                    <span id="lbl_OTP_Name" runat="server"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-2">
+                                <div class="col-sm-3 label-control ">
+                                    Mobile No.
+                                </div>
+                                <div class="col-sm-5">
+                                    <span id="lbl_OTP_Mobile" runat="server"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-2">
+                                <div class="col-sm-3 control-label">
+                                    Enter OTP
+                                </div>
+                                <div class="col-sm-4">
+                                    <asp:TextBox ID="txtotp" runat="server" MaxLength="10" CssClass="form-control"
+                                        placeholder="Plz. Enter OTP"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-8">
+                                    <input type="button" id="btn_otp" class="btn btn-primary" onclick="GetOTP()" value="Generate OTP" />
+                                    <a id="vOTP" style="display: none;" class="btn btn-outline-info" onclick="GetOTPverified()">Verify OTP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Popup_GST" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-orange">
+                        <h5 class="modal-title text-white">Declaration of GST</h5>
+                    </div>
+                    <div class="modal-body p-0 bg-grey">
+                        <div class="alert" role="alert">
+                            <div class="form-group ">
+                                <div class="col-sm-12">
+                                    <p><strong><span id="lbl_CompanyName" runat="server"></span></strong></p>
+                                    <p><strong>CIN:</strong> <span id="lbl_CompanyCIN" runat="server"></span></p>
+                                    <p>
+                                        <strong>Regd Address:</strong><span id="lbl_CompanyAddress" runat="server"></span>
+                                    </p>
+                                    <p><strong>Subject:</strong> Declaration for not obtaining registration under Central Goods and Services Tax Act, 2017, State Goods and Services Tax Act and Union Territory Goods and Services Tax Act</p>
+                                    <p>Dear Sir,</p>
+                                    <p>This is to inform you that the value of our aggregate turnover comprising of supply of goods or services or both in a financial year does not exceed Rupees Twenty lakhs.</p>
+                                    <p>In lieu of the same, we are not liable for obtaining registration under the aforesaid GST Laws.</p>
+                                    <p>We provide our consent that in case our total turnover exceeds INR 20 lakhs in a financial year, we will obtain registration under GST Law and will promptly communicate you with the relevant details including GSTIN.</p>
+                                    <p><strong><span id="lbl_CompanyName1" runat="server"></span></strong>shall have the right to recover all losses of tax along with consequential interest and penalty suffered by it due to incorrect declaration made in this regard.</p>
+                                    <p>Thank you</p>
+                                    <p>Franchise Name – <span id="lbl_GST_FranName" runat="server"></span></p>
+                                    <p>Signature and Seal – <span id="lbl_GST_Datetime" runat="server"></span></p>
+                                    <%--  <asp:Button ID="btn_gst_decl_Accept" runat="server" Text="Accept" CssClass="btn btn-success pull-right" OnClick="btn_gst_decl_Accept_Click" />--%>
+                                    <a id="btn_gst_decl_Accept" class="btn btn-primary" onclick="GSTDeclaration()">Accept</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <br />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Popup_FranType" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Please Verify!</h5>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="alert alert-danger" role="alert">
+                            <br />
+                            <h4>Your account has been not verified. Please contact to administrator.</h4>
+                            <div class="clearfix"></div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <asp:HiddenField ID="hnd_MobileNo" runat="server" Value="" />
+        <script type="text/javascript">
+
+            function GetOTP() {
+                $.ajax({
+                    type: "POST",
+                    url: 'Services.aspx/generateOTP',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d == '0') {
+                            $('#btn_otp').html('Re-Generate OTP');
+                            $('#vOTP').show();
+                        }
+                    },
+                    error: function (response) { }
+                });
+            }
+
+
+
+            function GetOTPverified() {
+                var OTP = $('#<%=txtotp.ClientID %>').val().trim();
+                var telno = $('#<%=hnd_MobileNo.ClientID %>').val().trim();
+                $.ajax({
+                    type: "POST",
+                    url: 'Services.aspx/verifyOTP',
+                    contentType: "application/json; charset=utf-8",
+                    data: '{telno: "' + telno + '", txtotp: "' + OTP + '"}',
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d == '0') {
+                            $('#vOTP').hide();
+                            $('#btn_otp').hide();
+                            window.location = "welcome.aspx";
+                        }
+                        else { alert(data.d); }
+                    },
+                    error: function (response) { }
+                });
+            }
+
+
+            function GSTDeclaration() {
+                $.ajax({
+                    type: "POST",
+                    url: 'Services.aspx/GSTDeclaration',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d == '1') {
+                            window.location = "welcome.aspx";
+                        }
+                    },
+                    error: function (response) { }
+                });
+            }
+
+        </script>
+    </form>
+</body>
+</html>

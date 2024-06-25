@@ -1,0 +1,1336 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="MasterPage.master" AutoEventWireup="true"
+    EnableEventValidation="true" ValidateRequest="true" CodeFile="newjoin.aspx.cs"
+    Inherits="newjoin" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+ <script src="datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="datepick/jquery.datepick.js" type="text/javascript"></script>
+    <link href="datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+ 
+    <link href="css/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+<%--    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="secretadmin/datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="secretadmin/datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
+    <script src="secretadmin/datepick/jquery.datepick.js" type="text/javascript"></script>--%>
+
+<%--    <script src="datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
+
+    <script src="datepick/jquery.datepick.js" type="text/javascript"></script>--%>
+
+    <style type="text/css">
+        legend.legendStyle
+        {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        
+        fieldset.fsStyle
+        {
+            font-family: Verdana, Arial, sans-serif;
+            font-size: small;
+            font-weight: normal;
+            border: 1px solid #999999;
+            padding: 4px;
+            margin: 5px;
+            border-radius: 6px;
+        }
+        legend.legendStyle
+        {
+            font-size: 15px;
+            color: #333;
+            background-color: transparent;
+            font-weight: bold;
+        }
+        legend
+        {
+            width: auto;
+            border-bottom: 0px;
+        }
+    </style>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        
+        
+        
+        @media only screen and (max-width: 480px)
+        {
+            legend.legendStyle
+            {
+                font-size: 12px;
+            }
+            .txt2
+            {
+                font-size: 9px;
+            }
+            btn2
+            {
+                font-size: 8px;
+                padding: 0px;
+            }
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+        function CallVal(txt) {
+            ServerSendValue(txt.value, "ctx");
+        }
+        function ServerResult(arg) {
+
+            if (arg == "You cannot leave blank field here !") {
+                document.getElementById("lblUser.ClientID").style.color = "Red";
+                document.getElementById("lblUser.ClientID").innerHTML = arg;
+            }
+            else {
+                document.getElementById("<%=lblUser.ClientID%>").style.color = "darkblue";
+                document.getElementById("<%=lblUser.ClientID%>").innerHTML = arg;
+            }
+        }
+        function ClientErrorCallback() {
+        }
+    </script>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <script type="text/javascript">
+        $(function () {
+            $('#<%= txtDateofBirth.ClientID%>').datepick({ dateFormat: 'dd/mm/yyyy', maxDate: 0 });
+        });
+    </script>
+    <%--  <script>
+        function pinchange() {
+            var str = document.getElementById("<%=ddlPinNo.ClientID%>").value;
+
+            document.getElementById("<%=lblProduct.ClientID%>").innerHTML = str == '0' ? '' : str.split(',')[1];
+        }
+    </script>--%>
+ <%--   <script type="text/javascript">
+        function show(rdo) {
+            for (var i = 0; i < rdo.rows.length; ++i) {
+                if (rdo.rows[i].cells[0].firstChild.checked) {
+                    document.getElementById("<%=divid.ClientID%>").style.display = "block";
+                    document.getElementById("<%=lblChkPan.ClientID%>").style.display = "none";
+                }
+                else if (rdo.rows[i].cells[1].firstChild.checked) {
+                    document.getElementById("<%=divid.ClientID%>").style.display = "none";
+                }
+
+                document.getElementById('<%= TxtPanNo.ClientID %>').value = '';
+
+            }
+        }
+    </script>--%>
+    <style type="text/css">
+        legend.legendStyle
+        {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        fieldset.fsStyle
+        {
+            font-family: Verdana, Arial, sans-serif;
+            font-size: small;
+            font-weight: normal;
+            border: 1px solid #999999;
+            padding: 4px;
+            margin: 5px;
+            border-radius: 6px;
+        }
+        legend.legendStyle
+        {
+            font-size: 90%;
+            color: #888888;
+            background-color: transparent;
+            font-weight: bold;
+        }
+        legend
+        {
+            width: auto;
+            border-bottom: 0px;
+        }
+    </style>
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        .modalPopup
+        {
+            min-height: 75px;
+            position: absolute;
+            z-index: 2000;
+            -moz-opacity: .15;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 6px;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            min-width: 290px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+            width: 100%;
+        }
+        .modalBackground
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            opacity: 0.5;
+            z-index: 1800;
+            min-height: 100%;
+            width: 100%;
+            overflow: hidden;
+            filter: alpha(opacity=50);
+            display: inline-block;
+            z-index: 1000;
+        }
+        
+        .b2 h1
+        {
+            font-size: 30px;
+            padding: 0px 0px 10px 0px;
+        }
+        .panel-default > .panel-heading
+        {
+            background: linear-gradient(#F4DF82 , #D1A457);
+            border: none;
+            color: #000;
+            font-weight:bold;   
+        }
+  
+    </style>
+    <br />
+    <div class="container-fluid" style="background: #333;" id="Popup" visible="false"
+        runat="server">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6" style="padding-top: 40px; padding-bottom: 30px;">
+            <asp:Panel ID="PanelPopup" runat="server" Width="100%" Style=" background: linear-gradient(#F4DF82 , #D1A457);;
+                color: black; border-radius: 6px; padding: 20px 15px;" CssClass="moda lPopup">
+                <fieldset class="fsStyle">
+                    <legend class="legendStyle">  <i class="fa fa-address-book" aria-hidden="true"></i> Sponsor Details </legend>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtCcode" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Sponsor Id:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblSponsorID" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtCcode" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Sponsor Name:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblSponsorName" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="clearfix">
+                </div>
+                <fieldset class="fsStyle">
+                    <legend class="legendStyle">Personal Details </legend>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPname" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Position:
+                        </label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblPosition" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPcode" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Name:
+                        </label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblName" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPname" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            DOB:
+                        </label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblDateofBirth" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPname" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Mobile Number:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblMobile" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPname" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            E-Mail Id:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblEmail" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtPname" id="Label1" runat="server" class=" txt2 col-sm-3 col-xs-6 control-label">
+                            Pan No:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblPAN" runat="server" Text=""></asp:Label>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="clearfix">
+                </div>
+                <fieldset class="fsStyle">
+                    <legend class="legendStyle">Security Details </legend>
+                    <div class="form-group">
+                        <label for="MainContent_myForm_txtCcode" class=" txt2 col-sm-3 control-label">
+                            <span style="color: Red"></span>Password:</label>
+                        <div class="col-sm-4 col-xs-6">
+                            <asp:Label class="txt2" ID="lblPassword" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="clearfix">
+                </div>
+                <fieldset class="fsStyle">
+                    <legend class="legendStyle" style="display: none">OTP Details</legend>
+                    <div class="form-group" style="display: none">
+                        <div class="col-sm-3">
+                            <span class="txt2">Enter OTP </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtotp" runat="server" CssClass="form-control" Style="clear: both;"></asp:TextBox>
+                            <%-- <asp:RequiredFieldValidator class="txt2" ID="reqotp" runat="server" ControlToValidate="txtotp"
+                                ErrorMessage="Please Enter OTP" ValidationGroup="NJ" Style="position: relative"></asp:RequiredFieldValidator>--%>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:LinkButton class="txt2" ID="lnkotp" runat="server" Text="Resend OTP"></asp:LinkButton>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6 ">
+                            <asp:Button ID="btnConfirm" runat="server" CausesValidation="true" CssClass=" btn2 btn btn-success"
+                                OnClick="btnConfirm_Click" Text="Confirm" ValidationGroup="NJ" />
+                            &nbsp;
+                            <asp:Button ID="btnEdit" runat="server" CausesValidation="true" CssClass=" btn2 btn btn-success"
+                                OnClick="btnEdit_Click" Text="Cancel" />
+                        </div>
+                    </div>
+                </fieldset>
+            </asp:Panel>
+        </div>
+    </div>
+    <div class="bodytext" id="regForm" runat="server">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div id="title" class="b2">
+                        <h1 class="head" style="color: #fff; font-size:30px; padding-top:5px;">
+                          &nbsp; <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Registration Form
+                        </h1>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="joing_inter">
+                        <asp:Panel ID="DivNewjoin" DefaultButton="btnSubmit" runat="server">
+                            <div id="MainContent_myForm_UpdatePanel1">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <section id="loginForm_1">
+
+          <div class="form-horizontal">
+                        <div class="panel panel-default">
+                                <div class="panel-heading"> <i class="fa fa-address-book" aria-hidden="true"></i> Sponsor Details (Step -1)</div>
+                                <div>
+                                </div>
+                                <div class="panel-body">
+
+
+                                <div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left" >Sponsor Id<span style="color:Red">*</span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="TxtSponsorId" runat="server" placeholder="Sponsor Id" MaxLength="30" CssClass="form-control" required
+                                onchange="return CallVal(this);" CausesValidation="True" ValidationGroup="NJ"></asp:TextBox>
+                            <asp:Label ID="lblUser" runat="server" ForeColor="Black"></asp:Label>                            
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtSponsorId"
+                                Display="None" ErrorMessage="Please Enter Sponsor ID!" Font-Bold="False" ForeColor="#C00000" SetFocusOnError="true"
+                                ToolTip="NJ" ValidationGroup="NJ">Please Enter Sponsor ID!</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator19" runat="server" SetFocusOnError="true"
+                                ControlToValidate="TxtSponsorId" Display="None" ErrorMessage="please Enter Sponsor Id  Only 50 Digits Alpha Numeric Value Without Space Is Allowed!"
+                                Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[a-zA-Z0-9]{1,50}$"
+                                ValidationGroup="NJ" Width="398px">please Enter Sponsor Id  Only 50 Digits Alpha Numeric Value Without Space Is Allowed!</asp:RegularExpressionValidator>
+ 
+
+
+
+
+   </div>
+   </div>
+   
+ 
+</div>
+<%-- <div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+<div class="form-group">
+   
+   
+   <div class="col-md-3 col-xs-3">
+        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left" >Group Id<span style="color:Red">*</span></label>
+
+   </div>
+
+     <div class="col-md-7 col-xs-9">
+
+<asp:TextBox ID="txtparentid" runat="server" placeholder="Parent Id" MaxLength="30" CssClass="form-control"
+                                CausesValidation="True" ValidationGroup="NJ" required
+           ></asp:TextBox>
+                            <asp:Label ID="Label2" runat="server" ForeColor="Black"></asp:Label>                            
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtparentid"
+                                Display="None" ErrorMessage="Please Enter Parentid ID!" Font-Bold="False" ForeColor="#C00000" SetFocusOnError="true"
+                                ToolTip="NJ" ValidationGroup="NJ">Please Enter Parentid ID!</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" SetFocusOnError="true"
+                                ControlToValidate="txtparentid" Display="None" ErrorMessage="please Enter Sponsor Id  Only 50 Digits Alpha Numeric Value Without Space Is Allowed!"
+                                Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[a-zA-Z0-9]{1,50}$"
+                                ValidationGroup="NJ" Width="398px">please Enter Parent Id  Only 50 Digits Alpha Numeric Value Without Space Is Allowed!</asp:RegularExpressionValidator>
+
+</div>
+   
+   </div>
+   </div>--%>
+
+
+  
+
+    <div class="col-md-6" style="padding:10px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+   <%--<strong>Position:<span style="color: Red">*</span></strong>--%>
+        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Position<span style="color:Red">*</span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:DropDownList ID="ddlposition"  runat="server"  CssClass="form-control">
+         <asp:ListItem Value="0">Left</asp:ListItem>
+        <asp:ListItem Value="1">Right</asp:ListItem>                              
+     </asp:DropDownList>
+   </div>
+   </div>
+
+   </div>
+
+
+
+
+
+
+
+                                    </div>
+                                    </div>
+                                    </div>                                
+                                    
+
+                        <div class="form-horizontal">
+                        <div class="panel panel-default">
+                                <div class="panel-heading txt"><i class="fa fa-user-circle" aria-hidden="true"></i> Personal Details (Step -2)</div>
+                                <div class="panel-body">
+
+
+<div class="col-md-6" style="padding: 15px 0px 0px 0px; margin:0px;"> 
+
+
+
+<div class="form-group">
+                                <div class="col-md-3 col-xs-3">
+<label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Name:<span style="color:Red">*</span></label>
+                                  
+                                </div>
+                               
+                           
+                                
+                                <div class="col-md-2 col-xs-4 " style="padding-right:0px;">
+                        
+                                   <asp:DropDownList ID="ddlTitle" runat="server"    CausesValidation="True"
+                                CssClass="form-control" MaxLength="30" ValidationGroup="NJ" >
+                                <asp:ListItem>Mr.</asp:ListItem>
+                                <asp:ListItem>Ms.</asp:ListItem>
+                                <asp:ListItem>Mrs.</asp:ListItem>
+                                <asp:ListItem>M/S.</asp:ListItem>
+                                <asp:ListItem>Dr.</asp:ListItem>
+                                <asp:ListItem>Md.</asp:ListItem>
+                            </asp:DropDownList>
+                                </div>
+                                <div class="col-md-5 col-xs-5" style="padding-left: 0px;">
+                                        <asp:TextBox ID="TxtName" runat="server" CausesValidation="True"  CssClass="form-control" MaxLength="50" ValidationGroup="NJ"></asp:TextBox> 
+                                          <asp:RequiredFieldValidator ID="fnamExp" runat="server" ControlToValidate="TxtName"
+                                Display="None" ErrorMessage="Please Enter Applicant Name!" Font-Bold="False"
+                                ForeColor="#C00000" ToolTip="NJ" ValidationGroup="NJ" SetFocusOnError="true">Please Enter Applicant 
+                                    Name!</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtName"
+                                Display="None" ErrorMessage="50 Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!"
+                                Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z. ]{1,50}$"
+                                ValidationGroup="NJ" SetFocusOnError="true">50 Characters 
+                                    Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!</asp:RegularExpressionValidator>       
+                                </div>
+                                
+                             
+                                
+                            </div>
+
+                            <div class="clearfix">
+                            </div>
+                        
+
+                            </div>
+
+
+<div class="col-md-6" style="padding: 15px 0px 0px 0px; margin:0px;"> 
+
+
+<div class="form-group">
+                                <div class="col-md-3 col-xs-3">
+ <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Father's Name:<span style="color:Red">*</span></label>
+
+                                </div>
+                                <div class="col-md-2 col-xs-4 " style="padding-right:0px;">
+                                   <asp:DropDownList ID="ddlGtitle" runat="server" CssClass="form-control" >
+                                <asp:ListItem>S/O</asp:ListItem>
+                                <asp:ListItem>D/O</asp:ListItem>
+                                <asp:ListItem>W/O</asp:ListItem>
+                            </asp:DropDownList>
+                                </div>
+                                <div class="col-md-5 col-xs-5" style="padding-left: 0px;">
+                                       <asp:TextBox ID="txtGName" runat="server" CausesValidation="True" MaxLength="50" CssClass="form-control" onkeypress="return CheckAlpha()" SetFocusOnError="true" ValidationGroup="NJ"></asp:TextBox>
+                   <%--                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtGName" SetFocusOnError="true"
+                                Display="None" ErrorMessage=" please Enter Guardian's Name 50 Characters Alphabatic Value With Space or Without Space."
+                                Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[a-zA-Z][a-zA-Z\s.]*$"
+                                ValidationGroup="NJ" Width="413px" Height="16px">50 
+                                    Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!</asp:RegularExpressionValidator>    --%>   
+                                </div>
+                            </div>
+
+                            </div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">DOB:<span style="color:Red">*</span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:TextBox ID="txtDateofBirth" runat="server"  CssClass="form-control" ></asp:TextBox>
+                                         <%-- <asp:RegularExpressionValidator ID="revDateofBirth" runat="server" ErrorMessage="Invalid Date!" 
+                                          SetFocusOnError="true" Display="None" ControlToValidate="txtDateofBirth"  ValidationGroup="NJ" ValidationExpression="^(((0[1-9]|[12]\d|3[01])/(0[13578]|1[02])/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)/(0[13456789]|1[012])/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])/02/((19|[2-9]\d)\d{2}))|(29/02/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$">
+                                          </asp:RegularExpressionValidator>
+
+                             <asp:RequiredFieldValidator ID="rfvDate" runat="server" ControlToValidate="txtDateofBirth" Display="None"
+                                ErrorMessage="Please select date!" ForeColor="#C00000"  SetFocusOnError="True"
+                                ValidationGroup="NJ"></asp:RequiredFieldValidator> --%>   
+   </div>
+   </div>
+   
+ 
+ 
+</div>
+
+
+  <div class="clearfix"></div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+
+         <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Gender:<span style="color:Red">*</span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+  
+                                         <asp:RadioButtonList ID="RdoGender" runat="server" CssClass="form-control" RepeatDirection="Horizontal">
+                                <asp:ListItem class="txt" Selected="True" Value="0">Male</asp:ListItem>
+                                <asp:ListItem class="txt" Value="1">Female</asp:ListItem>
+                            </asp:RadioButtonList>    
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+             <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Marital Status:<span style="color:Red">*</span></label>
+
+ 
+   </div>
+   <div class="col-md-7 col-xs-9">
+    
+                                      <asp:RadioButtonList class="txt" ID="RdoMarital" runat="server" CssClass="form-control" RepeatDirection="Horizontal">
+                                <asp:ListItem class="txt" Selected="True" Value="0">Un-married</asp:ListItem>
+                                <asp:ListItem class="txt" Value="1">Married</asp:ListItem>
+                            </asp:RadioButtonList> 
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+                                    
+                                  
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+                 <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Occupation:<span style="color:Red">*</span></label>
+
+ 
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:DropDownList ID="ddloccupation" runat="server" CausesValidation="True" CssClass="form-control"
+                                ValidationGroup="NJ">
+                                           <asp:ListItem Value="0">Select</asp:ListItem>
+                                <asp:ListItem Value="1">Private Employee</asp:ListItem>
+                                <asp:ListItem Value="2">Govt Employee</asp:ListItem>
+                                  <asp:ListItem Value="3">Business</asp:ListItem>
+                                <asp:ListItem Value="4">Others</asp:ListItem>
+                                          </asp:DropDownList>
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+                                    
+                                    
+ <div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+
+                    <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">State:<span style="color:Red">*</span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+      <asp:DropDownList ID="DdlState" runat="server"  CssClass="form-control" AutoPostBack="true" onselectedindexchanged="DdlState_SelectedIndexChanged" >
+                                           </asp:DropDownList>
+
+
+                               <%--             <asp:RequiredFieldValidator ID="ContryExp" runat="server" ControlToValidate="DdlState" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please Select State!" ForeColor="#C00000" InitialValue="0"
+                                ValidationGroup="NJ">Please Select State!</asp:RequiredFieldValidator>--%>
+                                        
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>                                 
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+
+ <div class="col-md-3 col-xs-3">
+                           <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">District:<span style="color:Red">*</span></label>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+   <asp:DropDownList ID="ddlDistrict" runat="server" CssClass="form-control"></asp:DropDownList> 
+  <%-- <asp:RequiredFieldValidator ID="rfvDistrict" runat="server" ControlToValidate="ddlDistrict" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please Select District!" ForeColor="#C00000" InitialValue="0"
+                                ValidationGroup="NJ"></asp:RequiredFieldValidator>   --%>                               
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+                                      
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+                         <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">City:<span style="color:Red">*</span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
+      <%--<asp:RequiredFieldValidator ID="rfvCity" runat="server" ControlToValidate="txtCity"
+                                Display="None" ErrorMessage="Please Enter City!" ForeColor="#C00000" 
+                                ValidationGroup="NJ" SetFocusOnError="true"></asp:RequiredFieldValidator>    --%>                           
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+                            <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Address:<span style="color:Red">*</span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+   <asp:TextBox ID="TxtAddress" runat="server" Height="54px" CssClass="form-control" TextMode="MultiLine"
+                                CausesValidation="True" ValidationGroup="NJ"></asp:TextBox>
+                          <%--  <asp:RegularExpressionValidator ID="TedxtBox1" runat="server" ControlToValidate="TxtAddress"
+                                Display="None" ErrorMessage="Please Enter Address ! Maximum Character Limit Is  500!"
+                                ForeColor="#C00000" Text="Please Enter Address ! Maximum Character Limit Is  500!"
+                                ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="NJ" SetFocusOnError="true"></asp:RegularExpressionValidator><asp:RequiredFieldValidator
+                                    ID="addExp" runat="server" ControlToValidate="TxtAddress" Display="None" SetFocusOnError="true" ErrorMessage="Please Enter Address!"
+                                    ForeColor="#C00000" Style="left: 0px; position: static" ValidationGroup="NJ">Please Enter Address!</asp:RequiredFieldValidator>  
+                      --%>                  
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+<label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Pin Code:<span style="color:Red">*</span></label>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="TxtPinCode" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="6" ValidationGroup="NJ"></asp:TextBox>
+                           <%-- 
+                            <asp:RequiredFieldValidator Enable="false" ID="RequiredFieldValidator3" runat="server" ControlToValidate="TxtPinCode"
+                                Display="None" ErrorMessage="Please Enter Pincode!" ForeColor="#C00000" SetFocusOnError="true" ToolTip="NJ"
+                                ValidationGroup="NJ">Please Enter Pincode!</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="TxtPinCode" SetFocusOnError="true"
+                                Display="None" ErrorMessage=" Please Enter pin code 6 Digits Numeric Value Without Space Is "
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[0-9]{6,}$" ValidationGroup="NJ"> Please Enter pin code 6 Digits Numeric Value Without Space Is 
+                                    Allowed!</asp:RegularExpressionValidator>--%> 
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+ <div class="clearfix"></div>
+
+
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+                                        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Mobile:<span style="color:Red">*</span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                        <ContentTemplate>
+                                          <asp:TextBox ID="TxtMobile" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="10"  
+                                               ></asp:TextBox>
+                                <asp:Label ID="lblMob" runat="server" Text=""></asp:Label>
+                                </ContentTemplate>
+                        </asp:UpdatePanel>
+                          <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TxtMobile" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please Enter Mobile Number!" ForeColor="#C00000"
+                                ValidationGroup="NJ">Please Enter Mobile Number!</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="TxtMobile" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please Enter Valid Mobile No."
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^0?[789]\d{9}$" ValidationGroup="NJ">Please Enter Mobile No 10 Digits Numeric Value Without Space Is Allowed!</asp:RegularExpressionValidator> 
+                          --%>              
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+                                        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Email ID:<span style="color:Red">*</span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+   
+               <asp:TextBox ID="txtemail" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                            &nbsp;
+                           <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" 
+                                ControlToValidate="txtemail" Display="None" 
+                                ErrorMessage="Please Enter Email!" ForeColor="#C00000" ValidationGroup="NJ">Please Enter Email !</asp:RequiredFieldValidator>
+                            <br />--%>
+
+                           <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtemail" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please Enter ! Email like abc@xyz.com !"
+                                ForeColor="#C00000" Style="position: static" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                ValidationGroup="NJ"></asp:RegularExpressionValidator>  --%>                             
+   </div>
+   </div>
+   <div class="clearfix"></div>
+
+ 
+</div>
+
+                                     <div class="form-group hidden">
+                                        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"><span style="color:Red">*</span>Co-Sponsor </label>
+                                        <div class="col-sm-4 col-xs-8">   
+                                        <asp:DropDownList ID="DropDownList1" Visible="false" runat="server" CssClass="widthinput" Width="50px">
+                                <asp:ListItem>S/O</asp:ListItem>
+                                <asp:ListItem>D/O</asp:ListItem>
+                                <asp:ListItem>W/O</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:TextBox ID="txtMName" Visible="false" runat="server" CausesValidation="True" MaxLength="50"
+                                 CssClass="form-control" onkeypress="return CheckAlpha()" ValidationGroup="NJ"></asp:TextBox>
+
+                                <asp:TextBox ID="txtCoSponsor"  runat="server" CausesValidation="True" MaxLength="50"
+                                CssClass="form-control"  ValidationGroup="NJ"></asp:TextBox>
+                                 <asp:Label ID="lblcospon" runat="server" ForeColor="Black"></asp:Label>
+                                                                   
+                                        </div>
+                                    </div>
+
+                                                           
+                                </div>
+                            </div>
+
+     <div class="panel panel-default">
+    
+                                <div class="panel-heading txt"> <i class="fa fa-university" aria-hidden="true"></i> Bank Details (Step -3)</div>
+                                <div class="panel-body">
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Bank Name:<span style="color:Red"></span></label>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+        <asp:DropDownList ID="ddlBankName" runat="server" CausesValidation="True" CssClass="form-control" 
+                                ValidationGroup="NJ">
+                                
+                            </asp:DropDownList>
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Branch:<span style="color:Red"></span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="txtbranch" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                                        
+   </div>
+   </div>
+  
+
+
+ 
+</div>
+  <div class="clearfix">
+  </div>
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">A/C:<span style="color:Red"></span></label>
+
+ 
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:TextBox ID="txtaccountno" runat="server" ValidationGroup="NJ" CssClass="form-control"
+                                MaxLength="20" CausesValidation="True"></asp:TextBox>
+                         
+                          <%--  <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" SetFocusOnError="true" ErrorMessage="please Enter Account No Maximum 20 Alphanumeric Values are allowed in Account Number"
+                                Display="None" ValidationExpression="^[a-zA-Z0-9]{1,20}$" ControlToValidate="txtaccountno"
+                                ForeColor="#CC0000" ValidationGroup="cp"> please Enter Account No Maximum 20 Alphanumeric values are allowed in Account Number</asp:RegularExpressionValidator>                       --%>
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Account Type:<span style="color:Red"></span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    
+       <asp:DropDownList ID="ddlAccType" runat="server" CssClass="form-control">
+                                <%--    <asp:ListItem>--Select  Account Type--</asp:ListItem>--%>
+                                <asp:ListItem>SAVING A/C</asp:ListItem>
+                                <asp:ListItem>CURRENT A/C</asp:ListItem>
+                                <asp:ListItem>OD A/C</asp:ListItem>
+                                <asp:ListItem>CC A/C</asp:ListItem>
+                            </asp:DropDownList>                                                  
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+
+           <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">IFC:<span style="color:Red"></span></label>
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="TxtIFS" runat="server" CssClass="form-control" CausesValidation="True"
+                                MaxLength="20"></asp:TextBox>
+                           
+                           <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator22" runat="server" SetFocusOnError="true"
+                                ControlToValidate="TxtIFS" Display="None" ValidationGroup="NJ" ErrorMessage="please Enter IFS code  20 Characters Alpha Numeric Value  Allowed!"
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[0-9]{1,20}$" Width="380px">please Enter IFS code  20 Characters Alpha Numeric Value  Allowed!</asp:RegularExpressionValidator>                              --%>        
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group">
+    <div class="col-md-3 col-xs-3">
+               <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Pan Card?:<span style="color:Red"></span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:RadioButtonList ID="rbpanlist" runat="server" RepeatDirection="Horizontal" CssClass="form-control" onclick="show(this)">
+                                <asp:ListItem Text="Yes" Value="1" ></asp:ListItem>
+                                <asp:ListItem Text="No" Value="0" Selected="True"></asp:ListItem>
+                            </asp:RadioButtonList>
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="divid">
+    <div class="col-md-3 col-xs-3">
+        <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Pan No:<span style="color:Red">*</span></label>
+
+   
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                             <ContentTemplate>
+                              <asp:TextBox ID="TxtPanNo" runat="server" MaxLength="10" CssClass="form-control" CausesValidation="True"
+                                ></asp:TextBox> 
+                                 <asp:Label ID="lblChkPan" runat="server" Text=""></asp:Label>
+                                </ContentTemplate>
+                                </asp:UpdatePanel>                       
+
+                               <%-- <asp:RequiredFieldValidator ID="rfvPAN" runat="server" ErrorMessage="Please enter PAN No." ControlToValidate="TxtPanNo"></asp:RequiredFieldValidator>--%>
+                          <%--  <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" SetFocusOnError="true"
+                                ControlToValidate="TxtPanNo" Display="None" ErrorMessage="Please enter correct PAN No.!"
+                                ForeColor="#C00000" ValidationExpression="^[a-zA-Z]{5}\d{4}[a-zA-Z]$"
+                                ValidationGroup="PR"></asp:RegularExpressionValidator>--%>
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+                            </div> 
+                            </div> 
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading txt"> <i class="fa fa-child" aria-hidden="true"></i> Nominee Details (Step -4)</div>
+                                <div class="panel-body">
+                                   <div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="div1">
+    <div class="col-md-3 col-xs-3">
+            <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Nominee Name:<span style="color:Red"></span></label>
+
+ 
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="txtnominame" runat="server" MaxLength="50" CssClass="form-control"
+                                CausesValidation="True"></asp:TextBox>
+                            
+                           
+                     <%--       <asp:RegularExpressionValidator ID="RegularExpressionValidator14" runat="server" SetFocusOnError="true"
+                                ControlToValidate="txtnominame" Display="None" ErrorMessage=" please Enter Nominee Name 50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is Allowed!"
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z .]{1,50}$" ValidationGroup="NJ"> please Enter Nominee Name 50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is 
+                                Allowed!</asp:RegularExpressionValidator>--%>
+                                        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="div2">
+    <div class="col-md-3 col-xs-3">
+                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Relation:<span style="color:Red"></span></label>
+
+  
+   </div>
+   <div class="col-md-7 col-xs-9">
+     <asp:TextBox ID="txtnomineerelation" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                            &nbsp;&nbsp;
+                            <br />
+                           <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator15" runat="server" SetFocusOnError="true"
+                                ControlToValidate="txtnomineerelation" Display="None" ErrorMessage="please Enter Nominee Relation  50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is Allowed!"
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z .]{1,50}$" ValidationGroup="NJ">50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is 
+                                Allowed!</asp:RegularExpressionValidator>--%>
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+
+
+
+                                    
+                                     
+                                    
+                                </div>
+                            </div>   
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading txt"> <i class="fa fa-lock" aria-hidden="true"></i> Security Details (Step -5)</div>
+                                <div class="panel-body">
+                                   
+                                    <%--<div class="form-group">
+                                        <label for="MainContent_myForm_txtCcode" class="col-sm-2 control-label">*Pin No: </label>
+                                        <div class="col-sm-4">                       
+                                         <asp:DropDownList ID="ddlPinNo" onchange="pinchange();" CssClass="form-control" runat="server">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="ddlPinNo"
+                                InitialValue="0" Display="None" ErrorMessage="Please select pin no." ForeColor="#C00000"
+                                ValidationGroup="NJ">Please select pin no.</asp:RequiredFieldValidator>
+                            <asp:Label ID="lblProduct" runat="server"></asp:Label>
+                                        </div>                                       
+                                    </div>--%>
+
+
+
+
+<div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="div5">
+    <div class="col-md-3 col-xs-3">
+    <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Set UserName:<span style="color:Red"></span></label>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+    <asp:TextBox ID="txtUserName"  runat="server" CssClass="form-control"
+                                          ></asp:TextBox>
+                                         <asp:RequiredFieldValidator ID="requn" runat="server" ControlToValidate="txtUserName"
+                                      ErrorMessage="Enter Username " ValidationGroup="NJ" Style="position: relative"></asp:RequiredFieldValidator>  
+                               
+        
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+                                    <div class="col-md-6" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="div3">
+    <div class="col-md-3 col-xs-3">
+     <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label" style="text-align:left">Set Password:<span style="color:Red"></span></label>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+       <asp:TextBox ID="TxtPassword" runat="server" CausesValidation="True" CssClass="form-control"
+                                MaxLength="15" TextMode="Password" ValidationGroup="NJ"></asp:TextBox>
+                            <br />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TxtPassword" SetFocusOnError="true"
+                                Display="None" ErrorMessage="Please enter password." ForeColor="#C00000" Style="left: 0px"
+                                ToolTip="NJ" ValidationGroup="NJ">Please enter password.</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator21" runat="server" SetFocusOnError="true"
+                                ControlToValidate="TxtPassword" Display="None" ErrorMessage="Password must be minimum of 5 character length."
+                                ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[0-9]{5,20}$" ValidationGroup="NJ">Password must be minimum of 6 character length.</asp:RegularExpressionValidator>
+   </div>
+   </div>
+  
+
+ 
+</div>
+
+
+<div class="col-md-12" style="padding:15px 0px 0px 0px; margin:0px;"> 
+
+<div class="form-group" runat="server" id="div4">
+    <div class="col-md-4 col-xs-3">
+ <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="" />
+         <span class="txt"> Please accept <a class="txt" href="../Teamancondiation.aspx" target="_blank" style="color: #551e00;">Terms &amp; Conditions  </a> </span>
+
+
+   </div>
+   <div class="col-md-7 col-xs-9">
+           </div>
+   </div>
+  
+
+ 
+</div>
+                                      
+                                    
+                                      <div class="clearfix"> </div>
+
+                                      <div class="form-group">
+                                      <div class="col-sm-1 col-xs-3"> </div>
+                                      <div class="col-sm-4 col-xs-4 text-right">  
+                                     <asp:Button ID="btnSubmit" runat="server" CausesValidation="true" CssClass="btn btn-default" 
+                                OnClick="btnSubmit_Click" Text="Submit" ValidationGroup="NJ" />
+                                 <asp:Label ID="LblMsg" runat="server" ForeColor="Red"></asp:Label>
+                                      </div>
+                                       </div>
+                                    
+                                   
+                                </div>
+                            </div>                                                                 
+
+</div>
+</section>
+                                    </div>
+                                </div>
+                            </div>
+                            <table style="width: 100%" class="tableehegth">
+                               
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td style="width: 37%">
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+                                            ShowSummary="False" ValidationGroup="NJ" HeaderText="Please check the following..." />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <%-- <asp:Panel DefaultButton="BtnConfirm" ID="DivConfirm" runat="server" Visible="false">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <span>Enter OTP Number</span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtotp" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="reqotp" runat="server" ControlToValidate="txtotp"
+                                        ErrorMessage="Please Enter OTP" ValidationGroup="NJ" Style="position: relative"></asp:RequiredFieldValidator>
+                                    <asp:LinkButton ID="lnkotp" runat="server" Text="Resend OTP"></asp:LinkButton>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 text-right">
+                                    <asp:Button ID="btnConfirm" runat="server" CausesValidation="true" CssClass="btn btn-success"
+                                        OnClick="btnConfirm_Click" Text="Confirm" ValidationGroup="NJ" />
+                                    &nbsp;&nbsp;
+                                    <asp:Button ID="btnEdit" runat="server" CausesValidation="true" CssClass="btn btn-success"
+                                        OnClick="btnEdit_Click" Text="Cancel" />
+                                </div>
+                            </div>
+                        </asp:Panel>--%>
+                        <div class="clear">
+                        </div>
+                        <br />
+                        <%--<asp:Panel DefaultButton="BtnConfirm" ID="DivConfirm" runat="server" Visible="false">
+                ​<center>
+                ​ <div class="otherBoxl">
+            <br />
+            <p class="qst">
+                <i></i><span>Membership is Confirmed</span><b></b></p>
+            <p class="cb">
+            </p>
+            <div class="qst_b">          
+                
+                ​
+               
+                        <center>
+                            <table style="width: 50%; font-weight: bold;">
+                                <tr>
+                                    <td style="text-align: right; width: 20%; height: 35px;" class="top_table">
+                                        Sponser Id
+                                    </td>
+                                    <td style="text-align: center; width: 2%; height: 35px;">
+                                        :
+                                    </td>
+                                    <td class="top_table" style="text-align: left; width: 28%; height: 35px;">
+                                        <asp:Label ID="LblSponsorId" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; height: 35px;" class="bottom_table">
+                                        User Id
+                                    </td>
+                                    <td class="bottom_table" style="text-align: center; height: 35px;">
+                                        :
+                                    </td>
+                                    <td style="text-align: left; height: 35px;">
+                                        <asp:Label ID="lbluserId" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; height: 35px;" class="bottom_table">
+                                        Name
+                                    </td>
+                                    <td class="bottom_table" style="text-align: center;">
+                                        :
+                                    </td>
+                                    <td style="text-align: left; height: 35px;">
+                                        <asp:Label ID="LblName" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; height: 35px;" class="top_table">
+                                        Mobile No
+                                    </td>
+                                    <td class="top_table" style="text-align: center;">
+                                        :
+                                    </td>
+                                    <td style="text-align: left; height: 35px;">
+                                        <asp:Label ID="LblMobile" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; height: 35px;" class="top_table">
+                                        Transaction Password
+                                    </td>
+                                    <td class="top_table" style="text-align: center; height: 35px;">
+                                        :
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <asp:Label ID="lblUserEpassword" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        &nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="text-align: right;">
+                                        <asp:Button ID="BtnConfirm" runat="server" CssClass="regbtn" OnClick="btnNewJoin_Click"
+                                            Text="Another Joining " />
+                                        &nbsp;&nbsp;
+                                        <asp:Button ID="BtnWelcome" runat="server" CssClass="regbtn" OnClick="BtnWelcome_Click"
+                                            Text="User Panel" />
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                        <p class="cb">
+                        </p>
+                    </div>
+                    <p class="qsb">
+                        <i></i><b></b>
+                    </p>
+                </div></center>
+            </asp:Panel>--%>
+                    </div>
+                    <div class="baner_joing" style="display: none;">
+                        <img src="images/joiningbg.gif" style="border: solid 3px #dddddd; margin-left: 20px;" />
+                        <div class="ip_addres">
+                            <h5 style="text-align: center">
+                                <p>
+                                    <span style="color: #000000">Your current IP address our current IP address
+                                        <br />
+                                        {<asp:Label ID="lblIP" runat="server" ForeColor="#C00000"></asp:Label>}<br />
+                                        <span style="color: #000000">is being registered<br />
+                                            <span style="color: #990000">*</span>This information is provided in a secure environment
+                                            and to help&nbsp; protect against fraud. </span>
+                                </p>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    </span>
+   
+</asp:Content>

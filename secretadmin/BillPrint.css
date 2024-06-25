@@ -1,0 +1,123 @@
+@media print
+{
+	BODY
+	{
+		background: white;
+		
+	}
+.printmygrd th
+	{
+		background: #def4f8;
+		color: Black;
+				font-size: 11px  !important; 
+				border-bottom:dotted 1px #000 !important;
+				border-top:dotted 1px #000 !important;
+		
+		font-weight:normal !important;
+		
+				
+	}
+	
+	
+	
+	
+	
+	.hide_class{display:none !important}
+		
+	.logodiplay{ display:block; width:80%;}
+	
+	.printdiv{ width:100%; left:0px; position:absolute; }
+	h3, h2{ border-bottom:none; margin:0px; padding:0px;}
+	.boderclass{border-top: dotted 1px #000000 !important; background-color:Red;}
+	
+	h3{ font-family:Arial; font-weight:normal; font-style:italic;} 
+}
+
+    .selectbox{
+        -webkit-appearance: button;
+
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  
+  
+        }
+        
+        
+@media screen
+{
+	BODY
+	{
+		font-size: medium;
+		background: white;
+	}
+	.printmygrd th
+	{
+		background: #def4f8;
+		color: Black;
+		font-size: 11px  !important; 
+				border-bottom:dotted 1px #000 !important;
+				border-top:dotted 1px #000 !important;
+		
+		font-weight:normal !important;
+		
+				
+	}
+
+	
+	
+		
+}
+
+
+@media print
+{
+
+	
+	
+
+	.printmygrd th
+	{
+		
+		color: #000;
+		text-align:left !important ;
+				font-size: 11px  !important; 
+				border-bottom:dotted 1px #000 !important;
+				border-top:dotted 1px #000 !important;
+		
+		
+		
+				
+	}
+	
+	.printmygrd td
+	{
+		
+		color: Black;
+		font-size: 11px  !important; 
+		text-align:right;
+				
+		
+		
+				
+	}
+	.footerstylebodder{border-bottom:dotted 1px #000 !important;
+				border-top:dotted 1px #000 !important;
+		}
+	
+	
+	
+	
+	
+	
+		
+
+	.printmygrd table a:link, .printmygrd table a:visited
+	{
+		
+	}
+	.printmygrd table a:hover, .printmygrd table a:active
+	{
+	}
+
+}

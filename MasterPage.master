@@ -1,0 +1,790 @@
+﻿<%@ Master Language="C#" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>ezcarestore.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- Favicons -->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <!-- Fontawesome css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <!-- Calibri css -->
+    <link href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic" rel="stylesheet">
+
+    <%--Saira Condensed font--%>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <%--<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">--%>
+    <%-- end--%>
+
+    <link rel="stylesheet" href="css/font-awesome.min.css?v=0.1">
+    <!-- Animate css -->
+    <link rel="stylesheet" href="css/animate.css?v=0.1">
+    <!-- 7-stroke fonts css -->
+    <link rel="stylesheet" href="css/pe-icon-7-stroke.min.css?v=0.1">
+    <!-- Nice select css -->
+    <link rel="stylesheet" href="css/nice-select.css?v=0.1">
+    <!-- Jquery fancybox css -->
+    <link rel="stylesheet" href="css/jquery.fancybox.css?v=0.2">
+    <!-- Jquery ui price slider css -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css?v=0.1">
+    <!-- Meanmenu css -->
+    <link rel="stylesheet" href="css/meanmenu.min.css?v=0.2">
+    <!-- Owl carousel css -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css?v=0.1">
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css?v=0.4">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/default.css?v=0.1">
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css?v=1.6">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="css/responsive.css?v=0.5">
+
+    <!-- Modernizer js -->
+    <script src="js/modernizr-3.5.0.min.js?v=0.1"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="template-color-1">
+    <form id="form1" runat="server" autocomplete="off">
+        <div class="wrapper">
+            <!-- Main Header Area Three Start Here -->
+            <header class="header-style-five">
+                <!-- Header Top Start Here -->
+                <div class="header-top">
+                    <div class="container-fluid">
+                        <div class="col-12">
+                            <div class="row justify-content-lg-between justify-content-center">
+                                <!-- Header Top Left Start -->
+                                <div class="col-auto header-top-left order-2 order-lg-1">
+                                    <ul>
+                                        <%--   <li>
+                                            <a href="#">Become a Seller </a>
+                                        </li>
+                                        <a href="javascript:void(0)" class="text-white">/ </a>--%>
+                                        <li>
+                                            <a href="AddFranchise.aspx">Become a Franchise</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Header Top Left End -->
+                                <!-- Header Top Right Start -->
+                                <div class="col-auto header-top-right order-1 order-lg-2">
+                                    <ul>
+                                        <%--<li>
+                                            <a href="javascript:void(0)"><i class="fa fa-user"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="ht-dropdown">
+                                                <li><a href="user/Dashboard.aspx">Dashboard</a></li>
+                                                <li><a href="user/Logout.aspx">Logout</a></li>
+                                            </ul>
+                                        </li>--%>
+                                        <li id="link_Mst_Login" runat="server">
+                                            <a href="login">Login</a>
+                                            <a href="javascript:void(0)">/ </a>
+                                            <a href="newjoin">Sign Up </a>
+                                        </li>
+
+                                        <li id="link_Mst_Userid" runat="server" visible="false">
+                                            <a href="#"><i class="fa fa-user"></i> 
+                                                &nbsp; <span id="lbl_Userid" runat="server"></span> &nbsp; <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="ht-dropdown">
+                                                <li> <a href="user/Dashboard.aspx">Dashboard</a> </li>
+                                                <li> <a href="Logout.aspx">Logout</a> </li> 
+                                            </ul>
+                                        </li>
+
+                                         <li id="link_Mst_CustomerId" runat="server" visible="false">
+                                            <a href="#"><i class="fa fa-user"></i> 
+                                                &nbsp; <span id="lbl_CustomerId" runat="server"></span> &nbsp; <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="ht-dropdown">
+                                                <li> <a href="#">Order List</a> </li>
+                                                <li> <a href="Logout.aspx">Logout</a> </li> 
+                                            </ul>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <!-- Header Top Right End -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container End -->
+                </div>
+                <!-- Header Top End Here -->
+                <!-- Header Middle Start Here -->
+                <div class="header-middle stick header-sticky">
+                    <div class="header-middle_nav position-relative">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <!-- Logo Start -->
+                                <div class="col-xl-3 col-lg-2 col-6">
+                                    <div class="logo">
+                                        <a href="default.aspx">
+                                            <img src="images/logo1.png">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Logo End -->
+                                <!-- Menu Area Start Here -->
+                                <div class="col-xl-8 col-lg-8 d-none d-lg-block position-static pe-0 ps-0">
+                                    <nav class="d-flex justify-content-center">
+                                        <ul id="li_Menu" runat="server" class="header-bottom-list d-flex justify-content-start">
+                                            <%--<li><a href="#" class="drop-icon">Skincare</a>
+                                         <ul class="ht-dropdown">
+                                            <li class="menu-item"><a href="#">Sunscream <i class="fa fa-angle-right"></i></a>
+                                                <ul class="drop-menu">
+                                                    <li><a href="#">Sunscream</a></li>
+                                                    <li><a href="">Lotion</a></li>
+                                                    <li><a href="">Soaps</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="">Lotion</a></li>
+                                            <li><a href="">Soaps</a></li>
+                                        </ul>
+                                        </li>--%>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Menu Area End Here -->
+                                <!-- Cart Box Start Here -->
+                                <div class="col-xl-1 col-lg-1 col-6">
+                                    <div class="cart-box">
+                                        <ul>
+                                            <!-- Search Box Start Here -->
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pe-7s-search"></span>
+                                                </a>
+                                                <div class="categorie-search-box ht-dropdown">
+                                                    <input type="text" name="searchText" placeholder="Search our catalog" autocomplete="off">
+                                                    <div id="searchResults"></div>
+                                                    <button>
+                                                        <span class="pe-7s-search"></span>
+                                                    </button>
+                                                </div>
+                                            </li>
+                                            <!-- Categorie Search Box End Here -->
+                                            <li>
+                                                <a href="cart">
+                                                    <span class="pe-7s-shopbag"></span>
+                                                    <span id="lbl_MasterCartCount" class="total-pro">0</span>
+                                                </a>
+                                                <ul class="ht-dropdown cart-box-width">
+                                                    <li id="div_Master_Cart_table"></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Cart Box End Here -->
+                            </div>
+                            <!-- Row End -->
+                            <!-- Mobile Menu Start Here -->
+                            <div class="mobile-menu d-block d-lg-none">
+                                <nav style="display: block;">
+                                    <ul id="li_Menu_Mobile" runat="server">
+
+                                        <%--<li><a href="Default">home</a> </li>
+                                        <li><a href="#">About Us</a> </li>
+                                        <li>
+                                            <a href="#">Beauty</a>
+                                            <!-- Men Accessories Dropdown Start -->
+                                            <ul class="submobile-mega-dropdown">
+                                                <li>
+                                                    <a href="#">Lips</a>
+                                                    <ul>
+                                                        <li><a href="product">Lipstick</a> </li>
+                                                        <li><a href="product">Lipstick</a> </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Makeup</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Skin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Hair</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Appliances</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="contact-us">contact us</a>
+                                        </li>--%>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- Mobile Menu End Here -->
+                        </div>
+                        <!-- Container End -->
+                    </div>
+                </div>
+                <!-- Header Middle End Here -->
+            </header>
+            <!-- Main Header Area Three End Here -->
+            <%-- <nav class="main-menu d-none d-lg-block">
+                                    <div class="navbar-collapse collapse clearfix">
+                                        <ul class="navigation clearfix mb-0">
+                                            <li id="link_Mst_Userid" runat="server" visible="false" class="dropdown">
+                                                <a href="javascript:void(0)"><i class="fa fa-user"></i><span id="lbl_Userid" runat="server"></span></a>
+                                                <ul>
+                                                    <li><a href="user/Dashboard.aspx">Dashboard</a></li>
+                                                    <li><a href="user/Logout.aspx">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="link_Mst_Login" runat="server">
+                                                <a href="login.aspx">Login</a>
+                                            </li>
+                                            <li id="link_Mst_Registration" runat="server" class="dropdown">
+                                                <a href="javascript:void(0)">Registration</a>
+                                                <ul>
+                                                    <li><a href="newjoin.aspx">Associate Registration</a></li>
+                                                    <li><a href="addfranchise.aspx">Franchises Registration</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>--%>
+            <!-- Main Menu End-->
+            <div class="button-box d-none">
+                <ul class="user-dropdown">
+                    <li class="cart">
+                        <a href="cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            <%--<span id="lbl_MasterCart" class="count">0</span>--%>
+                        </a>
+                        <div class="dropdown-menu cart-dropdown-menu">
+                            <%--<ul id="div_Master_Cart" class="cart-items-box"> </ul>--%>
+                            <div class="cart-items-box">
+                                <div class="cart-item">
+                                    <span>Subtotal</span>
+                                    <%-- <span id="lbl_MasterTotal"></span>--%>
+                                </div>
+                                <div class="cart-item actions">
+                                    <button type="button" style="border: none !important; background: none !important;"><a href="cart" class="btn-custom btn-sm primary">Checkout</a></button>
+                                    <button type="button" style="border: none !important; background: none !important;"><a href="cart" class="btn-custom btn-sm primary">View Cart</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Support Area Start Here -->
+            <div class="support-area ptb-70 d-none">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-all-30">
+                            <div class="single-support">
+                                <div class="pe-7s-plane icon"></div>
+                                <div class="support-desc">
+                                    <h6>Free Shipping</h6>
+                                    <span>Free shipping on all US order or order above $200</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-all-30">
+                            <div class="single-support">
+                                <div class="pe-7s-help2 icon"></div>
+                                <div class="support-desc">
+                                    <h6>Support 24/7</h6>
+                                    <span>Contact us 24 hours a day, 7 days a week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-xsm-30">
+                            <div class="single-support">
+                                <div class="pe-7s-back icon"></div>
+                                <div class="support-desc">
+                                    <h6>30 Days Return</h6>
+                                    <span>Simply return it within 30 days for an exchange</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-support">
+                                <div class="pe-7s-credit icon"></div>
+                                <div class="support-desc">
+                                    <h6>100% Payment Secure</h6>
+                                    <span>We ensure secure payment with PEV</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container End -->
+            </div>
+            <!-- Support Area End Here -->
+            <!-- Footer Area Start Here -->
+            <footer class="nav-footer pb-35 bg-black">
+                <div class="container-fluid">
+                    <!-- Footer Middle Start -->
+                    <div class="footer-middle">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-3 col-md-6 mb-all-30 pr-0">
+                                        <div class="single-footer">
+                                            <div class="single-footer nav-footer-item nav">
+                                                <h5 class="footer-title">About EZ</h5>
+                                                <div class="footer-content">
+                                                    <ul class="footer-list">
+                                                        <li><a href="about-us.aspx">About Us</a></li>
+                                                        <li><a href="mechanism_for_grievance_redressal.aspx">Grievance Redressal</a></li>
+                                                        <li><a href="contact-us.aspx">Contact Us</a></li>
+                                                        <li><a href="certifications.aspx">Certifications</a></li>
+                                                    </ul>
+                                                </div>
+                                                <%--<div class="footer-content">
+                                                    <ul class="footer-list">
+                                                        <li><a href="#" class="fw-bold">Schedule </a></li>
+                                                        <li><a href="#" class="fw-bold">EZ Stores </a></li>
+                                                        <li><a href="#" class="fw-bold">Carrer </a></li>
+                                                        <li><a href="#" class="fw-bold">Choose Good EZ Every Day </a></li>
+                                                        <li><a href="#" class="fw-bold">CSR(corporate social responsibility)</a></li>
+                                                    </ul>
+                                                </div>--%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-3 col-md-6 mb-sm-30 pr-0">
+                                        <div class="single-footer">
+                                            <div class="single-footer nav-footer-item nav">
+                                                <h5 class="footer-title">Policy</h5>
+                                                <div class="footer-content">
+                                                    <ul class="footer-list">
+                                                        <li><a href="privacy_policy.aspx">Privacy Policy</a></li>
+                                                        <li><a href="return_and_refund_policy.aspx">Return & Refund Policy</a></li>
+                                                        <li><a href="terms_and_condition.aspx">Terms & Condition</a></li>
+                                                        <li><a href="terms_of_use.aspx">Website Terms of Use</a></li>
+                                                        <li><a href="shipping_policy.aspx">Shipping Policy</a></li>
+                                                        <%-- <li><a href="#">Apply for Account</a></li>
+                                                        <li><a href="#">Customer Info</a></li>--%>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-3 col-md-6 mb-sm-30 pr-0">
+                                        <div class="single-footer">
+                                            <div class="single-footer nav-footer-item nav">
+                                                <h5 class="footer-title">Business Opportunity</h5>
+                                                <div class="footer-content">
+                                                    <ul class="footer-list">
+                                                        <li><a href="newjoin">Become a Direct Seller</a></li>
+                                                        <li><a href="AddFranchise.aspx">Become a Store Franchise</a></li>
+                                                        <li><a href="ez_opportunity_faqs.aspx">FAQs</a></li>
+                                                        <%--  <li><a href="#">Start a Business</a></li>--%>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-3 col-md-6 mb-sm-30 pr-0">
+                                        <div class="single-footer">
+                                            <div class="single-footer nav-footer-item nav">
+                                                <h5 class="footer-title">Downloads</h5>
+                                                <div class="footer-content">
+                                                    <ul class="footer-list">
+                                                        <li><a href="#">Compensation Plan</a></li>
+                                                        <li><a href="#">Booklets / Product Catalog</a></li>
+                                                        <li><a href="images/ezcare_order_form1.pdf" target="_blank">Forms</a></li>
+                                                        <li><a href="compliance_documents.aspx">Downloads</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-6 col-md-6 mb-all-30 pr-0">
+                                        <div class="single-footer">
+                                            <%--<div class="footer-logo mb-20">
+                                                <a href="#">
+                                                <img class="img" src="images/logo_white.png" alt="logo-img"></a>
+                                                </div>--%>
+                                            <div class="footer-content nav-footer-item nav">
+                                                <h5 class="footer-title">Write Us</h5>
+                                                <ul class="footer-list first-content">
+                                                    <li class="fw-bold">Zingool Technologies Pvt. Ltd.</li>
+                                                    <li>Plot 9, Sector 16A, 
+                                                        <br />
+                                                        Film City, 
+                                                        <br />
+                                                        Noida, UP-201301
+                                                       
+                                                    </li>
+                                                    <%--<li><a href="tel:7717518733"><i class="pe-7s-call"></i>+91 77175 18733</a></li>--%>
+                                                    <li><a href="mailto:care@ezcarestore.com">care@ezcarestore.com</a></li>
+                                                    <li class="mt-20">
+                                                        <ul class="social-icon">
+                                                            <li>
+                                                                <a href="https://www.facebook.com/people/EZcare/61557010886939/" target="_blank"><i class="fa fa-facebook bg-facebook" aria-hidden="true"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="https://www.youtube.com/channel/UC4sgBV913qD7ZIq0rTfnD5g" target="_blank"><i class="fa fa-youtube bg-youtube" aria-hidden="true"></i></a>
+                                                            </li>
+                                                            <li><a href="https://www.instagram.com/ezcareindia/" target="_blank"><i class="fa fa-instagram bg-instagram" aria-hidden="true"></i></a></li>
+                                                            <%--<li>
+                                                    <a href="#"><i class="fa fa-twitter bg-twitter" aria-hidden="true"></i></a>
+                                                    </li>--%>
+                                                            <%--<li>
+                                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                                    </li>--%>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                    <!-- Single Footer Start -->
+                                    <div class="col-lg-6 col-md-6 pr-0">
+                                        <div class="single-footer">
+                                            <%--<div class="footer-logo mb-20">
+                                            <a href="#">
+                                                <img class="img" src="images/logo_white.png" alt="logo-img"></a>
+                                            </div>--%>
+                                            <div class="footer-content nav-footer-item nav">
+                                                <h5 class="footer-title">Registered Office Address</h5>
+                                                <ul class="footer-list first-content">
+                                                    <li class="fw-bold ">Zingool Technologies Pvt. Ltd.</li>
+                                                    <li>135, Continental Building<br />
+                                                        Dr. Annie Besant Road, Worli<br />
+                                                        Mumbai Mumbai City MH 400018 
+                                                        <br />
+
+                                                    </li>
+                                                    <%-- <li><a href="tel:7717518733"><i class="pe-7s-call"></i>+91 77175 18733</a></li>--%>
+                                                    <%-- <li><a href="mailto:care@ezcare.com"><i class="pe-7s-mail"></i>care@ezcare.com</a></li>--%>
+                                                    <li><a href="javascript:void(0)">U74999MH2017PLC296408</a></li>
+                                                    <li><a href="javascript:void(0)">09AAECE6884H1Z6</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Footer Start -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row End -->
+                    </div>
+                    <!-- Footer Middle End -->
+                    <!-- Footer Bottom Start -->
+                    <div class="footer-bottom pt-35">
+                        <div class="col-md-12">
+                            <div class="row align-items-center justify-content-md-between">
+                                <div class="col-auto footer-copyright">
+                                    <p>
+                                        © 2024
+                                    <a href="javascript:void(0)" style="color: #fff;">Zingool Technologies Pvt. Ltd.</a>
+                                        Made with <i class="fa fa-heart"></i> by <a target="_blank" href="#" style="color: #fff;">Vista Neotech Pvt. Ltd.</a>
+                                    </p>
+                                </div>
+                                <div class="col-auto footer-payment">
+                                    <a href="#">
+                                        <img src="images/payment.png" alt="payment-img" class="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Bottom End -->
+                </div>
+            </footer>
+            <!-- Footer Area End Here -->
+        </div>
+        <%--add to card notifiction--%>
+        <div id="div_Mst_AddCartSuccess" style="display: none">
+            <div class="col-md-2">
+                <div class="alert alert-success addtocart_msg" role="alert">
+                    <div><span class="fa fa-shopping-cart" style="font-size: 20px"></span>&nbsp;Item Added.</div>
+                </div>
+            </div>
+        </div>
+        <asp:HiddenField ID="hdn_Userid" runat="server" Value="" />
+        <%--footer mobile--%>
+        <script>
+            jQuery(".nav-footer h5").click(function () {
+                jQuery(this).parent(".nav").toggleClass("open");
+            });
+            $("#searchResults").hide();
+            $("input[name=searchText]").val('');
+            $("input[name=searchText]").keyup(function () {
+                var q = $(this).val().toLowerCase();                
+                if (q.length > 2) {
+                    $("#searchResults").show();
+                    $.ajax({
+                        type: 'POST',
+                        url: URL + '/GetSearchResults',
+                        data: '{searchText: "' + q + '"}',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: "json",
+                        success: function (data) {
+                            //console.table(data);
+                            $("#searchResults").empty();
+                            if (data.d != "" && data.d.length> 0) {
+                                $.each(data.d, function callback(_id, value) {
+                                    //console.log(value);
+                                   // console.log(_id);
+                                    var row = '<p><a  href="/p?' + String(value.Value).replaceAll(" ", "-") + '" tabindex=0>' + value.Value + '</a></p>';
+                                    //console.log(row);
+                                    $("#searchResults").append(row);
+                                });
+                            }
+                            else {
+                                $("#searchResults").append("No results found");
+                            }
+                        },
+                        error: function (response) {
+                            console.log(response);
+                        }
+                    })
+                    
+                }
+            })
+           
+        </script>
+        <%--end--%>
+        <style>
+            .addtocart_msg {
+                position: fixed;
+                bottom: 0px;
+                right: 10px;
+                z-index: 99;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .quant {
+                float: left;
+                border: 1px solid #ebebea;
+                padding: 2px 4px;
+                font-size: 11px;
+            }
+        </style>
+        <script>
+            function ShowSuccess() {
+                var seconds = 0;
+                setTimeout(function () { document.getElementById("div_Mst_AddCartSuccess").style.display = "block"; }, seconds * 1000);
+            }
+            function HideSuccess() {
+                var seconds = 2;
+                setTimeout(function () { document.getElementById("div_Mst_AddCartSuccess").style.display = "none"; }, seconds * 1000);
+            }
+
+
+            $(function () {
+                setInterval(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: 'Service.aspx/SessionExpired',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.d == "1") {
+                                if ($('#<%=hdn_Userid.ClientID %>').val() != "") {
+                                    window.location = "user/Logout.aspx";
+                                }
+                            }
+                            if (data.d == "0") {
+                                if ($('#<%=hdn_Userid.ClientID %>').val() == "") {
+                                    window.location = window.location.href;
+                                }
+                            }
+                        },
+                        error: function () { }
+                    });
+                }, 5000);
+            });
+
+
+            function GetCount() {
+                $.ajax({
+                    type: "POST",
+                    url: 'Service.aspx/GetCount',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#lbl_MasterCartCount').text(data.d);
+                        $('.cart-data').text(data.d);
+                        BindMasterCartTable();
+                    },
+                    error: function (response) { }
+                });
+            }
+
+            function BindMasterCartTable() {
+                $.ajax({
+                    type: "POST",
+                    url: 'Service.aspx/GetCartData',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var TotalAmount = 0, Gross = 0, GSTAMT = 0;
+                        var tbl = '<div class="cart-actions text-center"> <a class="cart-checkout" href="cart">Checkout</a> </div>';
+                        for (var i = 0; i < data.d.length; i++) {
+                            var batchid = data.d[i].batchid;
+
+
+                            TotalAmount = TotalAmount + parseFloat(data.d[i].totalamt);
+                            Gross = Gross + parseFloat(data.d[i].Gross);
+                            GSTAMT = GSTAMT + parseFloat(data.d[i].Totaltaxamt);
+
+                            tbl += '<div class="single-cart-box">';
+                            tbl += '<div class="cart-img">';
+                            tbl += '<a href="javascript:void(0)"> <img src="ProductImage/' + data.d[i].image + '" alt="cart-image"> </a>';
+                            // tbl += '<span class="pro-quantity">' + data.d[i].qty + 'X</span>';
+                            tbl += '</div>';
+                            tbl += '<div class="cart-content">';
+                            tbl += '<h6> <a href="javascript:void(0)">' + data.d[i].pname + '</a> </h6>';
+                            tbl += '<span class="cart-price">' + data.d[i].DPWithTax.toFixed(2) + '</span>';
+                            tbl += '<div style="display: flex;"> <span class="fa fa-minus quant" onclick="Mst_MinusQty(' + batchid + ')" style="cursor: pointer;"></span> <input type="text" id="Mst_qty_' + batchid + '" value="' + data.d[i].qty + '" onchange="Mst_UpdateQty(' + batchid + ')" class="form-control input-number text-center" maxlength="4" style="width:50px; height: 27px; float: left; padding:5px; border: 1px solid #e9e7e7;"/> <span class="fa fa-plus quant" onclick="Mst_AddQty(' + batchid + ')" style="cursor: pointer;"></span>  <input type="hidden" id="Mst_Maxqty_' + batchid + '" value="' + data.d[i].MaxQty + '">  </div>';
+
+                            tbl += '</div>';
+                            tbl += '<a class="del-icone" href="javascript:void(0)"> <i class="ion-close"></i> </a>';
+                            tbl += '</div>';
+
+                        }
+                        let FooterStr = '';
+
+
+                        FooterStr += '<div class="cart-footer">';
+                        FooterStr += '<ul class="price-content">';
+                        FooterStr += '<li>Subtotal <span>' + parseFloat(Gross.toFixed(2)) + '</span> </li>';
+                        FooterStr += '<li>Taxes <span>' + parseFloat(GSTAMT.toFixed(2)) + '</span> </li>';
+                        FooterStr += '<li>Total <span>' + parseFloat(TotalAmount.toFixed(2)) + '</span> </li>';
+                        FooterStr += '</ul>';
+                        FooterStr += '<div class="cart-actions text-center"> <a class="cart-checkout" href="cart">Checkout</a> </div>';
+                        FooterStr += '</div>';
+                        tbl += FooterStr;
+                        $('#div_Master_Cart_table').empty().append(tbl);
+                        if (data.d.length == 0) {
+                            $('#div_Master_Cart_table').empty().append('Your cart is empty...');
+                            return false;
+                        }
+
+                    },
+                    error: function (data) {
+                        alert("Server error. Time out.!!");
+                        return false;
+                    }
+                });
+            }
+
+
+            function Mst_MinusQty(Mst_batchid) {
+                var Mst_Qty = $('#Mst_qty_' + Mst_batchid).val();
+                $('#Mst_qty_' + Mst_batchid).val(parseInt(Mst_Qty) - 1);
+                Mst_UpdateQty(Mst_batchid);
+            }
+
+            function Mst_AddQty(Mst_batchid) {
+                var Mst_Qty = $('#Mst_qty_' + Mst_batchid).val();
+                $('#Mst_qty_' + Mst_batchid).val(parseInt(Mst_Qty) + 1);
+                Mst_UpdateQty(Mst_batchid);
+            }
+
+            function Mst_UpdateQty(Mst_batchid) {
+                if (Mst_batchid <= 0) {
+                    alert("Server error. Time out.!!");
+                    return false;
+                }
+
+                var Maxqty = $('#Mst_Maxqty_' + Mst_batchid).val();
+                var Mst_Qty = $('#Mst_qty_' + Mst_batchid).val();
+                if (parseInt(Mst_Qty) > parseInt(Maxqty)) {
+                    $('#Mst_qty_' + Mst_batchid).val(Maxqty);
+                    Mst_Qty = Maxqty;
+                    alert("Stock in hand : " + Maxqty);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: URL + '/UpdateQty',
+                    data: '{batchid: "' + Mst_batchid + '", Qty: "' + Mst_Qty + '", BillType: "1", Pack_Rep: "3"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d == "") {
+                            BindMasterCartTable();
+                            return;
+                        }
+                        else {
+                            alert(data.d);
+                        }
+                    },
+                    error: function (response) { alert("Server error. Time out.!!"); }
+                });
+            }
+
+        </script>
+
+        <%--end--%>
+
+        <!-- jquery -->
+        <script src="js/vendor/jquery-3.6.0.min.js"></script>
+        <!-- jquery migrate -->
+        <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
+        <!-- Countdown js -->
+        <%--<script src="js/jquery.countdown.min.js"></script>--%>
+        <!-- Mobile menu js -->
+        <script src="js/jquery.meanmenu.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="js/jquery.scrollUp.js"></script>
+        <!-- Fancybox js -->
+        <script src="js/jquery.fancybox.min.js"></script>
+        <!-- Jquery nice select js -->
+        <%--   <script src="js/jquery.nice-select.min.js"></script>--%>
+        <!-- Jquery ui price slider js -->
+        <script src="js/jquery-ui.min.js"></script>
+        <!-- Owl carousel -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- Bootstrap popper js -->
+        <script src="js/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Plugin js -->
+        <script src="js/plugins.js"></script>
+        <!-- Main activaion js -->
+        <script src="js/main.js?v=0.5"></script>
+        <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    </form>
+</body>
+</html>

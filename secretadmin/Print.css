@@ -1,0 +1,72 @@
+@media print
+{
+	BODY
+	{
+		background: white;
+	}
+}
+@media screen
+{
+	BODY
+	{
+		font-size: medium;
+		background: silver;
+	}
+}
+ 
+@media print
+{
+.CenterArea{width:100% !important;  }
+ 
+.tablebg{}
+.grdtable{border-top:solid 1px #000; border-bottom:solid 1px #000; color:#000; font-weight:bold; }
+.rright{text-align:right; padding-right:85px;}
+.total{text-align:right; width:150px !important;}
+table{border:solid 1px #000 !important;}
+
+
+.mygrd th
+{
+	background: #013b81; font-family: Arial, Helvetica, sans-serif;
+	color: White; 
+	font-size: 14px !important ; padding:2px 4px;
+	font-weight:bold !important;
+	text-align: center; border:solid 1px #000 !important;
+ 
+}
+.mygrd td
+{
+	
+	padding-left: 2px;   border:solid 1px #000 !important;
+	 
+}
+
+
+.mygrd
+{
+	text-align: right;  border-collapse:collapse;
+	width: 100%; border-width:0px!important; border: solid 1px #fff !important;  
+	
+	 
+}
+
+.border_leert{ border-left:solid 1px #000 !important; text-align:right !important;  border-right:solid 1px #000 !important; }
+.hide_class{display:none !important;}
+
+.withclass{width:100% !important}
+.totalamountdiv{float:right; text-align:right; }
+	
+
+.lefttext{text-align:left !important}
+.centertext{text-align:center!important}
+.input{background-color:Transparent; border:none;}
+
+
+
+
+textarea, input, select, lable {background-color:Transparent; border:none;
+}
+
+.footerstylebodder{border:solid 1px #000 !important; border-top:solid 1px #000 !important; }
+
+.useriddisply{display:none ! important;}

@@ -1,0 +1,559 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/secretadmin/MasterPage.master"
+    AutoEventWireup="true" CodeFile="ChangeUserDetail.aspx.cs" Inherits="secretadmin_ChangeUserDetail" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
+    <script src="datepick/jquery.datepick.js" type="text/javascript"></script>
+    <%--<script language="javascript" type="text/javascript">
+        function CallVal(txt) {
+            ServerSendValue(txt.value, "ctx");
+        }
+        function ServerResult(arg) {
+
+            if (arg == "You cannot leave blank field here !") {
+                document.getElementById("lblUser.ClientID").style.color = "Red";
+                document.getElementById("lblUser.ClientID").innerHTML = arg;
+            }
+            else {
+                document.getElementById("<%=lblUser.ClientID%>").style.color = "darkblue";
+                document.getElementById("<%=lblUser.ClientID%>").innerHTML = arg;
+            }
+        }
+        function ClientErrorCallback() {
+        }
+    </script>--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <%--<script type="text/javascript">
+        $(function () {
+            $('#<%= txtDateofBirth.ClientID%>').datepick({ dateFormat: 'dd/mm/yyyy', maxDate: 0 });
+        });
+    </script>--%>
+    <%-- <script type="text/javascript">
+        function show(rdo) {
+            for (var i = 0; i < rdo.rows.length; ++i) {
+                if (rdo.rows[i].cells[0].firstChild.checked) {
+                    document.getElementById("<%=divid.ClientID%>").style.display = "block";
+                    document.getElementById("<%=lblChkPan.ClientID%>").style.display = "none";
+                }
+                else if (rdo.rows[i].cells[1].firstChild.checked) {
+                    document.getElementById("<%=divid.ClientID%>").style.display = "none";
+                }
+
+                document.getElementById('<%= TxtPanNo.ClientID %>').value = '';
+
+            }
+        }
+    </script>--%>
+    <br />
+    <div class="bodytext" id="regForm" runat="server">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div id="title" class="b2">
+                        <h1 class="head" style="color: #333">
+                            Change User Details
+                        </h1>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="joing_inter">
+                        <asp:Panel ID="DivNewjoin" DefaultButton="btnSubmit" runat="server">
+                            <div id="MainContent_myForm_UpdatePanel1">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <section id="loginForm_1">
+
+                                        <div class="form-horizontal">
+                        <div class="panel panel-default">
+                                <div class=" txt panel-heading" style="background: #1D964B;border: none; border-radius:5px;color: #fff;">Enter User ID</div>
+                                <div class="panel-body">
+
+                                  <div class="form-group">
+                                        <label for="MainContent_myForm_txtCcode" class=" txt col-sm-3 col-xs-4 control-label" style="text-align:left"><span style="color:Red">*</span>Enter User Id</label>
+                                        <div class="col-sm-4 col-xs-8">
+                                          <asp:TextBox ID="txtuserid" runat="server" MaxLength="30" CssClass="form-control" CausesValidation="True" ValidationGroup="NJ"></asp:TextBox>
+                                           <asp:RequiredFieldValidator ID="rfvUserId" runat="server" ErrorMessage="Please Enter User Id."
+                                                ValidationGroup="NJ" SetFocusOnError="true" Display="None" ControlToValidate="txtuserid"></asp:RequiredFieldValidator>
+                                       <div class="clearfix">
+                                       </div><br />
+                                       <asp:Button ID="btnShow" runat="server" Text="Show" CssClass="btn btn-success" 
+                                                onclick="btnShow_Click"></asp:Button>
+                                        </div>
+
+                                        </div>
+                                        
+                                      
+                           <%-- <asp:Label ID="lblUser" runat="server" ForeColor="Black"></asp:Label>         --%>                   
+                            
+                            
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="MainContent_myForm_txtCcode" class=" txt col-sm-3 col-xs-4 control-label"
+                                            style="text-align: left">
+                                            <span style="color: Red">*</span>Sponsor Id</label>
+                                        <div class="col-sm-4 col-xs-8">
+                                            <asp:TextBox ID="txtsponsorid" runat="server" MaxLength="30" CssClass="form-control"
+                                                CausesValidation="True" ValidationGroup="NJ"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="rfvSponsorid" runat="server" ErrorMessage="Please Enter Sponsor Id."
+                                                ValidationGroup="NJ" SetFocusOnError="true" Display="None" ControlToValidate="txtsponsorid"></asp:RequiredFieldValidator>
+                                            <div class="clearfix">
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading txt" style="background: #1D964B; border: none; border-radius: 5px;
+                                            color: #fff;">
+                                            Personal Details (Step -2)</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Position
+                                                </label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="ddlposition" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Value="0">Left</asp:ListItem>
+                                                        <asp:ListItem Value="1">Right</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPcode" class=" txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Name
+                                                </label>
+                                                <div class="col-sm-1 col-xs-4" style="margin-right: 0px; padding-right: 0px;">
+                                                    <asp:DropDownList ID="ddlTitle" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="30" ValidationGroup="NJ">
+                                                        <asp:ListItem>Mr.</asp:ListItem>
+                                                        <asp:ListItem>Ms.</asp:ListItem>
+                                                        <asp:ListItem>Mrs.</asp:ListItem>
+                                                        <asp:ListItem>M/S.</asp:ListItem>
+                                                        <asp:ListItem>Dr.</asp:ListItem>
+                                                        <asp:ListItem>Md.</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-md-3 col-xs-5" style="margin-left: 0px; padding-left: 0px;">
+                                                    <asp:TextBox ID="TxtName" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="30" ValidationGroup="NJ"></asp:TextBox>
+                                                </div>
+                                                <div class="col-sm-8 text-right">
+                                                    <asp:RequiredFieldValidator ID="fnamExp" runat="server" ControlToValidate="TxtName"
+                                                        Display="None" ErrorMessage="Please Enter Applicant Name!" Font-Bold="False"
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationGroup="NJ" SetFocusOnError="true">Please Enter Applicant 
+                                    Name!</asp:RequiredFieldValidator>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TxtName"
+                                                        Display="None" ErrorMessage="50 Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!"
+                                                        Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z. ]{1,50}$"
+                                                        ValidationGroup="NJ" SetFocusOnError="true">50 Characters 
+                                    Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Father's / Husband's Name
+                                                </label>
+                                                <div class="col-sm-1 col-xs-4" style="margin-right: 0px; padding-right: 0px;">
+                                                    <asp:DropDownList ID="ddlGtitle" runat="server" CssClass="form-control">
+                                                        <asp:ListItem>S/O</asp:ListItem>
+                                                        <asp:ListItem>D/O</asp:ListItem>
+                                                        <asp:ListItem>W/O</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-md-3 col-xs-5" style="margin-left: 0px; padding-left: 0px;">
+                                                    <asp:TextBox ID="txtGName" runat="server" CausesValidation="True" MaxLength="50"
+                                                        CssClass="form-control" onkeypress="return CheckAlpha()" SetFocusOnError="true"
+                                                        ValidationGroup="NJ"></asp:TextBox>
+                                                    <div class="col-sm-8 text-right">
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtGName"
+                                                            SetFocusOnError="true" Display="None" ErrorMessage=" please Enter Guardian's Name 50 Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!"
+                                                            Font-Bold="False" ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z. ]{1,50}$"
+                                                            ValidationGroup="NJ" Width="413px" Height="16px">50 
+                                    Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!</asp:RegularExpressionValidator>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class=" txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Date Of Birth
+                                                </label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtDateofBirth" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="revDateofBirth" runat="server" ErrorMessage="Invalid Date!"
+                                                        SetFocusOnError="true" Display="None" ControlToValidate="txtDateofBirth" ValidationGroup="NJ"
+                                                        ValidationExpression="^(((0[1-9]|[12]\d|3[01])/(0[13578]|1[02])/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)/(0[13456789]|1[012])/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])/02/((19|[2-9]\d)\d{2}))|(29/02/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$">
+                                                    </asp:RegularExpressionValidator>
+                                                    <asp:RequiredFieldValidator ID="rfvDate" runat="server" ControlToValidate="txtDateofBirth"
+                                                        Display="None" ErrorMessage="Please Select Date!" ForeColor="#C00000" SetFocusOnError="True"
+                                                        ValidationGroup="NJ"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group hidden">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label">
+                                                    <span style="color: Red">*</span>Co-Sponsor
+                                                </label>
+                                                <div class="col-sm-4 col-xs-8">
+                                                    <asp:DropDownList ID="DropDownList1" Visible="false" runat="server" CssClass="widthinput"
+                                                        Width="50px">
+                                                        <asp:ListItem>S/O</asp:ListItem>
+                                                        <asp:ListItem>D/O</asp:ListItem>
+                                                        <asp:ListItem>W/O</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:TextBox ID="txtMName" Visible="false" runat="server" CausesValidation="True"
+                                                        MaxLength="50" CssClass="form-control" onkeypress="return CheckAlpha()" ValidationGroup="NJ"></asp:TextBox>
+                                                    <asp:TextBox ID="txtCoSponsor" runat="server" CausesValidation="True" MaxLength="50"
+                                                        CssClass="form-control" ValidationGroup="NJ"></asp:TextBox>
+                                                    <asp:Label ID="lblcospon" runat="server" ForeColor="Black"></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Gender
+                                                </label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:RadioButtonList ID="RdoGender" runat="server" CssClass="form-control" RepeatDirection="Horizontal">
+                                                        <asp:ListItem class="txt" Selected="True" Value="0">Male</asp:ListItem>
+                                                        <asp:ListItem class="txt" Value="1">Female</asp:ListItem>
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red"></span><span style="color: Red">*</span>Marital Status</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:RadioButtonList class="txt" ID="RdoMarital" runat="server" CssClass="form-control"
+                                                        RepeatDirection="Horizontal">
+                                                        <asp:ListItem class="txt" Selected="True" Value="0">Un-married</asp:ListItem>
+                                                        <asp:ListItem class="txt" Value="1">Married</asp:ListItem>
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Occupation</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="ddloccupation" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        ValidationGroup="NJ">
+                                                        <asp:ListItem>Private Employee</asp:ListItem>
+                                                        <asp:ListItem>Govt Employee</asp:ListItem>
+                                                        <asp:ListItem>Business</asp:ListItem>
+                                                        <asp:ListItem>Others</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>State</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="DdlState" runat="server" CssClass="form-control" AutoPostBack="true"
+                                                        OnSelectedIndexChanged="DdlState_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>City</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>District</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtdistrict" runat="server" MaxLength="50" CausesValidation="True"
+                                                        CssClass="form-control" ValidationGroup="NJ"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtdistrict"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage='Please Enter District ! 50 Characters Alphabatic Value With "Space" And "." Is Allowed!'
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z .]{1,50}$" ValidationGroup="NJ"
+                                                        Width="351px" Height="35px">Please Enter District ! 50 Characters Alphabatic Value With &quot;Space&quot; And &quot;.&quot; Is Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label for="MainContent_myForm_txtPname" class=" txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Address</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="TxtAddress" runat="server" Height="54px" CssClass="form-control"
+                                                        TextMode="MultiLine" CausesValidation="True" ValidationGroup="NJ"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="TedxtBox1" runat="server" ControlToValidate="TxtAddress"
+                                                        Display="None" ErrorMessage="Please Enter Address ! Maximum Character Limit Is  500!"
+                                                        ForeColor="#C00000" Text="Please Enter Address ! Maximum Character Limit Is  500!"
+                                                        ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="NJ" SetFocusOnError="true"></asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Pin Code</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="TxtPinCode" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="6" ValidationGroup="NJ"></asp:TextBox>
+                                                   <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="TxtPinCode"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage=" Please Enter pin code 6 Digits Numeric Value Without Space Is start with 1-8"
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[1-8]{5}$" ValidationGroup="NJ"> Please Enter pin code 6 Digits Numeric Value Without Space Is 
+                                    Allowed!</asp:RegularExpressionValidator>--%>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Mobile Number</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                                        <ContentTemplate>
+                                                            <asp:TextBox ID="TxtMobile" runat="server" CausesValidation="True" CssClass="form-control"
+                                                                MaxLength="10"></asp:TextBox>
+                                                            <asp:Label ID="lblMob" runat="server" Text=""></asp:Label>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TxtMobile"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage="Please Enter Mobile Number!"
+                                                        ForeColor="#C00000" ValidationGroup="NJ">Please Enter Mobile Number!</asp:RequiredFieldValidator>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="TxtMobile"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage="Please Enter Valid Mobile No."
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^0?[789]\d{9}$" ValidationGroup="NJ">Please Enter Mobile No 10 Digits Numeric Value Without Space Is Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    E-Mail Id</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtemail" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                                                    &nbsp;
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtemail"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage="Please Enter ! Email like &amp;quot;abc@xyz.com&amp;quot; !"
+                                                        ForeColor="#C00000" Style="position: static" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                                        ValidationGroup="NJ">Please Enter ! Email like &quot;abc@xyz.com&quot; !</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" style="background: #1D964B; border: none; border-radius: 5px;
+                                            color: #fff;">
+                                            Bank Details (Step -3)</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtCcode" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Bank Name</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="ddlBankName" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        ValidationGroup="NJ">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtDdate" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Branch</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtbranch" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPcode" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Account Number</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtaccountno" runat="server" ValidationGroup="NJ" CssClass="form-control"
+                                                        MaxLength="20" CausesValidation="True"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" SetFocusOnError="true"
+                                                        ErrorMessage="please Enter Account No Maximum 20 Alphanumeric Values are allowed in Account Number"
+                                                        Display="None" ValidationExpression="^[a-zA-Z0-9]{1,20}$" ControlToValidate="txtaccountno"
+                                                        ForeColor="#CC0000" ValidationGroup="cp"> please Enter Account No Maximum 20 Alphanumeric values are allowed in Account Number</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Account Type</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:DropDownList ID="ddlAccType" runat="server" CssClass="form-control">
+                                                        <%--    <asp:ListItem>--Select  Account Type--</asp:ListItem>--%>
+                                                        <asp:ListItem>SAVING A/C</asp:ListItem>
+                                                        <asp:ListItem>CURRENT A/C</asp:ListItem>
+                                                        <asp:ListItem>OD A/C</asp:ListItem>
+                                                        <asp:ListItem>CC A/C</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    IFSCode</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="TxtIFS" runat="server" CssClass="form-control" CausesValidation="True"
+                                                        MaxLength="20"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator22" runat="server"
+                                                        SetFocusOnError="true" ControlToValidate="TxtIFS" Display="None" ValidationGroup="NJ"
+                                                        ErrorMessage="please Enter IFS code  20 Characters Alpha Numeric Value  Allowed!"
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z0-9]{1,20}$" Width="380px">please Enter IFS code  20 Characters Alpha Numeric Value  Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtPname" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Do you have Pan Card</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:RadioButtonList ID="rbpanlist" runat="server" RepeatDirection="Horizontal" CssClass="form-control"
+                                                        onclick="show(this)">
+                                                        <asp:ListItem Text="Yes" Value="1" Selected="True"></asp:ListItem>
+                                                        <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="divid" runat="server">
+                                                <label for="MainContent_myForm_txtPname" id="Pan" runat="server" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Pan No</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <div>
+                                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                            <ContentTemplate>
+                                                                <asp:TextBox ID="TxtPanNo" runat="server" MaxLength="10" CssClass="form-control"
+                                                                    CausesValidation="True"></asp:TextBox>
+                                                                <asp:Label ID="lblChkPan" runat="server" Text=""></asp:Label>
+                                                            </ContentTemplate>
+                                                        </asp:UpdatePanel>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server"
+                                                            SetFocusOnError="true" ControlToValidate="TxtPanNo" Display="None" ErrorMessage="Please enter correct PAN No.!"
+                                                            ForeColor="#C00000" ValidationExpression="^[a-zA-Z]{5}\d{4}[a-zA-Z]$" ValidationGroup="PR"></asp:RegularExpressionValidator></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading txt" style="background: #1D964B; border: none; border-radius: 5px;
+                                            color: #fff;">
+                                            Nominee Details (Step -4)</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtCcode" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Nominee Name</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtnominame" runat="server" MaxLength="50" CssClass="form-control"
+                                                        CausesValidation="True"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator14" runat="server"
+                                                        SetFocusOnError="true" ControlToValidate="txtnominame" Display="None" ErrorMessage=" please Enter Nominee Name 50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is Allowed!"
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z .]{1,50}$" ValidationGroup="NJ"> please Enter Nominee Name 50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is 
+                                Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtCcode" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    Relation</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="txtnomineerelation" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="50" ValidationGroup="NJ"></asp:TextBox>
+                                                    &nbsp;&nbsp;
+                                                    <br />
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator15" runat="server"
+                                                        SetFocusOnError="true" ControlToValidate="txtnomineerelation" Display="None"
+                                                        ErrorMessage="please Enter Nominee Relation  50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is Allowed!"
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[A-Za-z .]{1,50}$" ValidationGroup="NJ">50 Characters Alphabatic Value With &quot;Space&quot; And &quot; .&quot; Is 
+                                Allowed!</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading txt" style="background: #1D964B; border: none; border-radius: 5px;
+                                            color: #fff;">
+                                            Security Details (Step -5)</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="MainContent_myForm_txtCcode" class="txt col-sm-3 col-xs-3 control-label"
+                                                    style="text-align: left">
+                                                    <span style="color: Red">*</span>Set Password</label>
+                                                <div class="col-sm-4 col-xs-9">
+                                                    <asp:TextBox ID="TxtPassword" runat="server" CausesValidation="True" CssClass="form-control"
+                                                        MaxLength="15" ValidationGroup="NJ"></asp:TextBox>
+                                                    <br />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TxtPassword"
+                                                        SetFocusOnError="true" Display="None" ErrorMessage="Please Enter Password." ForeColor="#C00000"
+                                                        Style="left: 0px" ToolTip="NJ" ValidationGroup="NJ">Please Enter Password.</asp:RequiredFieldValidator>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator21" runat="server"
+                                                        SetFocusOnError="true" ControlToValidate="TxtPassword" Display="None" ErrorMessage="Password must be minimum of 6 character length."
+                                                        ForeColor="#C00000" ToolTip="NJ" ValidationExpression="^[0-9a-zA-Z]{6,}$" ValidationGroup="NJ">Password must be minimum of 6 character length.</asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-1 col-xs-3">
+                                                </div>
+                                                <div class="col-sm-4 col-xs-4 text-right">
+                                                    <asp:Button ID="btnSubmit" runat="server" CausesValidation="true" CssClass="btn btn-default"
+                                                        Text="Submit" ValidationGroup="NJ" OnClick="btnSubmit_Click" />
+                                                    <asp:Label ID="LblMsg" runat="server" ForeColor="Red"></asp:Label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </section>
+                            </div>
+                    </div>
+                </div>
+                <table style="width: 100%" class="tableehegth">
+                    <tr>
+                        <td class="bottom_table">
+                            <%-- <span style="color: #CC3300">*</span>User Name:--%>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtUserName" MaxLength="20" runat="server" CssClass="widthinput"
+                                Visible="false"></asp:TextBox>
+                            <%-- <asp:RequiredFieldValidator ID="requn" runat="server" ControlToValidate="txtUserName"
+                                      ErrorMessage="Username Required." ValidationGroup="NJ" Style="position: relative"></asp:RequiredFieldValidator>  --%>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td style="width: 37%">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+                                ShowSummary="False" ValidationGroup="NJ" HeaderText="Please check the following..." />
+                        </td>
+                    </tr>
+                </table>
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
+    </div> </div>
+</asp:Content>

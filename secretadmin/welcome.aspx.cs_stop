@@ -1,0 +1,104 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+public partial class mumbaiadmin_welcome : System.Web.UI.Page
+{
+    SqlConnection con = new SqlConnection(method.str);
+    SqlCommand com;
+    SqlDataAdapter da;
+    DataTable t = new DataTable();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["admin"] == null)
+            Response.Redirect("adminLog.aspx", false);
+        else
+            lbladmin.Text = Session["admin"].ToString();
+
+        if (!IsPostBack)
+        {
+            binddata();
+        }
+
+    }
+    protected void lblUserInLeft_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void lblUserInRight_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void binddata()
+    {
+        try
+        {
+            com = new SqlCommand("Admin_DashBoard", con);
+            com.CommandType = CommandType.StoredProcedure;
+            //com.Parameters.AddWithValue("@regno", str5);
+            da = new SqlDataAdapter(com);
+            da.Fill(t);
+            if (t.Rows.Count > 0)
+            {
+                lnktotalmem.Text = t.Rows[0]["usercount"].ToString();
+                lnkCurrentWeekUserCount.Text = t.Rows[0]["CurrentWeekUserCount"].ToString();
+                lnkLastWeekUserCount.Text = t.Rows[0]["LastWeekUserCount"].ToString();
+                lnkCurrentMonthUserCount.Text = t.Rows[0]["CurrentMonthUserCount"].ToString();
+                lnkLastMonthUserCount.Text = t.Rows[0]["LastMonthUserCount"].ToString();
+                lnkCurrentQuaterUserCount.Text = t.Rows[0]["CurrentQuaterUserCount"].ToString();
+                lnkLastQuaterUserCount.Text = t.Rows[0]["LastQuaterUserCount"].ToString();
+                lnkCurrentYearUserCount.Text = t.Rows[0]["CurrentYearUserCount"].ToString();
+                lnkLastYearUserCount.Text = t.Rows[0]["LastYearUserCount"].ToString();
+                lnktotalpaidmem.Text = t.Rows[0]["paidusercount"].ToString();
+                lnkCurrentWeekPaidUserCount.Text = t.Rows[0]["CurrentWeekPaidUserCount"].ToString();
+                lnkLastWeekPaidUserCount.Text = t.Rows[0]["LastWeekPaidUserCount"].ToString();
+                lnkCurrentMonthPaidUserCount.Text = t.Rows[0]["CurrentMonthPaidUserCount"].ToString();
+                lnkLastMonthPaidUserCount.Text = t.Rows[0]["LastMonthPaidUserCount"].ToString();
+                lnkCurrentQuaterPaidUserCount.Text = t.Rows[0]["CurrentQuaterPaidUserCount"].ToString();
+                lnkLastQuaterPaidUserCount.Text = t.Rows[0]["LastQuaterPaidUserCount"].ToString();
+                lnkCurrentYearPaidUserCount.Text = t.Rows[0]["CurrentYearPaidUserCount"].ToString();
+                lnkLastYearPaidUserCount.Text = t.Rows[0]["LastYearPaidUserCount"].ToString();
+                lnktotturnover.Text = t.Rows[0]["samnt"].ToString();
+                lnkCurrentweektotturnover.Text = t.Rows[0]["Weeksamnt"].ToString();
+                lnkLastweektotturnover.Text = t.Rows[0]["Lastweeksamnt"].ToString();
+                lnkCurrentMonthtotturnover.Text = t.Rows[0]["CurrentMonthsamnt"].ToString();
+                lnkLastMonthtotturnover.Text = t.Rows[0]["LastMonthsamnt"].ToString();
+                lnkCurrentQuatertotturnover.Text = t.Rows[0]["CurrentQuatersamnt"].ToString();
+                lnkLastQuatertotturnover.Text = t.Rows[0]["LastQuatersamnt"].ToString();
+                lnkCurrentYeartotturnover.Text = t.Rows[0]["CurrentYearsamnt"].ToString();
+                lnkLastYeartotturnover.Text = t.Rows[0]["LastYearsamnt"].ToString();
+                lnktotturnover.Text = t.Rows[0]["samnt"].ToString();
+                lnktotbv.Text = t.Rows[0]["totalbv"].ToString();
+                lnkCurrentweektotbv.Text = t.Rows[0]["Weektotalbv"].ToString();
+                lnkLasttweektotbv.Text = t.Rows[0]["LastWeektotalbv"].ToString();
+                lnkCurrentmonthtotbv.Text = t.Rows[0]["CurrentMonthtotalbv"].ToString();
+                lnkLasttmonthtotbv.Text = t.Rows[0]["LastMonthtotalbv"].ToString();
+                lnkCurrentQuatertotbv.Text = t.Rows[0]["CurrentQuatertotalbv"].ToString();
+                lnkLasttQuatertotbv.Text = t.Rows[0]["LastQuatertotalbv"].ToString();
+                lnkCurrentYeartotbv.Text = t.Rows[0]["CurrentYeartotalbv"].ToString();
+                lnkLasttYeartotbv.Text = t.Rows[0]["LastYeartotalbv"].ToString();
+                lnkMonth.Text = t.Rows[0]["currmonth"].ToString();
+                lnktmonturnover.Text = t.Rows[0]["samntmonth"].ToString();
+                lnktotmonbv.Text = t.Rows[0]["totbvmonth"].ToString();
+                lnktotpayout.Text = t.Rows[0]["totpayout"].ToString();
+                lnklastpayout.Text = t.Rows[0]["lastpayout"].ToString();
+                lnkhighpayout.Text = t.Rows[0]["highpayout"].ToString();
+                lnkmemname.Text = t.Rows[0]["highpname"].ToString();
+            }
+        }
+        catch
+        {
+        }
+
+    }
+
+}

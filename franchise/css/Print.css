@@ -1,0 +1,222 @@
+@media print
+{
+	BODY
+	{
+		background: white;
+	}
+}
+@media screen
+{
+	BODY
+	{
+		font-size: medium;
+		background: silver;
+	}
+}
+#my_menu{display:none;}
+.smsouter{display:none;}
+.conanta_ARea{border: solid 5px #fff !important;}
+.displannone{display:none; border:solid 1px #000 !important; visibility:hidden;}
+BODY
+{
+	color: silver;
+	background: black;
+}
+A:link
+{
+	color: yellow;
+	background: #333333;
+	text-decoration: none;
+}
+A:visited
+{
+	color: white;
+	background: #333333;
+	text-decoration: none;
+}
+A:active
+{
+	color: black;
+	background: white;
+	text-decoration: none;
+}
+H1, H2, H3
+{
+	color: #CCCCCC;
+	background: black;
+	padding-bottom: 1px;
+	border-bottom: 1px solid gray;
+}
+
+
+body
+{
+	background: white;
+	font-size: 12pt;
+}
+#header
+{
+	display: none;
+}
+
+#sidebar
+{
+	display: none;
+}
+#title h2
+{
+	font-family: Arial;
+	font-size: 14px; 
+	font-weight: bold;
+	text-align: left;
+	background-color: White;
+	color: Black; border-bottom:solid 1px #fff !important;
+}
+
+.bottom_table
+{
+	display: none;
+}
+.top_table
+{
+	display: none;
+}
+.btn
+{
+	display: none;
+}
+
+
+img
+{
+	display: none;
+}
+
+.Heading_table1
+{
+	display: none;
+}
+.botton
+{
+	display: none;
+}
+.Image
+{
+	display: none;
+}
+.LinkButton
+{
+	display: none;
+}
+#content, #innerContent
+{
+	width: auto;
+	margin: 0 5% 0 -50px;
+	padding: 0;
+	border: 0;
+	float: none !important;
+	color: black;
+	background: transparent none;
+}
+div#innerContent
+{
+	margin-left: 10%;
+	padding-top: 1em;
+	border-top: 1px solid #930;
+}
+div#mast
+{
+	margin-bottom: -8px;
+}
+div#mast img
+{
+	vertical-align: bottom;
+}
+a:link, a:visited
+{
+	color: #520;
+	background: transparent;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#innerContent a:link:after, #innerContent a:visited:after
+{
+	content: " (" attr(href) ") ";
+	font-size: 90%;
+}
+#innerContent a[href^=" /"]
+:after
+{
+	content: " (http://www.alistapart.com" attr(href) ") ";
+}
+
+@media print
+{
+
+
+	.mygrd
+	{
+		font-size: 14px;
+		line-height: 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		border: solid 1px #000000; width:100% !important ;
+		top: 40px;
+		position:     absolute;
+		left: 10px;
+		border-left: solid 1px #000000 !important;
+	}
+	
+
+	.mygrd th
+	{
+		background: #def4f8;
+		color: Black;
+				font-size: 16px;
+		text-align: center;
+		border: solid 1px #000000;
+	}
+	.mygrd td
+	{
+		text-align: center;
+		border: solid 1px #000000;
+	}
+	.odd
+	{
+		background: #fdfdfd;
+		color: #111;
+		border: #fff 1px solid;
+	}
+	.even
+	{
+		background: #fdfbf4;
+		color: #000;
+		border: #fff 1px solid;
+	}
+	.grdfott
+	{
+		background: #def4f8 !important;
+		color: Black;
+	}
+	.grdfott table td
+	{
+		text-align: center; 
+	}
+
+	.mygrd table
+	{
+		background: #193356 !important;
+		border: solid 1px #000000;
+		font-size: 10px;
+		line-height: 8px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.mygrd table a:link, .mygrd table a:visited
+	{
+		
+	}
+	.mygrd table a:hover, .mygrd table a:active
+	{
+	}
+
+}

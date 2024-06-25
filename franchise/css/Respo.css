@@ -1,0 +1,198 @@
+﻿
+
+@media only screen and (min-width : 180px) and (max-width : 520px)
+{
+    p
+    {
+        text-align: justify;
+    }
+    #slogan
+    {
+        background: #8EA05D;
+        width: 95%;
+        margin-left: 1%;
+    }
+    .header-right
+    {
+        padding: 5%;
+    }
+    div.sdmenu
+    {
+        width: 100%;
+    }
+    .menu
+    {
+        margin-top: -1px;
+        width: 98%;
+    }
+    .conanta_ARea
+    {
+        width: 94%;
+        margin-top: 2%;
+    }
+    .conanta_ARea h2
+    {
+        font-size: 98%;
+    }
+
+
+    .table-responsive
+    {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+    .form-control
+    {
+        width: 90%;
+    }
+
+    .row
+    {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+   
+
+}
+
+
+@media only screen and (min-width : 520px) and (max-width : 1024px)
+{
+    *
+    {
+        font-size: 100% !important;
+    }
+
+
+}
+
+
+@media only screen and (min-width : 1024px)
+{
+
+}
+
+
+
+@media only screen and (min-width : 180px) and (max-width : 520px)
+{
+    p
+    {
+        text-align: justify;
+    }
+    #slogan
+    {
+        background: #8EA05D;
+        width: 95%;
+        margin-left: 1%;
+    }
+    .header-right
+    {
+        padding: 5%;
+    }
+    div.sdmenu
+    {
+        width: 100%;
+    }
+    .menu
+    {
+        margin-top: -1px;
+        width: 98%;
+    }
+    .conanta_ARea
+    {
+        width: 94%;
+        margin-top: 2%;
+    }
+    .conanta_ARea h2
+    {
+        font-size: 98%;
+    }
+
+
+    .table-responsive
+    {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+    .form-control
+    {
+        width: 90%;
+    }
+
+    .row
+    {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+   
+
+}
+
+
+@media only screen and (min-width : 520px) and (max-width : 1024px)
+{
+    *
+    {
+        font-size: 100% !important;
+    }
+
+
+}
+
+
+@media only screen and (min-width : 1024px)
+{
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  /* padding: 20px; */
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #080808;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header .close {
+    margin-top: -25px!important;
+}
+
+
+

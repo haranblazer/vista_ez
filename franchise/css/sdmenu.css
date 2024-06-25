@@ -1,0 +1,106 @@
+div.sdmenu {
+	width:240px;
+	border:solid 1px #dddddd;
+	border-radius:15px;
+	font-family:"Trebuchet MS", Arial, "MS Sans Serif";
+	font-size: 14px;
+	font-weight:bold;
+	background: url(bottom.gif) no-repeat right bottom;
+	color: #000000;
+}
+/*.conanta_ARea {
+	float:right; 
+	width:77%; padding:1%;
+	border:solid 5px #81964e;
+	border-radius:15px;
+	  border-bottom-right-radius:0px;
+	border-top-right-radius:0px;
+	border-right:0px;
+	 -moz-border-radius: 15px;
+	 -moz-border-radius-topright:0px;
+	 -moz-border-radius-bottomright:0px;
+}*/
+.conanta_ARea {
+    float: left;
+    width: 76%;
+    margin-top: 15px;
+    margin-left: 1%;
+    padding: 1%;
+    border: solid 5px #93A563;
+    border-radius: 15px;
+    /* border-bottom-right-radius: 0px; */
+    /* border-top-right-radius: 0px; */
+    /* border-right: 0px; */
+    -moz-border-radius: 15px;
+    -moz-border-radius-topright: 0px;
+    -moz-border-radius-bottomright: 0px;
+}
+.reg_heading {
+	background-image:url(../images/heading_ge.gif);
+	background-repeat:no-repeat;
+	color:Blue;
+	font-family:Arial;
+	font-size:18px;
+	text-align:left;
+	height:30px;
+	padding-left:.5px;
+	vertical-align:middle;
+}
+div.sdmenu div {
+	background: url(../images/title.gif) repeat-x;
+	overflow: hidden;
+}
+div.sdmenu div:first-child {
+	background: url(../images/toptitle.gif) no-repeat;
+}
+div.sdmenu div.collapsed {
+	height: 25px;
+}
+div.sdmenu div span {
+	display: block;
+	padding: 3px 25px;
+	font-weight:normal;
+	color: #000000;
+	background: url(../images/expanded.gif) no-repeat 10px center;
+	cursor: default;
+	border-bottom: 1px solid #000000;
+}
+div.sdmenu div.collapsed span {
+	background-image: url(../images/collapsed.gif);
+}
+div.sdmenu div a {
+	font-family:"Trebuchet MS", Arial, "MS Sans Serif";
+	font-size: 13px;
+	font-weight:bold;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	padding-left:25px;
+	height: 18px;
+	padding-top:2px;
+	background-color: #cbd8ac;
+	border-bottom: 1px solid #ffffff;
+}
+div.sdmenu div a.current {
+	background : #cbd8ac;
+}
+div.sdmenu div a:hover {
+	font-family:"Trebuchet MS", Arial, "MS Sans Serif";
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	background:#f0fad7;
+	padding-left:25px;
+}
+.text {
+	color:#0066CC;
+	font-family:"Trebuchet MS", Arial, "MS Sans Serif";
+	font-size:13px;
+	line-height:22px;
+	text-decoration:none;
+}

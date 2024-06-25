@@ -1,0 +1,102 @@
+body
+{
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+}
+.CenterArea
+{
+	width: 1000px !important;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.paddingtable tr td
+{
+	padding: 5px 2px;
+}
+
+.companyName
+{
+	font-size: 14px;
+	line-height: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.inputtext
+{
+	float: left;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: right;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.term_condition
+{
+	float: left;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.websiteName
+{
+	color: #000;
+	font-size: 24px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 10px;
+}
+.invoice
+{
+	color: #000;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 10px;
+}
+.mygrd th
+{
+	background: #013b81;
+	font-family: Arial, Helvetica, sans-serif;
+	color: White;
+	font-size: 14px;
+	padding: 2px 4px;
+	text-align: center;
+}
+.mygrd td
+{
+	padding-left: 2px;
+}
+.mygrd
+{
+	width: 100%;
+	border-left: solid 1px #000 !important;
+}
+.width200
+{
+	width: 200px !important;
+}
+.width350
+{
+	width: 350px !important;
+}
+
+
+.totalamountdiv
+{
+	float: right;
+	text-align: right;
+}
+.totalgross
+{
+ 
+	float: left;
+}
+.totalnet
+{
+ 
+	float: right !important ;
+	text-align: right !important;
+	font-size: 14px;
+	line-height: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+

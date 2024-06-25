@@ -1,0 +1,576 @@
+<%@ Page Language="C#" MasterPageFile="MasterPage.master" AutoEventWireup="true"
+    CodeFile="welcome.aspx.cs" Inherits="mumbaiadmin_welcome" Title="Admin Control Panel" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+ <style type="text/css">
+        @media only screen and (max-width: 500px)
+        {
+            .bdynx
+            {
+                height: auto !important;
+                width: 320px !important;
+            }
+        }
+        
+        .acolor
+        {
+            color: #fff;
+        }
+        .dashboard-stat
+        {
+            display: block;
+            padding: 30px 15px;
+            text-align: right;
+            font-size: 20px;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        .dashboard-stat1
+        {
+            display: block;
+    padding: 10px 10px;
+    font-size: 20px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+        }
+        .dashboard-stat .bg-icon
+        {
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.4;
+            left: 0;
+            bottom: 0;
+        }
+        i.fa.fa-bell
+        {
+            position: absolute;
+            font-size: 70px;
+            opacity: 0.4;
+            left: 20px;
+            bottom: 25px;
+        }
+        .show {
+    display: none!important;
+}
+
+    </style>
+    <script src="js/jquery.counterup.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+  <div class="panel panel-default">
+  <div class="col-md-12">
+    <div class="clearfix">
+    </div> 
+    <center>
+
+     <div id="title" class="b2">
+        <h2>
+           Welcome to 
+            <asp:Label ID="lbladmin" runat="server" Text="Label"></asp:Label> Panel</h2>
+    </div>
+    <br />
+        </center>
+   <ul class="nav nav-tabs" id="myTab" role="tablist">
+   <li class="nav-item active">
+    <a class="nav-link active" id="total-tab" data-toggle="tab" href="#total" role="tab" aria-controls="total" aria-expanded="true" aria-selected="true">Total</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="year-tab" data-toggle="tab" href="#year" role="tab" aria-controls="year" aria-selected="false">Year </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="quater-tab" data-toggle="tab" href="#quater" role="tab" aria-controls="quater" aria-selected="false">Quater</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="month" aria-selected="false">Month</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="weak-tab" data-toggle="tab" href="#weak" role="tab" aria-controls="weak" aria-selected="false">Week</a>
+  </li>
+  </ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade  active in" id="total" role="tabpanel" aria-labelledby="total-tab">
+   <div class="clearfix"></div><br />
+   <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+                <span class="name" style="color:#000000">Total Members  </span><span class="name">
+                <br />
+                    <asp:LinkButton ID="lnktotalmem" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+         </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-success" style="background-color: #f2dede!important;">
+                <span class="name" style="color:#000000">Total Paid Member </span><span class="name">
+                <br />
+                    <asp:LinkButton ID="lnktotalpaidmem" runat="server" ForeColor='#000000' Text="0" OnClick="lblUserInRight_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+           <br />
+        </div>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-danger" style="background:#dff0d8!important">
+                <span class="name" style="color:#000000">Total Payout: </span><span class="name"> <br />
+                    <asp:LinkButton ID="lnktotpayout" runat="server" ForeColor='#000000' Text="0" 
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                </div>
+                 <div class="clearfix">
+            </div>
+            <br/>
+                </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-danger" style="background:#dff0d8!important">
+                <div class="clearfix"></div>
+                  <span class="name" style="color:#000000">Last Payout: </span><span class="name">
+                  <br />
+                        <asp:LinkButton ID="lnklastpayout" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+              
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+  
+   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-danger" style="background:#d9edf7!important">
+                <span class="name" style="color:#000000">Total Turnover: </span><span class="name"> <br />
+                    <asp:LinkButton ID="lnktotturnover" runat="server" ForeColor='#000000' Text="0" 
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                </div>
+                  <div class="clearfix">
+            </div>
+            <br/>
+                </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-danger" style="background:#d9edf7!important">
+                <div class="clearfix"></div>
+                  <span class="name" style="color:#000000">Total CV: </span><span class="name">
+                  <br />
+                        <asp:LinkButton ID="lnktotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+              
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-danger" style="background:#f5f7d9!important">
+                <span class="name" style="color:#000000">Highest Payout: </span><span class="name">
+                    <asp:LinkButton ID="lnkhighpayout" runat="server" ForeColor='#000000' Text="0" 
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+             <div class="clearfix"></div>
+                  <span class="name" style="color:#000000">Member Name: </span><span class="name">
+                    <asp:LinkButton ID="lnkmemname" runat="server" ForeColor='#000000' Text="0" 
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+               <br /><br />
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+  <div class="clearfix"></div>
+  </div>
+  </div>
+  <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab">
+  <div class="row">
+   <div class="clearfix"></div><br />
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+                <span class="name" style="color:#000000">Current Year Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentYearUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                  </br>
+              
+            </div>
+             <div class="clearfix">
+            </div>
+            <br/>
+         </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+              <span class="name" style="color:#000000">Last Year Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastYearUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+             </div>
+           <div class="clearfix"></div>
+            <br/>
+         </div>  
+          <div class="clearfix"></div>
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">
+                  <span class="name" style="color:#000000">Current Year Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentYearPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                
+                  </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">              
+                <span class="name" style="color:#000000">Last Year Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastYearPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div> 
+          <div class="clearfix"></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Current Year Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkCurrentYeartotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkCurrentYeartotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Last Year Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkLastYeartotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkLasttYeartotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>    
+         <div class="clearfix"></div>
+
+  </div>
+  </div>
+  <div class="tab-pane fade" id="quater" role="tabpanel" aria-labelledby="quater-tab">
+  <div class="row">
+   <div class="clearfix"></div><br />
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+                <span class="name" style="color:#000000">Current Quater Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentQuaterUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                  <br/>
+              
+            </div>
+              <div class="clearfix">
+            </div>
+            <br/>
+         </div>
+
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="clearfix"></div>
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+              <span class="name" style="color:#000000">Last Quater Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastQuaterUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+              </div>
+           <div class="clearfix"></div>
+         <br />
+         </div> 
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="background-color: #dff0d8!important;">
+            <span class="name" style="color:#000000">Current Quater Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentQuaterPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                 
+             </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">
+                
+                <span class="name" style="color:#000000">Last Quater Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastQuaterPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Current Quater Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkCurrentQuatertotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkCurrentQuatertotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Last Quater Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkLastQuatertotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkLasttQuatertotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+             <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+
+        </div>
+  </div>
+   <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+
+   <div class="row">
+     <div class="clearfix">
+            </div><br />
+          
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+                <span class="name" style="color:#000000">Current Month Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentMonthUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                  </div>
+                   <div class="clearfix">
+            </div>
+            <br/>
+                  </div>
+                
+          
+            
+           
+       
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #f2dede!important;">
+<span class="name" style="color:#000000">Last Month Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastMonthUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                  </div>
+          <div class="clearfix">
+            </div>
+            <br/>
+         </div>  
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">
+             <span class="name" style="color:#000000">Current Month Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentMonthPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+                 
+              <div class="clearfix">
+            </div>
+          
+         </div>   <div class="clearfix">
+            </div>
+            <br/>
+         </div>
+         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="background-color: #dff0d8!important;">
+               
+                <span class="name" style="color:#000000">Last Month Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastMonthPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Current Month Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkCurrentMonthtotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkCurrentmonthtotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Last Month Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkLastMonthtotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkLasttmonthtotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="display:none;">
+            <div class="dashboard-stat bg-danger" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Monthly Turnover </span><br />
+                <span class="name" style="color:#000000">Month:<asp:LinkButton ID="lnkMonth" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;
+                    <span style="color:#000000"> Sale Amount: </span><asp:LinkButton ID="lnktmonturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton><div class="clearfix"></div>
+                           Total CV: <asp:LinkButton ID="lnktotmonbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br />
+        </div>
+
+   </div>
+   </div>
+   <div class="tab-pane fade" id="weak" role="tabpanel" aria-labelledby="weak-tab">
+   <div class="row">
+     <div class="clearfix">
+            </div>
+           <br />
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="background-color: #f2dede!important;">
+              
+                <span class="name" style="color:#000000">Current Week Members </span><span class="name">    </br>
+                    <asp:LinkButton ID="lnkCurrentWeekUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+                   </div> 
+           
+        
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="background-color: #f2dede!important;">
+                 
+                    <span class="name" style="color:#000000">Last Week Members </span><span class="name"> </br>
+                    <asp:LinkButton ID="lnkLastWeekUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                          </span>
+                  </div>
+           <div class="clearfix"></div>
+            <br/>         </div>  
+                         
+       
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">
+               <span class="name" style="color:#000000">Current Week Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkCurrentWeekPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+              
+                </div>
+           <div class="clearfix">
+            </div>
+            <br/>
+         </div>  
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat  bg-warning" style="    background-color: #dff0d8!important;">
+               
+                <span class="name" style="color:#000000">Last Week Paid Members </span><span class="name"><br />
+                    <asp:LinkButton ID="lnkLastWeekPaidUserCount" runat="server" ForeColor='#00000' Text="0" OnClick="lblUserInLeft_Click"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                </span>
+            </div>
+            <div class="clearfix">
+            </div>
+            <br />
+         </div>
+
+          
+
+                  
+
+        
+         
+
+            
+         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Week Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkCurrentweektotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkCurrentweektotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="dashboard-stat bg-primary" style="background-color: #d9edf7!important;">
+                <span class="name" style="color:#000000">Last Week Turnover </span><br /><span class="name" style="color:#000000">                
+                    Sales Amount: <asp:LinkButton ID="lnkLastweektotturnover" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#000000"> Total CV: </span><asp:LinkButton ID="lnkLasttweektotbv" runat="server" ForeColor='#000000' Text="0"
+                        OnClientClick="aspnetForm.target ='_blank';"></asp:LinkButton>
+                      
+                </span>  <br />  <br />  
+            </div>
+            <div class="clearfix">
+            </div>
+            <br/>
+        </div>
+        
+        
+   </div>
+   </div>
+   </div>
+  
+    </div>
+    <div class="clearfix"></div>
+    </div>     
+    
+        
+        
+     
+</asp:Content>

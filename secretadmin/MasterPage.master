@@ -1,0 +1,690 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="mumbaiadmin_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="myhadf" runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%--start date picker link--%>
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="css/nice-select.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/metisMenu.min.css?v=0.4" rel="stylesheet">
+    <!-- Style css -->
+    <link href="css/style1.css?v=1.8" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
+    <link href="css/flaticon_1.css" rel="stylesheet">
+    <%--<link href="../css/preloader.css" rel="stylesheet" />
+    <script>
+        // Preloader
+        setTimeout(function () {
+            $('#preloader').addClass('hide');
+        }, 700);
+
+        $("#preloader").append('<div class="hide-loader d-none">Hide Preloader</div>');
+        $('.hide-loader').click(function (e) {
+            $(this).parent().addClass('hide');
+        });
+    </script>--%>
+    <style>
+        @media (max-width: 480px) {
+            .back {
+                display: none;
+            }
+        }
+    </style>
+      <script src="blog/app/app.js" type="text/javascript"></script>
+</head>
+<body>
+   
+    <form id="form1" runat="server">
+        <%--<div id="preloader">
+            <div class="preloader-inner">
+                <div class="spinner"></div>
+                <div class="loading-text">
+                    <span data-preloader-text="T" class="characters logo_red">T</span>
+                    <span data-preloader-text="r" class="characters logo_red">r</span>
+                    <span data-preloader-text="i" class="characters logo_red">i</span>
+                    <span data-preloader-text="p" class="characters logo_red">p</span>
+                    <span data-preloader-text="t" class="characters logo_blue">t</span>
+                    <span data-preloader-text="a" class="characters logo_blue">a</span>
+                    <span data-preloader-text="l" class="characters logo_blue">l</span>
+                    <span data-preloader-text="e" class="characters logo_blue">e</span>
+                    <span data-preloader-text="s" class="characters logo_blue">s</span>
+                </div>
+            </div>
+        </div>--%>
+
+
+        <!--**********************************
+        Main wrapper start
+    ***********************************-->
+        <div id="main-wrapper">
+            <!--**********************************
+            Nav header start
+        ***********************************-->
+            <div class="nav-header">
+                <a href="welcome.aspx" class="brand-logo">
+                    <%-- <img src="images/icon.png" class="logo-abbr" />--%>
+                    <img src="../images/logo.png" width="75%" />
+                </a>
+                <div class="nav-control d-none d-lg-block">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                                <div class="nav-item d-flex align-items-center">
+                                </div>
+                            </div>
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <div class="nav-control d-sm-block d-lg-none">
+                                        <div class="hamburger">
+                                            <span class="line"></span><span class="line"></span><span class="line"></span>
+                                        </div>
+                                    </div>
+                                    <a class="nav-link back" href="javascript:history.go(-1)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+                                            <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z" />
+                                        </svg><span style="color: #000;"> Back</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+            <div class="dlabnav" id="divmain" runat="server">
+                <div class="dlabnav-scroll mm-active ps ps--active-y">
+                    <ul class="metismenu mm-show" id="menu">
+                        <li class="">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" id="DivDashboard" runat="server">
+                                <li><a id="Dashboard" runat="server" href="welcome.aspx">Dashboard</a></li>
+                                <li><a id="directors" runat="server" href="directors-dashboard.aspx">Sales Dashboard</a></li>
+                                <li><a id="distribution" runat="server" href="distribution-dashboard.aspx">Order Dashboard</a></li>
+                                <li><a id="Customer_care" runat="server" href="Customer_care_dashboard.aspx">KYC Dashboard</a></li>
+                                <%-- <li><a id="A84" runat="server" href="BDM-Dashboard.aspx">BDM Dashboard</a></li>--%>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text"><%=method.Associate %></span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" id="Divassociates" runat="server">
+                                <%--<li><a id="Search" runat="server" href="normalSearch.aspx"><%=method.Associate %> List</a></li>--%>
+                                <li><a id="A109" runat="server" href="Associate_Data.aspx"><%=method.Associate %> Data</a></li>
+                                <%--                                <li><a id="A2" runat="server" href="CustomerList.aspx">Customer Data</a></li>--%>
+
+                                <%-- <li><a id="A86" runat="server" href="BDM_Associates.aspx"> <%=method.Associate %> List</a></li>--%>
+                                <li><a id="UserProfile" runat="server" href="adchangeprofile.aspx">Profile</a></li>
+                                <%--<li><a id="li_MetrixList" runat="server" href="GroupSales.aspx">Generation Downline / Upline</a></li>
+                                <li><a id="li_BinaryList" runat="server" href="downstatus1.aspx">Downline / Upline</a></li>--%>
+                                <%-- <li><a id="A38" class="txt" runat="server" href="newjoin.aspx">SIGN UP</a></li>--%>
+                                <%-- <li><a id="A41" class="txt" runat="server" href="ExpressSignUp.aspx">NEW SIGN UP </a></li>--%>
+                                <%-- <li><a id="List" class="txt" runat="server" href="UnpaidList.aspx">SHOP UNPAID LIST</a></li>
+                                <li><a id="UnPaidList" runat="server" href="list.aspx">Unpaid List</a></li>
+                                <li><a id="A3" runat="server" href="PaidList.aspx">Paid List</a></li>--%>
+                                <%-- <li><a id="A45" class="txt" runat="server" href="PowerLegs.aspx">Power Leg</a></li>
+                                <li><a id="A90" class="txt" runat="server" href="Zero_ID_Paid.aspx">Zero ID</a></li>--%>
+                                <%--  <li><a id="A48" runat="server" href="PaidRewardList.aspx">Paid Reward list</a></li>
+                                <li><a id="A35" runat="server" href="Reward.aspx">Reward List</a></li>--%>
+                                <%--<li><a id="A20" runat="server" href="Title.aspx">Title List</a></li>
+                                <li><a id="CR"  runat="server" href="ClubReport.aspx">Club Report</a></li>--%>
+                                <%--<li><a id="A35" class="txt" runat="server" href="UpgradeCap.aspx">UPGRADE CAPPING</a></li>
+                                <li><a id="A23" runat="server" href="BankReport.aspx">User Bank / Pan no Report</a></li>--%>
+                                <%--<li><a id="Wli" class="txt" runat="server" href="ShowInvoiceAndWelcomeletter.aspx">WELCOME LETTER AND INVOICE</a> </li>
+                                <li><a id="A10" class="txt" runat="server" href="ShowInvoiceAndWelcomeletter1.aspx">CLOSING WISE WELCOME LETTER/INVOICE</a></li>--%>
+                                <%-- <li><a id="A2" class="txt" runat="server" href="DocsApprove.aspx">DOC APPROVEL LIST</a></li>--%>
+                                <%-- <li><a id="bnkAprv" class="txt" runat="server" href="BankApprove.aspx">BANK APPROVE LIST</a></li>--%>
+                                <%-- <li><a id="DocsAdminApprove" class="txt" runat="server" href="DocApproveList.aspx">DOCS APPROVED</a></li>--%>
+
+                                <%--<li><a id="A25" class="txt" runat="server" href="rewardlist2.aspx">REWARD LIST</a></li>
+                                <li><a id="A20" class="txt" runat="server" href="TopperRewards.aspx">TOPPER REWARD LIST</a></li>
+                                <li><a id="A38" class="txt" runat="server" href="MonthlyAchiever.aspx">MONTHLY ACHIEVER</a></li>
+                                <li><a id="A32" class="txt" runat="server" href="incomeDetail.aspx">INCOME DETAILS</a></li>
+                                <li><a id="A22" class="txt" runat="server" href="TleaderReport.aspx">TL REPORT</a></li>--%>
+                                <%-- <li><a id="A20" class="txt" runat="server" href="newjoin.aspx">Join User</a></li>--%>
+                                <%--<li><a id="A57" class="txt" runat="server" href="ShiftUserTree.aspx">Shift User Tree</a></li>--%>
+                                <%--<li><a id="A74" runat="server" href="RankUpgrade.aspx">Update Rank</a></li>--%>
+
+                                <%--<li><a id="A129" runat="server" href="InsuranceList.aspx">Insurance List</a></li>--%>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Payout</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Divpayout">
+
+                                <%--  <li> <a class="txt" id="A21" runat="server" href="AdminReward.aspx">  Check Rewards </a> </li>--%>
+                                <%--  <li> <a class="txt" id="TentativePayout" runat="server" href="BeforPayout.aspx"> Tentative Payout  </a> </li>--%>
+                                <%-- <li><a id="A24" runat="server" href="CalculateBinaryDirect.aspx">Calculate Binary </a></li>--%>
+
+                                <%--<li><a id="A17" class="txt" runat="server" href="TopperRewardList.aspx">Reward List</a></li>
+                                <li><a id="A24" class="txt" runat="server" href="CalculateTopperReward.aspx">Calculate Reward</a></li>--%>
+
+                                <%--  <li><a id="Details" runat="server" href="paymentReport.aspx"><%=method.BINARY %> Payout</a></li>
+                                <li><a id="Date" runat="server" href="payoutdate.aspx"><%=method.BINARY %> Payout Date</a></li>--%>
+
+
+                                <li><a id="A65" runat="server" href="WeeklyPayout.aspx">Weekly Payout</a></li>
+                                <li><a id="A66" runat="server" href="WeeklyDate.aspx">Weekly Payout Date</a></li>
+                                <li><a id="A67" runat="server" href="WeeklyPayoutList.aspx">Weekly Payout Report</a></li>
+
+
+
+                                <li><a class="txt" id="A433" runat="server" href="PaymentReport1.aspx">Payout</a></li>
+                                <li><a class="txt" id="A21" runat="server" href="Repayoutdate.aspx">Payout Date</a></li>
+
+
+
+
+                                <%-- <li><a id="A62" runat="server" href="MonthlyPayout.aspx">Monthly Payout</a></li>
+                                <li><a id="A63" runat="server" href="MonthlyPayoutDate.aspx">Monthly Payout Details</a></li>
+
+
+
+                                <li><a id="A53" runat="server" href="Calc-title.aspx">Calculate Generation Rank</a> </li>--%>
+
+
+
+                                <%--<li> <a id="A49" runat="server" href="CostReport.aspx"> Package Upgrade Profit / Loss</a> </li> --%>
+                                <%--  <li> <a class="txt" id="A26" runat="server" href="BelowPayout.aspx">PACKAGE LESS THAN 100  </a> </li>--%>
+                                <%-- <li> <a class="txt" id="A35" runat="server" href= "AdminTentative.aspx"> Create Combined Payout  </a> </li>          
+                            <li> <a class="txt" id="A36" runat="server" href="AdminPayoutReport.aspx"> Combined Payout Report  </a> </li>        --%>
+                                <li><a id="A36" runat="server" href="CreateFranchisePayout.aspx" style="display: none;">Franchise Commission Payout</a></li>
+
+                                <%--<li> <a id="A54" runat="server" href="HoldPayoutList.aspx"> Hold Payout Report </a> </li>--%>
+                                <%-- <li><a id="A55" runat="server" href="tentative-payout.aspx">Tentative Payout </a> </li>--%>
+                                <%--<li><a class="txt" id="A366" runat="server" href="MonthlyGenerationPerformance.aspx">Monthly Generation Performance</a> </li>
+                                <li><a class="txt" id="A1001" runat="server" href="MonthlyTopperPerformance.aspx">Monthly Performance</a> </li>
+                                <li><a class="txt" id="A83" runat="server" href="MonthlyPerformanceReport.aspx">Monthly Franchise Performance</a></li>
+
+                                <li><a class="txt" id="A70" runat="server" href="LoyalityPayoutList.aspx">Loyalty Reports (BDM)</a></li>
+
+                                <li><a class="txt" id="A97" runat="server" href="Loyality_Retail_Booster.aspx">AWC Loyalty Report (BDM)</a></li>
+                                <li><a class="txt" id="A7" runat="server" href="BusinessInformation.aspx">Total Income Report (BDM)</a></li>
+                                <li><a class="txt" id="A124" runat="server" href="Send_wallet_whatsapp.aspx">Send Wallet & Whatsapp</a></li>--%>
+                                <li><a class="txt" id="A23" runat="server" href="payoutlist1.aspx">Payout Report</a></li>
+                                <li><a class="txt" id="A24" runat="server" href="Reward_New.aspx">Reward List</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="" style="display: none">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Payout Reports  </span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivPayoutDispatchReports">
+                                <%--   <li><a id="PayoutList" runat="server" href="payoutlist.aspx">First Purchase Payout Report</a></li>--%>
+
+                                <li><a id="A64" runat="server" href="MonthlyPayoutList.aspx">Monthly Payout Report</a></li>
+                                <li><a class="txt" id="A44" runat="server" href="payoutlist1.aspx">Payout Report</a></li>
+                                <li><a id="A39" runat="server" href="FranchisePayoutDetails.aspx" style="display: none;">Franchise Commission Payout Report</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">KYC</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivKYC">
+                                <li><a id="A11" runat="server" href="PANApprovedByAdmin.aspx">Pan Approval</a></li>
+                                <li><a id="A14" runat="server" href="BankApprovedByAdmin.aspx">Bank Approval</a></li>
+                                <li><a id="A16" runat="server" href="AddressApprovedByAdmin.aspx">Address Approval</a></li>
+                                <li><a id="A110" runat="server" href="UserLog.aspx">Users KYC Modification</a></li>
+                                <li><a id="NADocs" runat="server" href="NotApproveDoc.aspx">KYC pending list</a></li>
+                                <%-- <li><a id="A113" runat="server" href="PanApiFetch.aspx">PAN API</a></li>--%>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Franchise</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Divfranchise">
+
+
+                                <%--  <li><a id="A96" runat="server" href="CreateFranchise.aspx">Create Franchise</a></li>--%>
+                                <%-- <li><a id="A17" runat="server" href="ChangeFProfile.aspx">Franchise Profile</a></li>--%>
+                                <li><a id="franIDICard" runat="server" href="FranchisePrintID.aspx">Franchise Id Card</a></li>
+                                <li><a id="A19" runat="server" href="FranchiseList.aspx">Franchise List</a></li>
+                                <%-- <li><a id="A85" runat="server" href="BDM_Franchise.aspx">BDM Franchise List</a></li>--%>
+                                <li><a id="A333" class="txt" runat="server" href="ClosingStock.aspx">Closing Stock Statement</a></li>
+                                <li><a id="A95" runat="server" href="FranchisePending.aspx">Approve Franchise</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Reports</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivReports">
+                                <li><a id="Downline" runat="server" href="DownUpsearch.aspx">Downline/Upline Report</a> </li>
+                                <%-- <li><a id="topperUpdown" runat="server" href="TopperUPDOWN.aspx">Downline/Upline Report</a>
+                                </li>--%>
+                                <li><a id="SponsorList" runat="server" href="sponsordatewise.aspx">Sponsor List</a></li>
+                                <%-- <li><a id="A34" runat="server" href="TrnReqReport.aspx">Training Requests</a></li>--%>
+                                <%-- <li><a id="A54" runat="server" href="UserTourlist.aspx">Tour User List</a></li>
+                                <li><a id="A55" runat="server" href="GenTourList.aspx"> Tour User List</a></li>
+                                <li><a id="A15" runat="server" href="TourProductList.aspx">Tour Product Wise Report</a></li>--%>
+                                <li><a id="A69" runat="server" href="FranComDetails.aspx" style="display: none;">Franchise Commission Details</a></li>
+                                <%-- <li><a id="A72" runat="server" href="MonthlyAchievers.aspx">Monthly Achievers List</a></li>--%>
+                                <%--<li><a id="A73" runat="server" href="BVwithSponsor.aspx">GPV With Sponsor Report</a></li>--%>
+                                <li><a id="A75" runat="server" href="FindSponsorRank.aspx"><%=method.PV%> Sponsor Report</a></li>
+                                <%--<li><a id="A76" runat="server" href="UploadTDS.aspx">Upload TDS File</a></li>--%>
+                                <%-- <li><a id="A73" runat="server" href="LoyaltyReport.aspx">Loyalty Report</a></li>--%>
+                                <li><a id="A87" runat="server" href="LegwisePV.aspx">Self Purchase Report</a></li>
+                                <%--<li><a id="A88" runat="server" href="LegWiseLoyalty.aspx">Cum 2000 Loyalty IDs Report</a></li>
+                                <li><a id="A96" runat="server" href="LegWiseGeneration.aspx">Super 20 Report</a></li>--%>
+                                <%-- <li><a id="A99" runat="server" href="TourReport.aspx">Event Tour Report</a></li>--%>
+                                <li><a id="A100" runat="server" href="Admin_GST_Turnover.aspx">Admin GST Turnover (10 Lacs)</a></li>
+                                <%-- <li><a id="A101" runat="server" href="Asso_GST_Turnover.aspx">Associate GST Turnover</a></li>
+                                 <li><a id="A73" runat="server" href="Franchise_GST_Turnover.aspx">Franchise GST Turnover</a></li> 
+                                 <li><a id="A73" runat="server" href="ProductwisePendingPO.aspx">Productwise Pending PO</a></li>--%>
+                                <li><a id="A101" runat="server" href="ProdutwiseClosingStock.aspx">SKU Closing Stock</a></li>
+                                <%-- <li><a id="A102" runat="server" href="DailyProductwisePrimarySales.aspx">Daily Product Wise Primary Sales</a></li>
+                                <li><a id="A114" runat="server" href="LegWiseMonthlyReport.aspx">Legwise Report</a></li>
+                                <li><a id="A116" runat="server" href="PromotionalAmountList.aspx">Add Promotional Amount</a></li>--%>
+                                <li><a id="A2" runat="server" href="DateWiseSold.aspx">Datewise Sold</a></li>
+                                <li><a id="A45" runat="server" href="Date_Wise_Product_Stock.aspx">Datewise Closing Stock</a></li>
+
+                                <li><a id="A46" runat="server" href="FranchisesStockStatement.aspx">Franchise Stock Statement</a></li>
+                                <li><a id="A3" runat="server" href="GSTReports.aspx">GST Summary</a></li>
+                                <li><a id="A5" runat="server" href="DailyReport.aspx">Daily Report</a></li>
+
+                                <li><a id="A8" runat="server" href="ProductWisePrimarySales.aspx">Product Wise Primary Sale</a></li>
+                                <%--<li><a id="A82" runat="server" href="ProductWiseSecondarySales.aspx">Product Wise Secondary Sale</a></li>--%>
+                                <%--<li><a id="A89" runat="server" href="MonthlyAssociatePurchase.aspx">Monthly <%=method.Associate %> Purchase List</a></li>--%>
+                                <%-- <li><a id="A10" runat="server" href="LoyaltyCoupon.aspx">Coupon List</a></li>
+                                <li><a id="A15" runat="server" href="PrintCoupon.aspx">Print Coupon</a></li>--%>
+                                <li><a id="A17" runat="server" href="ReturnSalesList.aspx">Sales Return List</a></li>
+
+                                <li><a id="A15" runat="server" href="currentBusReport.aspx">Current Business Report</a></li>
+
+
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false"><span class="nav-text">Month Wise Reports</span>  </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivMonthWiseReports">
+                                <li><a id="A106" runat="server" href="ProductWise_Primary_sales_pivot.aspx">Product Wise  Sales</a></li>
+                                <%-- <li><a id="A104" runat="server" href="ProductWise_Sec_Sale_Pivot.aspx">Product Wise Secondary Sales</a></li>--%>
+                                <li><a id="A105" runat="server" href="PartyWisePrimary_Sales_Pivot.aspx">Party Wise Sales</a></li>
+                                <%--<li><a id="A107" runat="server" href="PartyWise_Secondary_sales_Pivot.aspx">Party Wise Secondary Sales</a></li>--%>
+                                <li><a id="A108" runat="server" href="Monthly_Loyalty_Purchases_Pivot.aspx">Monthly Consistency Tracking</a></li>
+                                <%-- <li><a id="A112" runat="server" href="Monthly_Retail_Booster_Purchases.aspx">A.W.C.A</a></li>--%>
+                                <li><a id="A117" runat="server" href="AssociatePurchases.aspx"><%=method.Associate%> Purchases</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Complaints</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Divmessage">
+                                <li><a id="A27" runat="server" href="Messages.aspx">All Complaints</a></li>
+                                <li><a id="A28" runat="server" href="SendMessageAdmin.aspx">Compose</a> </li>
+                                <li><a id="A29" runat="server" href="SentMessages.aspx">Reply</a></li>
+                                <li><a id="A30" runat="server" href="DeletedMessages.aspx">Deleted Complaints</a></li>
+                                <li><a id="A391" class="txt" runat="server" href="smsAll.aspx">SMS Sent Log</a> </li>
+                                <%--<li><a id="A123" class="txt" runat="server" href="WhatsAppSentLog.aspx">WhatsApp Sent Log</a> </li>--%>
+                                <%--<li><a id="A46" runat="server" href="SendToAll.aspx">Send SMS</a> </li>--%>
+                                <%--<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">API Reports</a>
+                                    <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;">
+                                        <li><a id="A125" runat="server" href="API_GetAllUsers.aspx">Get all Users</a></li>
+                                        <li><a id="A128" runat="server" href="API_ListCall_Logs.aspx">Call Logs</a></li>
+                                        <li><a id="A126" runat="server" href="API_CRM_Interactions.aspx">CRM Interactions</a></li>
+                                        <li><a id="A127" runat="server" href="API_WhatsappInteractions.aspx">Whatsapp Interactions</a></li>
+                                    </ul>
+                                </li>--%>
+                            </ul>
+                        </li>
+
+                        <%--<li>
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Reminders</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Div_Reminders">
+                                <li><a id="A118" runat="server" href="SMS_DocumnetType.aspx">Document Type</a></li>
+                                <li><a id="A119" runat="server" href="SMS_Reminder.aspx">Reminder Type</a> </li>
+                                <li><a id="A130" runat="server" href="SMS_RemCat.aspx">Add Category</a> </li>
+                                <li><a id="A120" runat="server" href="SMS_ContactList.aspx">Contact List</a></li>
+                                <li><a id="A121" runat="server" href="SMS_ReminderList.aspx">Reminder List</a></li>
+                            </ul>
+                        </li>--%>
+
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Billing</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivEShopping">
+
+                                <li><a id="A41" runat="server" href="AssociatePackageBill.aspx">Sale invoices </a></li>
+                                <%--  <li><a id="A94" runat="server" href="InvCompanydispatch.aspx">Transport Report</a></li>--%>
+                                <li><a id="A12" runat="server" href="StockTranList.aspx">Franchise Sales Invoices</a></li>
+                                <li><a id="A6" runat="server" href="POList.aspx" style="display: none;">Purchase Order Franchise</a></li>
+                                <li><a id="A26" runat="server" href="OnlinePayment.aspx">Order List</a></li>
+                                <li><a id="A99" runat="server" href="online_payment_customer.aspx">Customer's Order</a></li>
+
+                                <%--  <li><a id="A43" runat="server" href="DeliveryReports.aspx">Wallet Invoice</a></li>--%>
+
+
+                                <%--<li class=""><a class="has-arrow" href="javascript:void()" aria-expanded="false">Reports</a>
+                                    <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;">
+                                        <li><a id="A58" runat="server" href="DateWiseSold.aspx">Datewise Sold</a></li>
+                                --%>   <%--                                        <li><a id="A3" runat="server" href="Date_Wise_Product_Stock.aspx">Datewise Closing Stock</a></li>--%>
+
+                                <%-- <li><a id="A10" runat="server" href="FranchisesStockStatement.aspx" >Franchise Stock Statement</a></li>--%>
+                                <%-- <li><a id="A22" runat="server" href="GSTReports.aspx">GST Summary</a></li>
+                                        <li><a id="A38" runat="server" href="DailyReport.aspx">Daily Report</a></li>
+
+                                        <li><a id="A81" runat="server" href="ProductWisePrimarySales.aspx">Product Wise Primary Sale</a></li>
+                                --%> <%--<li><a id="A82" runat="server" href="ProductWiseSecondarySales.aspx">Product Wise Secondary Sale</a></li>--%>
+                                <%--<li><a id="A89" runat="server" href="MonthlyAssociatePurchase.aspx">Monthly <%=method.Associate %> Purchase List</a></li>--%>
+                                <%-- <li><a id="A92" runat="server" href="LoyaltyCoupon.aspx">Coupon List</a></li>
+                                        <li><a id="A93" runat="server" href="PrintCoupon.aspx">Print Coupon</a></li>
+                                        <li><a id="A79" runat="server" href="ReturnSalesList.aspx">Sales Return List</a></li>
+
+
+                                    </ul>
+                                </li>--%>
+                                <li><a id="A50" runat="server" href="Startstop.aspx">Stop Billing</a></li>
+
+                                <%--  <li><a id="A411" runat="server" href="BarcodeBilling.aspx">Invoice</a></li> --%>
+
+                                <%--<li><a id="A15" runat="server" href="ProductStock.aspx">Stock in Hand</a></li>
+                                 <li><a id="A7" runat="server" href="DispatchCourier.aspx">Courier Entry</a> </li>
+                                <li><a id="A8" runat="server" href="CourierEntries.aspx">Courier Details</a></li>
+                                <li><a id="A10" runat="server" href="OrderList.aspx">Purchase Order Associate</a></li>--%>
+
+
+                                <%--<li><a id="A5" class="txt" runat="server" href="BillingList.aspx">Franchise Invoice</a></li>
+                           <li><a id="A34" class="txt" runat="server" href="FranchiseCancelledBill.aspx">Franchise Cancelled Invoice</a></li>
+                           <li><a id="A24" class="txt" runat="server" href="AssociatePackageBill.aspx">Associate Package Invoice</a></li>
+                           <li><a id="A31" class="txt" runat="server" href="AssociatePackagecancelled.aspx">Associate Cancelled Invoice</a></li>
+                           <li><a id="A20" class="txt" runat="server" href="AssociateUpgradeBill.aspx">Associate Upgrade Invoice</a></li>
+                           <li><a id="A32" class="txt" runat="server" href="AssociateUpgradeCancelled.aspx">Associate Upgrade Cancelled Invoice</a></li>
+                           <li><a id="A25" class="txt" runat="server" href="AssociateRepurchaseBill.aspx">Generation Invoice</a></li>
+                           <li><a id="A33" class="txt" runat="server" href="AssociateRepurchaseCancelled.aspx">Generation Cancelled Invoice</a></li>--%>
+                                <%--   <li><a id="A24" class="txt" runat="server" href="AssociateBill.aspx">ASSOCIATE BILL</a></li> --%>
+                                <%-- <li><a id="A34" class="txt" runat="server" href="CancelledBill.aspx">CANCELLED BILL</a></li> --%>
+
+                                <%-- <li><a id="A10" runat="server" href="ApproveOrderList.aspx">Approve Po List</a>
+                            </li>--%>
+                                <%--      <li><a id="A26" runat="server" href="CancelOrderList.aspx">Cancel PO List</a> </li>--%>
+                                <%-- <li><a id="A41" class="txt" runat="server" href="InPayOrderDetail.aspx">VIEW IN PAYMENT</a></li> --%>
+                                <%-- <li><a id="A31" class="txt" runat="server" href="AddPromoProduct.aspx">ADD PROMO PRODUCT</a> </li>--%>
+
+                                <%-- <li><a id="A45" class="txt" runat="server" href="AddEditProductQty.aspx">ADD EDIT QUANTITY</a></li>--%>
+                                <%-- <li><a id="A14" runat="server" href="AddInventory.aspx">Add Inventory</a></li> --%>
+
+                                <%-- <li><a id="A45" runat="server" href="FranchiseWiseStock.aspx">Franchise Wise Stock</a></li> --%>
+
+
+                                <%--  <li><a id="A11" runat="server" href="TranStock.aspx">Stock Transfer</a></li>--%>
+                                <%--   <li><a id="A40" runat="server" href="CancelledStockBill.aspx">Cancelled Stock</a></li>--%>
+                                <%-- <li><a id="A26" class="txt" runat="server" href="StockReport.aspx">STOCK REPORT</a></li>--%>
+                                <%--   <li><a id="A20" runat="server" href="TaxReport.aspx">TAX REPORT</a></li>--%>
+
+
+
+                                <%--  <li><a id="A77" runat="server" href="ProductWiseSale.aspx">Product Wise Associate Sale</a></li>
+                         <li><a id="A78" runat="server" href="ProductWiseFranchiseSales.aspx">Product Wise Franchise Sale</a></li>--%>
+
+
+
+
+                                <%-- <li><a id="A56" runat="server" href="returnitem.aspx">Return Item</a></li>
+                            <li><a id="A44" runat="server" href="returnitemstock.aspx">Return Item Stock</a></li>--%>
+
+                                <%-- <li><a id="A2" runat="server" class="txt" href="UserOnLineTranHistory.aspx">Transaction History</a></li>--%>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Offer</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Ul1">
+                                <%-- <li><a id="A2121" runat="server" href="RedeemRequest.aspx">Redeem Request Generate</a></li>--%>
+                                <li><a id="A52" runat="server" href="CreateScheme.aspx">Create Product Offer</a></li>
+                                <%--<li><a id="A5" runat="server" href="CreateTourOffer.aspx">Create Tour / Offer Reward Offer</a></li>--%>
+                                <%--<li><a id="A68" runat="server" href="AddMonthlyOffer.aspx">Create <%=method.Associate %>/Franchise Offer</a></li>--%>
+                                <li><a id="A71" runat="server" href="AddRoyality.aspx">Create Consistency Offer</a></li>
+                                <li><a id="A56" runat="server" href="OfferProdReports.aspx">Offer Product Report</a></li>
+                                <li><a id="A4" runat="server" href="StockScheme.aspx">Scheme Distributed List</a></li>
+                                <%-- <li><a id="A98" runat="server" href="AddRoyality_Retail_Booster.aspx">Create Loyalty Retail Booster Offer</a></li>--%>
+                                <%-- <li><a id="A122" runat="server" href="ExtraPV.aspx">Create Extra PV Offer</a></li>--%>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Product</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Ulproduct">
+                                <li><a id="AddEditCategory" runat="server" href="CategoryList.aspx">Add Category</a></li>
+                                <li><a id="A7" runat="server" href="SubCategoryList.aspx">Add Sub-Category</a></li>
+
+                                <li><a id="A18" runat="server" href="AddColors.aspx">Add Color</a></li>
+                                <li><a id="A20" runat="server" href="AddSize.aspx">Add Size</a></li>
+
+                                <li><a id="AddEditPackSize" runat="server" href="AddEditPackSize.aspx">Add Pack Size</a> </li>
+                                <li><a id="AddEditProduct" runat="server" href="AddEditProduct.aspx">Add Product</a>
+                                </li>
+                                <%--  <li><a id="A14" runat="server" href="AddEditQuantity.aspx">Add / Edit Quantity</a></li>
+                           <li><a id="A16" runat="server" href="BatchList.aspx">Batch List</a></li> --%>
+                                <li><a id="A80" runat="server" href="ProductList.aspx">Product List </a></li>
+                                <li><a id="A444" runat="server" href="BatchList.aspx">Product Batch List</a></li>
+                                <li><a id="A10" runat="server" href="Customer_Rating.aspx">Product Rating</a></li>
+                                <%-- <li><a id="A73" runat="server" href="LatestBatchReports.aspx">Latest Batch Reports</a></li>--%>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Wallet</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="Ulwallet">
+                                <%--                                <li><a id="A59" runat="server" href="TotalBalance.aspx">Company Balance List</a> </li>--%>
+                                <li><a id="A60" runat="server" href="AssociateWalletBal.aspx">Wallet balance </a></li>
+                                <li><a id="A61" runat="server" href="FranchiseWalletBal.aspx" style="display: none;">Franchise Wallet Balances</a> </li>
+                                <li><a id="UserWalletRequest" runat="server" href="UserWalletRequest.aspx">Cash wallet request</a> </li>
+                                <%--<li><a id="userWalletRequestApproved" runat="server" href="userWalletRequestApproved.aspx">Company Wallet Req. Approved</a> </li>--%>
+                                <%--<li><a id="balancelist" class="txt" runat="server" href="balancelist.aspx">Wallet Balance List</a> </li>--%>
+                                <li><a id="franchisebalancelist" runat="server" href="franchisebalancelist.aspx" style="display: none;">F-Wallet Balance List</a> </li>
+                                <%--<li><a id="FranWalReqApp" runat="server" href="FranWalReqApp.aspx"> F-Wallet Req. Approved</a> </li>--%>
+                                <li><a id="FranWalReq" runat="server" href="FranWalReq.aspx" style="display: none;">F-Wallet Request</a> </li>
+                                <li><a id="A211" runat="server" href="UWallet.aspx" style="display: none;">F-Wallet Passbook</a> </li>
+                                <li><a id="A115" runat="server" href="Dwallet.aspx">Wallet Passbook</a> </li>
+                                <li><a id="A11131" runat="server" href="WithDrawlRequest.aspx">Cash withdraw request</a> </li>
+                                <li><a id="A32" runat="server" href="WithDrawalReport.aspx">Cash withdrawal report </a></li>
+                                <%--<li><a id="A4115" runat="server" href="GenerateFund.aspx">Payout Wallet </a></li>--%>
+                                <%--<li><a id="A2" runat="server" href="LoyaltyWallet.aspx">Loyalty Wallet Passbook</a> </li>
+                                <li><a id="A77" runat="server" href="RewardWallet.aspx">Reward Wallet Passbook</a> </li>--%>
+                                <li><a id="A47" runat="server" href="DebitUserFranchise.aspx">Debit/Credit Wallet </a></li>
+                                <%--  <li><a id="A31" runat="server" href="#">OD Wallet</a></li>
+                                <li><a id="A40" runat="server" href="ODwallet.aspx">OD Wallet Passbook</a></li>--%>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Blog</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="UlBlog">
+                                <li><a id="BL31" runat="server" href="blog/AllBlogs.aspx">Posts</a></li>
+                                <li><a id="BL34" runat="server" href="AddNewBlog.aspx">Comments</a></li>
+                                <li><a id="BL35" runat="server" href="Categories.aspx">Categories</a></li>
+                                <li><a id="BL36" runat="server" href="Tags.aspx">Tags</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Permission Settings</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivAdminPer">
+                                <li><a id="CreateAdmin" runat="server" href="CreateAdmin.aspx">New User Creation</a></li>
+                                <li><a id="A1" runat="server" href="LockAdmin.aspx">Login Access</a></li>
+                                <li><a id="EditAdmin" runat="server" href="EditAdmin.aspx">Edit it Access Permissions</a></li>
+                                <li><a id="ChangePassword" runat="server" href="adminchangepassword.aspx">Password settings</a></li>
+                                <li><a id="DeleteAdmin" runat="server" href="DeleteAdmin.aspx">Remove User</a></li>
+                                <li><a id="A111" runat="server" href="AdminLoginLog.aspx">User Login Log</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <span class="nav-text">Others</span>
+                            </a>
+                            <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivMiscellaneous">
+                                <li><a id="A13" runat="server" href="CompanySetting.aspx">Master Setting</a></li>
+                                <li><a id="AddNews" runat="server" href="news.aspx">Add News</a></li>
+                                <li><a id="NewsModify" runat="server" href="NewsList.aspx">Modify News</a></li>
+                                <li><a id="Achievers" runat="server" href="AddAchiever.aspx">Achiever Photo</a></li>
+                                <li><a id="A155" runat="server" href="AddEditGallery.aspx">Add / Edit Gallery</a></li>
+                                <li><a id="UploadSlider" runat="server" href="UploadBannerImage.aspx">Upload Slider Image</a></li>
+                                <li><a id="A22" runat="server" href="UploadBrandImage.aspx">Upload Brand Image</a></li>
+                                <li><a id="A229" runat="server" href="VideoUpload.aspx">Video Upload</a></li>
+                                <li><a id="UploadTestimonial" runat="server" href="UploadTestimonial.aspx">Testimonial Upload</a></li>
+                                <li><a id="A37" runat="server" href="PrintIDCard.aspx">Print Id Card </a></li>
+                                <li><a id="A9" runat="server" href="AddCompanyDetails.aspx">Add Company Bank</a></li>
+                                <li><a id="ADDBnk" runat="server" href="addbank1.aspx">Add Bank</a></li>
+                                <li><a id="A78" runat="server" href="AddRegion.aspx">Add Region</a></li>
+                                <li><a id="AddModifyState" runat="server" href="AddModifyState.aspx">Add State </a></li>
+                                <li><a id="A25" runat="server" href="AddPopup.aspx">Add Popup Image </a></li>
+                                <li><a id="A49" runat="server" href="AddLeader.aspx">Add Leaders</a></li>
+                                <li><a id="A33" runat="server" href="Events.aspx">Add Events</a></li>
+                                <%--<li><a id="A91" runat="server" href="EventHide.aspx">Show/Hide Events</a></li>--%>
+                                <%--<li><a id="A18" runat="server" href="UploadExcelFile.aspx">Upload Excel File</a></li>--%>
+                                <%--<li><a id="AddCity" class="txt" runat="server" href="AddCity.aspx">ADD CITY</a></li>--%>
+                                <li><a id="A42" runat="server" href="GrievanceDetails.aspx">Grievance List </a></li>
+                                <li><a id="rplygrvn" runat="server" href="RepliedList.aspx">Replied grievance List</a></li>
+                                <li><a id="Enq" runat="server" href="Enquiry.aspx">Enquiry List</a></li>
+                                <li><a id="RplyEnq" runat="server" href="RepliedEnquiry.aspx">Replied Enquiry List</a></li>
+                                <%-- <li><a id="Genealogy" runat="server" href="adgenology.aspx">Genealogy</a></li>--%>
+                                <li><a id="dl" runat="server" href="download.aspx">Download File</a> </li>
+                                <%--<li><a id="A51" runat="server" href="oldgbvincrement.aspx">Team Business Updation</a></li>--%>
+                                <%-- <li><a id="A8" runat="server" href="AddTemplateImg.aspx">Add Template Image</a> </li>--%>
+                                <li><a id="A103" runat="server" href="NotificationList.aspx">Notification</a> </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <asp:LinkButton ID="LinkButton1" CssClass="logout1" runat="server" OnClick="LinkButton1_Click"
+                                ValidationGroup="Lg">
+                                Logout</asp:LinkButton>
+                        </li>
+                    </ul>
+
+                    <div class="plus-box" id="lblMst_Datetime">
+                    </div>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+                    <div class="ps__rail-y" style="top: 0px; height: 597px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 472px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+                    <form method="post">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%--<div class="footer">
+            <div class="copyright">
+                <p>Active Aamla Juice 500m Active Aamla Juice 500m Active Aamla Juice 500m </p>
+            </div>
+        </div>--%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="js/global.min.js"></script>
+        <%--<script src="js/Chart.bundle.min.js"></script>--%>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <!-- Apex Chart -->
+        <%--  <script src="js/apexchart.js"></script>--%>
+        <!-- Chart piety plugin files -->
+
+        <script src="js/jquery.peity.min.js"></script>
+        <!-- Dashboard 1 -->
+        <script src="js/dashboard-1.js"></script>
+        <%--<script src="js/owl.carousel.js"></script>--%>
+        <script src="js/custom.min.js"></script>
+        <script src="js/dlabnav-init.js?v=0.1"></script>
+        <script src="js/demo.js"></script>
+        <script src="js/styleSwitcher.js"></script>
+       
+        <%--  <script>
+
+            $(window).on('load', function () {
+                $('.acr-preloader').addClass('hidden');
+            });
+        </script>--%>
+        <script language="javascript">
+            $(function () {
+                getFormattedDate();
+                setInterval(function () {
+                    getFormattedDate();
+                }, 1000);
+            });
+            function getFormattedDate() {
+                var today = new Date();
+                var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+                var day = week[today.getDay()];
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var Month = today.toLocaleString('default', { month: 'short' });
+                var yyyy = today.getFullYear();
+                var hour = today.getHours();
+                var minu = today.getMinutes();
+                var AMPM = hour >= 12 ? 'PM' : 'AM';
+                if (hour > 12)
+                    hour = (hour - 12);
+
+                if (dd < 10) { dd = '0' + dd }
+                if (mm < 10) { mm = '0' + mm }
+                if (minu < 10) { minu = '0' + minu }
+                $('#lblMst_Datetime').html("<p class='fs-14 font-w600 mb-2'>" + day + " " + dd + " " + Month + " " + yyyy + "<br> </p> <h1>" + hour + ":" + minu + "<span> " + AMPM + "</span></h1>");
+            }
+        </script>
+
+    </form>
+
+</body>
+</html>

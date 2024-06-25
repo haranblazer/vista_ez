@@ -1,0 +1,722 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="member.master.cs" Inherits="member_member" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Member Panel</title>
+    <%--<link rel="shortcut icon" href="images/favicon.png">--%>
+    <%--<link rel="shortcut icon" type="image/png" href="images/favicon.png" />--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400&display=swap" rel="stylesheet">
+
+    <link href="css/nice-select.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/metisMenu.min.css?v=0.4" rel="stylesheet">
+    <!-- Style css -->
+    <link href="css/style.css?v=1.5" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
+    <%-- <link href="../css/preloader.css" rel="stylesheet" />--%>
+   <%-- <script>
+        // Preloader
+
+        setTimeout(function () {
+            $('#preloader').addClass('hide');
+        }, 700);
+
+        $("#preloader").append('<div class="hide-loader">Hide Preloader</div>');
+        $('.hide-loader').click(function (e) {
+            $(this).parent().addClass('hide');
+        });
+
+    </script>--%>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+   <%--<div id="preloader">
+            <div class="preloader-inner">
+                <div class="spinner"></div>
+                <div class="loading-text">
+                    <span data-preloader-text="T" class="characters logo_red">T</span>
+                    <span data-preloader-text="r" class="characters logo_red">r</span>
+                    <span data-preloader-text="i" class="characters logo_red">i</span>
+                    <span data-preloader-text="p" class="characters logo_red">p</span>
+                    <span data-preloader-text="t" class="characters logo_blue">t</span>
+                    <span data-preloader-text="a" class="characters logo_blue">a</span>
+                    <span data-preloader-text="l" class="characters logo_blue">l</span>
+                    <span data-preloader-text="e" class="characters logo_blue">e</span>
+                    <span data-preloader-text="s" class="characters logo_blue">s</span>
+                </div>
+            </div>
+        </div>--%>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="#" class="brand-logo">
+                <%-- <img src="images/icon.png" class="logo-abbr" />--%>
+
+                <img src="images/logo.png" width="75%" />
+            </a>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <%--<div class="dashboard_bar">
+                                Dashboard
+                                </div>--%>
+                            <div class="nav-item d-flex align-items-center">
+                            </div>
+                        </div>
+                        <ul class="navbar-nav header-right">
+                            <%--<li class="nav-item ">
+                                    <a class="nav-link" onclick="myFunction()"><i class="fa fa-eye"></i></a>
+                                </li>--%>
+                            <%--<li class="nav-item dropdown notification_dropdown">
+                                    <a class="nav-link bell-link " href="javascript:void(0);">
+                                        <i class="fa fa-envelope"></i>
+                                        <span class="badge light text-white bg-primary rounded-circle">76</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown notification_dropdown">
+                                    <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                        <span class="badge light text-white bg-primary rounded-circle">4</span>
+                                    </a>
+                                </li>--%>
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="javascript:history.go(-1)">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+  <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"/>
+</svg><span> Back</span>
+                                </a>
+                            </li>
+                            <%-------------notification-------%>
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link bell-link" href="javascript:void(0);" onclick="ReadNotification()">
+                                    <i class="fa fa-commenting-o bell" aria-hidden="true"></i>
+                                    <span class="badge light text-white bg-primary rounded-circle" id="lbl_Notification_Count" runat="server"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                                    <asp:Image ID="MobProfileImg" runat="server" CssClass="rounded-circle" Width="48" Height="48"></asp:Image>
+                                    <div class="first-latter1" id="div_FirstNameHead" runat="server"></div>
+                                    &nbsp;&nbsp;
+                                        <span class="text-light">
+                                            <asp:Label ID="lblUserIdHeader" runat="server" Style="font-size: small; color: #838383;"></asp:Label><br />
+                                            <asp:Label ID="moblblUserName" runat="server" Style="font-size: small; color: #838383;"></asp:Label>
+                                            <span class="fa fa-sort-desc plus float-left" style="margin-top: 10px; color: #838383;"></span></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="Changeprofile.aspx" class="dropdown-item ai-icon">
+                                        <span class="ms-2">My Profile </span>
+                                    </a>
+                                    <a href="UpdateprofilePic.aspx" class="dropdown-item ai-icon">
+                                        <span class="ms-2">Update profile picture </span>
+                                    </a>
+                                    <a href="ChangePassword.aspx" class="dropdown-item ai-icon">
+                                        <span class="ms-2">Change Password </span>
+                                    </a>
+                                    <a href="Logout.aspx" class="dropdown-item ai-icon">
+                                        <span class="ms-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <%--************Natification*************--%>
+                        <div class="chatbox">
+                            <div class="chatbox-close"></div>
+                            <div class="custom-tab-1">
+                                <div class="mb-sm-3 mb-md-0 contacts_card dlab-chat-user-box ">
+                                    <div class="card-header chat-list-header text-center">
+                                        <div>
+                                            <h6 class="mb-1">Notification</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-body contacts_body p-0 dlab-scroll ps ps--active-y" id="DLAB_W_Contacts_Body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%--************end*************--%>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+                <div class="sidebar-user text-center">
+                    <%--  <a class="setting-primary" href="javascript:void(0)" data-bs-original-title="" title="">
+                        <i class="fa fa-cog"></i></a>--%>
+                    <asp:Image ID="ProfileImage" runat="server" CssClass="img-90 img-fluid rounded-circle" Width="150px" Height="150px"></asp:Image>
+                    <div class="first-latter" id="div_firstname" runat="server"></div>
+                    <h6 class="mt-1 mb-0 ">
+                        <asp:Label ID="lbl_Mst_UserName" runat="server"></asp:Label></h6>
+                    <p class="mb-0 " id="lblUserid" runat="server"></p>
+                    <ul>
+                        <li><span class="counter" id="lbl_DOJ" runat="server"></span>
+                            <span id="lbl_Status" runat="server"></span>
+                            <p>DOJ</p>
+                        </li>
+                        <li><span><span class="counter" id="lbl_Experience" runat="server"></span></span>
+                            <p>Experience </p>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="metismenu" id="menu">
+                     
+                    
+                    <li>
+                        <a href="Dashboard.aspx" class="" aria-expanded="false">
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li><a class="" href="Invoicelist.aspx" aria-expanded="false">
+                        <span class="nav-text">Order List</span>
+                    </a>
+                        </li>
+                    <%--<li><a class="has-arrow " href="my_information.aspx" aria-expanded="false">
+                        <span class="nav-text">My Information</span>
+                    </a>--%>
+                   <%-- <li><a class="" href="Changeprofile.aspx" aria-expanded="false">
+                        <span class="nav-text">Change Profile</span>
+                    </a>
+                        </li>
+                    <li><a class="" href="UpdateprofilePic.aspx" aria-expanded="false">
+                        <span class="nav-text">Change Profile Picture</span>
+                    </a>
+                        </li>
+                    <li><a class="" href="ChangePassword.aspx" aria-expanded="false">
+                        <span class="nav-text">Change Password</span>
+                    </a>
+                        </li>--%>
+                   
+                      <%--  <ul aria-expanded="false">
+                            <li><a href="WelcomeLetter.aspx">Welcome Letter </a></li>
+                            <li><a href="Changeprofile.aspx">Edit Profile</a></li>
+                            <li><a href="ChangePassword.aspx">Change Password </a></li>
+                            <li><a href="IDCard.aspx">Print Id Card</a></li>
+                        </ul>--%>
+                 <%--   </li>--%>
+                    <%--<li>
+                        <a class="has-arrow " href="my_business.aspx" aria-expanded="false">
+
+                            <span class="nav-text">My Business</span>
+                        </a>
+                   --%>     <%--<ul aria-expanded="false" class="d-none">
+                            <li><a href="genology.aspx">Topper Tree</a></li>
+                            <li><a href="downstatus1.aspx">Topper Downline</a></li>
+                            <li><a href="GroupSales.aspx">Generation Downline</a></li>
+                            <li><a href="GenLevelReport.aspx">Generation Level Report</a></li>
+                            <li><a href="LevelWiseReport.aspx">Generation Level Wise Report</a></li>
+                            <li><a href="MonthlyGenerationPoint.aspx">Business Information</a></li>
+                            <li><a href="LegWiseMonthlyReport.aspx">Legwise Monthly Reports</a></li>
+                             <li><a href="LegwisePV.aspx">Cum 750 RPV IDs Report</a></li>
+                            <li><a href="MonthlyPurchase.aspx">Monthly Purchase Value</a></li>
+                              <li><a href="LegWiseGeneration.aspx">Super 20 Report</a></li>
+
+                            <li><a href="FindSponsorRank.aspx">Team RPV-GPV Report</a></li>
+
+
+                            <li class=""><a class="has-arrow" href="javascript:void()" aria-expanded="false">Topper Details</a>
+                                <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;">
+
+                                    <li><a href="DashboardTopper.aspx">Topper Dashboard</a></li>
+                                     <li><a href="javascript:void()">T Wallet & R Wallet</a></li>
+
+                                     <li><a href="genology.aspx">Topper Tree</a></li>
+                                     <li><a href="downstatus1.aspx">Topper Downline</a></li>
+                                    <li><a href="TWallet.aspx">T-Wallet Passbook</a></li>
+                                    <li><a href="RWallet.aspx">R-Wallet Passbook</a></li>
+
+                                    <li><a href="UserRepurchaseList.aspx">Topper Daily Matching</a></li>
+                                    <li><a href="PayoutWeekly.aspx">Topper Weekly Payout</a></li>
+                                    <li><a href="MonthlyPayout.aspx">Topper Fund Payout</a></li>
+                                    <li><a href="PriceListTopper.aspx">Topper Price List</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>--%>
+                   <%-- </li>--%>
+                   <%-- <li>
+                        <a class="has-arrow " href="my_shopping.aspx" aria-expanded="false">
+                            <span class="nav-text">My Shopping</span>
+                        </a>--%>
+                      <%--  <ul aria-expanded="false">
+                            <li><a href="BarcodeBilling.aspx">Create Order</a></li>
+                            <li><a href="Invoicelist.aspx">Invoice List </a></li>
+                              <li><a href="CourierEntries.aspx">Courier Details</a></li>
+                            <li><a href="ApproveOrderlist.aspx">Approve Order List </a></li>
+                           <li><a href="BatchList.aspx">Product List</a></li>
+                            <li><a href="MonthlyRoyalty.aspx">Monthly Loyalty Purchase </a></li>
+                            <li><a href="LoyaltyCoupon.aspx">Lucky Draw Status</a></li>
+                        </ul>--%>
+                   <%-- </li>--%>
+                    <%--<li>
+                        <a class="has-arrow " href="wallet.aspx" aria-expanded="false">
+                            <span class="nav-text">Wallet</span>
+                        </a>--%>
+                       <%-- <ul aria-expanded="false">
+                            <li><a href="walletrequest.aspx">Wallet Request</a> </li>
+                            <li><a href="approvewalletlist.aspx">Approved Request</a></li>
+                            <li><a href="TransferWallet.aspx">Transfer G Wallet to C Wallet</a></li>
+                            <li><a href="dwallet.aspx">C-Wallet Passbook</a></li>
+                            <li><a href="pwallet.aspx">G-Wallet Passbook</a></li>
+                             <li><a href="TWallet.aspx">T-Wallet Passbook</a></li>
+                            <li><a href="RWallet.aspx">R-Wallet Passbook</a></li>
+                            <li><a href="LoyaltyWallet.aspx">Loyalty Wallet Passbook</a></li>
+                            <li><a href="WalletProduct.aspx">Product-Wallet Passbook</a></li>
+                        </ul>--%>
+                   <%-- </li>
+                    <li style="display:none;">
+                        <a class="has-arrow " href="financial_report.aspx" aria-expanded="false">
+                            <span class="nav-text">Financial Report</span>
+                        </a>--%>
+                        <%--<ul aria-expanded="false">
+                            <li><a href="UserRepurchaseList2.aspx">Generation Payout</a></li>
+                            <li><a href="BusinessInformation.aspx">Total Income Report</a></li>
+                            <li><a href="Asso_GST_Turnover.aspx">GST Turnover Report</a></li>
+                        </ul>--%>
+                   <%-- </li>
+                    <li>
+                        <a class="has-arrow " href="schedule.aspx" aria-expanded="false">
+                            <span class="nav-text">Schedule</span>
+                        </a>--%>
+                        <%--<ul aria-expanded="false">
+                            <li><a href="TrainRequest.aspx">Training Request</a></li>
+                            <li><a href="EventDetail.aspx">Event List</a></li>
+                        </ul>--%>
+                   <%-- </li>
+
+
+                    <li>
+                        <a class="has-arrow " href="events_model.aspx" aria-expanded="false">
+                            <span class="nav-text">Events Model</span>
+                        </a>--%>
+                      <%--  <ul aria-expanded="false">
+                            <li><a href="AddUserEvent.aspx">Add Events</a></li>
+                            <li><a href="UpcomingEvents.aspx">View Upcoming Events</a></li>
+                        </ul>--%>
+                    <%--</li>--%>
+
+                   <%-- <li>
+                        <a href="business-plan.aspx" class="" aria-expanded="false">
+                            <span class="nav-text">Business Plan</span>
+                        </a>
+                    </li>--%>
+
+                    <li id="li_Notification" runat="server" visible="false">
+                        <a href="NotificationList.aspx" class="" aria-expanded="false"> 
+                            <span class="nav-text">Notification List</span>
+                        </a>
+                    </li> 
+                  <%--    <li>
+                        <a href="news.aspx" class="" aria-expanded="false">
+
+                            <span class="nav-text">News</span>
+                        </a>
+                    </li>
+                  <li>
+                        <a href="#" class="" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Rewards</span>
+                        </a>
+                    </li>--%>
+                    <li>
+                        <a href="brancheslist.aspx" class="" aria-expanded="false" style="display:none;">
+
+                            <span class="nav-text">Franchise List</span>
+                        </a>
+                    </li>
+                   <%-- <li>
+                        <a href="Pricelist.aspx" class="" aria-expanded="false">
+
+                            <span class="nav-text">Price List</span>
+                        </a>
+                    </li>--%>
+                    <%--<li>
+                        <a href="help.aspx" class="" aria-expanded="false">
+                            <span class="nav-text">Help</span>
+                        </a>
+                    </li>--%>
+                    <%-- <li>
+                        <a href="courierdetail.aspx" class="" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Courier</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="download.aspx" class="" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Downloads</span>
+                        </a>
+                    </li>--%>
+                    <li>
+                        <a href="Logout.aspx" class="" aria-expanded="false">
+
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+
+
+                <div class="plus-box" id="lblMst_Datetime">
+                    <%--<p class="fs-14 font-w600 mb-2">
+                        Monday 24 Jun 20021<br>
+                    </p>
+                    <h1 class="text-white">2:55 <span>PM</span></h1>--%>
+                </div>
+
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+
+
+
+
+        <!-- Header Layout -->
+
+
+
+        <asp:Label ID="hfappmstid" runat="server" Text="" Visible="false"></asp:Label>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <form id="form1" runat="server">
+                    <asp:HiddenField ID="hnd_PStatus" runat="server" Value="" />
+                    <asp:HiddenField ID="hnd_bankstatus" runat="server" Value="" />
+                    <asp:HiddenField ID="hnd_AaStatus" runat="server" Value="" />
+                    <asp:HiddenField ID="hnd_PageUrl" runat="server" Value="" />
+                    <asp:HiddenField ID="hnd_LogFromAdmin" runat="server" Value="" />
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </form>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-- <div class="footer">
+            <div class="copyright">
+                <p>Active Aamla Juice 500m Active Aamla Juice 500m Active Aamla Juice 500m </p>
+            </div>
+        </div>--%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!-- Required vendors -->
+    <script src="js/global.min.js"></script>
+    <%--<script src="js/Chart.bundle.min.js"></script>--%>
+    <script src="js/jquery.nice-select.min.js"></script>
+
+    <!-- Apex Chart -->
+    <%--  <script src="js/apexchart.js"></script>--%>
+    <!-- Chart piety plugin files -->
+    <script src="js/jquery.peity.min.js"></script>
+
+    <!-- Dashboard 1 -->
+    <script src="js/dashboard-1.js"></script>
+
+    <%--<script src="js/owl.carousel.js"></script>--%>
+
+    <script src="js/custom.min.js"></script>
+    <script src="js/dlabnav-init.js?v=0.1"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+   <%-- <script>
+        $(window).on('load', function () {
+            $('.acr-preloader').addClass('hidden');
+        });
+    </script>--%>
+
+
+  <%--  <div id="Model_Aadhar" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;Aadhar Documents</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="closePopup_Model_Aadhar()">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-black h4">
+                        Dear Associate, As your KYC documents are not uploaded, therefore your KYC Status is not Verified. Now your Payout can not be generated. To upload documents <a href="Changeprofile.aspx" class="btn-link">Click Here</a>
+                    </p>
+                    <p class="text-black h4">
+                        प्रिय एसोसिएट, चूंकि आपके केवाईसी दस्तावेज अपलोड नहीं किए गए हैं, इसलिए आपकी केवाईसी स्थिति सत्यापित नहीं है। अब आपका पेआउट जनरेट नहीं किया जा सकता है। दस्तावेज़ अपलोड करने के लिए <a href="Changeprofile.aspx" class="btn-link">यहां क्लिक करें</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="Model_Bank" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;Bank Documents</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="closePopup_Model_Bank()">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-black h4">
+                        Dear Associate, As your Bank documents are not uploaded, therefore your Bank Status is not Verified. Now your Payout will be transferred to C Wallet. To upload documents <a href="Changeprofile.aspx" class="btn-link">Click Here</a>
+                    </p>
+                    <p class="text-black h4">
+                        प्रिय एसोसिएट, चूंकि आपके बैंक दस्तावेज़ अपलोड नहीं किए गए हैं, इसलिए आपकी बैंक स्थिति सत्यापित नहीं है। अब आपका पेआउट सी वॉलेट में ट्रांसफर हो जाएगा। दस्तावेज़ अपलोड करने के लिए <a href="Changeprofile.aspx" class="btn-link">यहां क्लिक करें</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="Model_Pan" class="modal fade show" tabindex="-1" style="padding-right: 17px; background: #000000ab;" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;PAN Documents</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="closePopup_Model_Pan()">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-black h4">
+                        Dear Associate, As your PAN documents are not uploaded, therefore your PAN Status is not Verified. Now 20% TDS will be deducted from your Payout. To upload documents <a href="Changeprofile.aspx" class=" btn-link font-weight-bold">Click Here</a>
+                    </p>
+                    <p class="text-black h4">
+                        प्रिय एसोसिएट, चूंकि आपके पैन दस्तावेज अपलोड नहीं किए गए हैं, इसलिए आपकी पैन स्थिति सत्यापित नहीं है। अब आपके भुगतान से 20% टीडीएस काटा जाएगा। दस्तावेज़ अपलोड <a href="Changeprofile.aspx" class="btn-link font-weight-bold">यहां क्लिक करें</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>--%>
+
+
+    <script language="javascript">
+        $(function () {
+            getFormattedDate();
+            setInterval(function () {
+                getFormattedDate();
+                LastDaysLogout();
+            }, 1000);
+
+
+            <%--if ($('#<%=hnd_LogFromAdmin.ClientID%>').val() != "1") {
+
+                if ($('#<%=hnd_PageUrl.ClientID%>').val() != "Changeprofile.aspx") {
+                    if ($('#<%=hnd_AaStatus.ClientID%>').val() == "0") {
+                        $('#Model_Aadhar').show();
+                    }
+                }
+
+                if ($('#<%=hnd_PageUrl.ClientID%>').val() == "Dashboard.aspx") {
+                    if ($('#<%=hnd_bankstatus.ClientID%>').val() == "0") {
+                        $('#Model_Bank').show();
+                    }
+                }
+                if ($('#<%=hnd_PageUrl.ClientID%>').val() == "Dashboard.aspx") {
+                    if ($('#<%=hnd_PStatus.ClientID%>').val() == "0") {
+                        $('#Model_Pan').show();
+                    }
+                }
+            }--%>
+        });
+
+        //function closePopup_Model_Pan() { $('#Model_Pan').hide(); }
+
+        //function closePopup_Model_Bank() { $('#Model_Bank').hide(); }
+
+        //function closePopup_Model_Aadhar() { $('#Model_Aadhar').hide(); }
+
+
+
+        function getFormattedDate() {
+            var today = new Date();
+            var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+            var day = week[today.getDay()];
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var Month = today.toLocaleString('default', { month: 'short' });
+            var yyyy = today.getFullYear();
+            var hour = today.getHours();
+            var minu = today.getMinutes();
+            var AMPM = hour >= 12 ? 'PM' : 'AM';
+            if (hour > 12)
+                hour = (hour - 12);
+
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            if (minu < 10) { minu = '0' + minu }
+            //alert(today.toLocaleString('default', { month: 'short' }));
+            $('#lblMst_Datetime').html("<p class='fs-14 font-w600 mb-2'>" + day + " " + dd + " " + Month + " " + yyyy + "<br> </p> <h1 class='text-black'>" + hour + ":" + minu + "<span> " + AMPM + "</span></h1>");
+        }
+
+
+        function LastDaysLogout() {
+            let LastDateForLogout = "<%=LastDateForLogout%>";
+            var CurrTime = new Date();
+            var hour = CurrTime.getHours();
+            var minu = CurrTime.getMinutes();
+            if (LastDateForLogout == "1") {
+                if (parseInt(hour) >= 23 && parseInt(minu) >= 44) {
+                    window.location = "Logout.aspx";
+                }
+            }
+        }
+
+
+        function ReadNotification() {
+
+            $.ajax({
+                type: "POST",
+                url: 'UserServices.aspx/ReadNotification',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    var Contents = '<ul class="contacts">';
+                    for (var i = 0; i < data.d.length; i++) {
+
+                        let NId = data.d[i].NId;
+
+                        Contents += '<div class="accordion accordion-primary ">';
+                        Contents += '<div class="accordion-item mb-2 border-bottom">';
+                        Contents += '<div class="accordion-header rounded-0 collapsed" id="headingOne' + NId + '" data-bs-toggle="collapse" data-bs-target="#collapseOne' + NId + '" aria-controls="collapseOne' + NId + '" aria-expanded="false" role="button">';
+                        //Contents += '<span class="accordion-header-icon"></span> <span class="accordion-header-text p-2">Alert Notification for you from ' + data.d[i].AppMstFName + '(' + data.d[i].RankName + ')</span>';
+
+                        Contents += '<div class="d-flex bd-highlight">';
+                        Contents += '<div class="img_cont primary"> <img src="../images/KYC/ProfileImage/' + data.d[i].imagename + '" class="rounded-circle user_img" alt=""> </div>';
+                        Contents += ' <div class="user_info"> <span>There is an alert Notification from</span> <p class="text-black">' + data.d[i].AppMstFName + ' - ' + data.d[i].RankName + '</p>';
+                        Contents += '</div>';
+                        Contents += ' <span class="fa fa-sort-desc plus float-left" style="margin-top: 10px; color: #838383; left:350px;"></span> ';
+                        Contents += ' </div>';
+
+
+
+                        Contents += '</div>';
+                        Contents += '<div id="collapseOne' + NId + '" class="collapse" aria-labelledby="headingOne' + NId + '">';
+                        Contents += '<div class="accordion-body-text p-2">';
+
+                        Contents += data.d[i].Msg;
+                        Contents += '<small class="pull-right">' + data.d[i].Doe + ' </small> <br>';
+                        Contents += '</div>';
+                        Contents += '</div>';
+                        Contents += '</div>';
+                        Contents += '</div>';
+                    }
+                    Contents += '</ul>';
+
+                    $("#DLAB_W_Contacts_Body").empty().append(Contents);
+                    $("#lbl_Notification_Count").text(data.d[0].NOTIF);
+                    NotificationUpdate();
+
+                },
+                error: function (result) {
+                    $('#LoaderImg').hide();
+                    alert(result);
+                }
+            });
+        }
+
+
+        function NotificationUpdate() {
+
+            $.ajax({
+                type: "POST",
+                url: 'UserServices.aspx/NotificationUpdate',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d == "1") {
+                        $("#lbl_Notification_Count").text("0");
+                    }
+                },
+                error: function (result) { alert(result); }
+            });
+        }
+
+
+
+    </script>
+    <style>
+        .first-latter {
+            background: #f5eeea;
+    color: #000;
+            width: 150px;
+            border-radius: 50%;
+            font-size: 100px;
+            margin: auto;
+        }
+
+        .first-latter1 {
+            background: #f5eeea;
+            color: #000;
+            width: 48px;
+            border-radius: 50%;
+            font-size: 32px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>
