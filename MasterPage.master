@@ -75,7 +75,7 @@
                                         </li>
                                         <a href="javascript:void(0)" class="text-white">/ </a>--%>
                                         <li>
-                                            <a href="AddFranchise.aspx">Become a Franchise</a>
+                                            <a href="/AddFranchise.aspx">Become a Franchise</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -93,9 +93,9 @@
                                             </ul>
                                         </li>--%>
                                         <li id="link_Mst_Login" runat="server">
-                                            <a href="login">Login</a>
+                                            <a href="/login">Login</a>
                                             <a href="javascript:void(0)">/ </a>
-                                            <a href="newjoin">Sign Up </a>
+                                            <a href="/newjoin">Sign Up </a>
                                         </li>
 
                                         <li id="link_Mst_Userid" runat="server" visible="false">
@@ -137,7 +137,7 @@
                                 <div class="col-xl-3 col-lg-2 col-6">
                                     <div class="logo">
                                         <a href="default.aspx">
-                                            <img src="images/logo1.png">
+                                            <img src="../images/logo1.png">
                                         </a>
                                     </div>
                                 </div>
@@ -353,10 +353,10 @@
                                                 <h5 class="footer-title">About EZ</h5>
                                                 <div class="footer-content">
                                                     <ul class="footer-list">
-                                                        <li><a href="about-us.aspx">About Us</a></li>
-                                                        <li><a href="mechanism_for_grievance_redressal.aspx">Grievance Redressal</a></li>
-                                                        <li><a href="contact-us.aspx">Contact Us</a></li>
-                                                        <li><a href="certifications.aspx">Certifications</a></li>
+                                                        <li><a href="/about-us.aspx">About Us</a></li>
+                                                        <li><a href="/mechanism_for_grievance_redressal.aspx">Grievance Redressal</a></li>
+                                                        <li><a href="/contact-us.aspx">Contact Us</a></li>
+                                                        <li><a href="/certifications.aspx">Certifications</a></li>
                                                     </ul>
                                                 </div>
                                                 <%--<div class="footer-content">
@@ -379,11 +379,11 @@
                                                 <h5 class="footer-title">Policy</h5>
                                                 <div class="footer-content">
                                                     <ul class="footer-list">
-                                                        <li><a href="privacy_policy.aspx">Privacy Policy</a></li>
-                                                        <li><a href="return_and_refund_policy.aspx">Return & Refund Policy</a></li>
-                                                        <li><a href="terms_and_condition.aspx">Terms & Condition</a></li>
-                                                        <li><a href="terms_of_use.aspx">Website Terms of Use</a></li>
-                                                        <li><a href="shipping_policy.aspx">Shipping Policy</a></li>
+                                                        <li><a href="/privacy_policy.aspx">Privacy Policy</a></li>
+                                                        <li><a href="/return_and_refund_policy.aspx">Return & Refund Policy</a></li>
+                                                        <li><a href="/terms_and_condition.aspx">Terms & Condition</a></li>
+                                                        <li><a href="/terms_of_use.aspx">Website Terms of Use</a></li>
+                                                        <li><a href="/shipping_policy.aspx">Shipping Policy</a></li>
                                                         <%-- <li><a href="#">Apply for Account</a></li>
                                                         <li><a href="#">Customer Info</a></li>--%>
                                                     </ul>
@@ -399,9 +399,9 @@
                                                 <h5 class="footer-title">Business Opportunity</h5>
                                                 <div class="footer-content">
                                                     <ul class="footer-list">
-                                                        <li><a href="newjoin">Become a Direct Seller</a></li>
-                                                        <li><a href="AddFranchise.aspx">Become a Store Franchise</a></li>
-                                                        <li><a href="ez_opportunity_faqs.aspx">FAQs</a></li>
+                                                        <li><a href="/newjoin">Become a Direct Seller</a></li>
+                                                        <li><a href="/AddFranchise.aspx">Become a Store Franchise</a></li>
+                                                        <li><a href="/ez_opportunity_faqs.aspx">FAQs</a></li>
                                                         <%--  <li><a href="#">Start a Business</a></li>--%>
                                                     </ul>
                                                 </div>
@@ -418,8 +418,8 @@
                                                     <ul class="footer-list">
                                                         <li><a href="#">Compensation Plan</a></li>
                                                         <li><a href="#">Booklets / Product Catalog</a></li>
-                                                        <li><a href="images/ezcare_order_form1.pdf" target="_blank">Forms</a></li>
-                                                        <li><a href="compliance_documents.aspx">Downloads</a></li>
+                                                        <li><a href="/images/ezcare_order_form1.pdf" target="_blank">Forms</a></li>
+                                                        <li><a href="/compliance_documents.aspx">Downloads</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

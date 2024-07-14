@@ -28,7 +28,7 @@ public partial class secretadmin_WeeklyPayout : System.Web.UI.Page
         if (!IsPostBack)
         {
 
-           
+
             txtFromDate.Text = DateTime.Now.AddDays(-6).Date.ToString("dd/MM/yyyy").Replace("-", "/");
             txtToDate.Text = DateTime.Now.Date.ToString("dd-MM-yyyy").Replace("-", "/");
             getLastPayoutDate();
@@ -117,8 +117,8 @@ public partial class secretadmin_WeeklyPayout : System.Web.UI.Page
                     //lbldirectpercent.Text = sdr["directpercent"].ToString() + "%";
 
 
-                    lbltotalamount.Text = sdr["Totalturnamount"].ToString();
-                    lbltotalcollection.Text = sdr["totalamount"].ToString();
+                    lbltotalBV.Text = sdr["Totalturnamount"].ToString();
+                    lbltotalamount.Text = sdr["totalamount"].ToString();
 
                 }
 

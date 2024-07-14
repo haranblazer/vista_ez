@@ -1,0 +1,473 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Text;
+using System.Drawing;
+using System.Web.Services;
+public partial class user_DwalletToDwallet : System.Web.UI.Page
+{
+    string regno = "";
+    string strajax = "";
+    utility objUtil = null;
+    SqlConnection con = null;
+    SqlCommand com = null;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        if (string.IsNullOrEmpty(Convert.ToString(Session["userId"])))
+        {
+            Response.Redirect("~/Default.aspx", false);
+            return;
+        }
+
+
+        if (pagecheck() != "1")
+        {
+            Response.Redirect("~/maintenance.aspx", false);
+            return;
+        }
+
+
+        try
+        {
+            if (!IsPostBack)
+            {
+                regno = Session["userId"].ToString().Trim();
+                rdbtnchkd();
+                BindData();
+                //lblUser.Text = GetSponsorName(txtUserID.Text);
+                //lblUser.Text = "";
+                btnSubmit.Enabled = false;
+                //lblotpm.Visible = false;
+                //divRegenerate.Visible = false;
+            }
+
+            //string js = Page.ClientScript.GetCallbackEventReference(this, "arg", "ServerResult", "ctx", "ClientErrorCallback", true);
+            //StringBuilder newFunction = new StringBuilder("function ServerSendValue(arg,ctx){" + js + "}");
+            //Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Asyncrokey", Convert.ToString(newFunction), true);
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+
+        }
+
+    }
+
+    public void BindData()
+    {
+        try
+        {
+            con = new SqlConnection(method.str);
+            com = new SqlCommand("ExecuteFunction", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@function", "getEwalletBalanceCj");
+            com.Parameters.AddWithValue("@functionparameter", "'" + Session["userId"].ToString().Trim() + "'");
+            SqlDataAdapter adp = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                lblBalance.Text = dt.Rows[0]["column1"].ToString();
+            }
+        }
+        catch
+        {
+            //con.Close();
+            //con.Dispose(); 
+            Response.Redirect("~/Error.aspx", false);
+        }
+    }
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        objUtil = new utility();
+
+
+        //if (ViewState["membership"] == null)
+        //{
+        //    utility.MessageBox(this, "Already transfer point");
+        //    return;
+        //}
+
+        //if (usercheck() == false)
+        //{
+        //    utility.MessageBox(this, ViewState["error"].ToString());
+        //}
+
+        //if (usercheck() == true)
+        //{
+        //    utility.MessageBox(this, "This is wallet user");
+        //}
+
+        if (txtUserID.Text.Trim() == "" || !objUtil.IsAlphaNumeric(txtUserID.Text.Trim()))
+        {
+            utility.MessageBox(this, "Invalid user ID");
+            return;
+        }
+        else if (TxtAmount.Text.Trim() == "" || !objUtil.IsNumeric(TxtAmount.Text.Trim()) || Convert.ToDecimal(TxtAmount.Text.Trim()) <= 0)
+        {
+            utility.MessageBox(this, "Invalid amount");
+            return;
+        }
+        else if (Convert.ToDecimal(TxtAmount.Text.Trim()) > 900000)
+        {
+            utility.MessageBox(this, "Amount limit 1-900000");
+            return;
+        }
+        else if (Convert.ToDecimal(lblBalance.Text) <= 0)
+        {
+            utility.MessageBox(this, "You have not sufficient balance");
+            return;
+        }
+        else //if (TxtEpassword.Text.Trim() != "")
+        {
+
+            // Boolean isfranchise = IsFranchise(regno);
+            con = new SqlConnection(method.str);
+            com = new SqlCommand("FundTransfer", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@PregNo", Session["userId"].ToString().Trim());
+            com.Parameters.AddWithValue("@cRegNo", txtUserID.Text.Trim());
+            com.Parameters.AddWithValue("@Epwd", TxtEpassword.Text.Trim());
+            com.Parameters.AddWithValue("@Amt", Convert.ToDecimal(TxtAmount.Text.Trim()));
+            com.Parameters.AddWithValue("@Reason", txtRemark.Text.Trim());
+            com.Parameters.AddWithValue("@type", "OTP");
+            com.Parameters.Add(new SqlParameter("@Abalance", SqlDbType.Float));
+            com.Parameters["@Abalance"].Direction = ParameterDirection.Output;
+            com.Parameters.Add(new SqlParameter("@flag", SqlDbType.VarChar, 100));
+            com.Parameters["@flag"].Direction = ParameterDirection.Output;
+            try
+            {
+                con.Open();
+                com.CommandTimeout = 90000;
+                com.ExecuteNonQuery();
+                string msg = com.Parameters["@flag"].Value.ToString();
+                con.Close();
+                con.Dispose();
+                if (msg == "1")
+                {
+                    lblBalance.Text = com.Parameters["@Abalance"].Value.ToString();
+                    ViewState["error"] = null;
+                    //ViewState["membership"] = null;
+                    lblUser.Text = "";
+
+
+                    //  sendsms(txtUserID.Text.Trim(), Convert.ToDecimal(Math.Round(Convert.ToDouble(TxtAmount.Text), 2)), Convert.ToDecimal(Math.Round(Convert.ToDouble(lblBalance.Text), 2)), Convert.ToDecimal(Math.Round(Convert.ToDouble(com.Parameters["@CtBalance"].Value.ToString()), 2)));
+                    ResetControls();
+                    utility.MessageBox(this, "Amount transfered successfully.");
+                }
+                else
+                    utility.MessageBox(this, msg);
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+                //Response.Redirect("~/Error.aspx");
+            }
+            finally
+            {
+
+            }
+        }
+
+    }
+    public void sendsms(string reg, decimal amt, decimal newBal, decimal ctBal)
+    {
+        try
+        {
+            objUtil = new utility();
+            con = new SqlConnection(method.str);
+            SqlDataAdapter da = new SqlDataAdapter("Select AppMstTitle,AppMstFName,AppMstMobile,(select AppMstMobile from appmst where appmstregno='" + reg + "') as toMobile,(select AppMstTitle+space(1)+Appmstfname from appmst where appmstregno='" + reg + "') as toName  from appmst where appmstRegNo='" + Convert.ToString(Session["userId"]) + "'", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            string msgtxt = "Dear " + dt.Rows[0]["AppMstTitle"].ToString() + " " + dt.Rows[0]["AppMstFName"].ToString() + " points: " + amt + " has been transfered from your A/c to :" + reg + " and now A/c balance is:" + newBal;
+            string msgtxt1 = "Dear " + dt.Rows[0]["toName"].ToString() + " points: " + amt + " has been transfered to your A/c from :" + regno + " and your A/c balance is: " + ctBal;
+            if (dt.Rows[0]["AppMstMobile"].ToString().Length > 9)
+            {
+                //objUtil.sendsms(dt.Rows[0]["AppMstMobile"].ToString(), msgtxt);
+            }
+            if (dt.Rows[0]["toMobile"].ToString().Length > 9)
+            {
+                //objUtil.sendsms(dt.Rows[0]["toMobile"].ToString(), msgtxt1);
+            }
+        }
+        catch
+        {
+
+        }
+
+    }
+    public Boolean IsvalidExdPwd()
+    {
+        if (regno.Length > 1)
+        {
+            con = new SqlConnection(method.str);
+            com = new SqlCommand("IsValidExPwd", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@regNo", Session["userId"].ToString().Trim());
+            com.Parameters.AddWithValue("@ExPwd", TxtEpassword.Text.Trim());
+            try
+            {
+                con.Open();
+                SqlDataReader dr = com.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    con.Close();
+                    con.Dispose();
+                    return true;
+                }
+                else
+                {
+                    con.Close();
+                    con.Dispose();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+
+            }
+        }
+        else
+            return false;
+    }
+
+
+    //#region (ICallbackEventHandlar Methods..)
+    //public string GetCallbackResult()
+    //{
+    //    return strajax;
+    //}
+
+    //public void RaiseCallbackEvent(string eventArguments)
+    //{
+    //    if (eventArguments != "")
+    //    {
+    //        con = new SqlConnection(method.str);
+    //        SqlCommand cmd = new SqlCommand();
+    //        SqlDataReader dr;
+    //        cmd.CommandText = "select appmsttitle+space(1)+appmstfname as name from appmst where appmstregno=@regno";
+    //        cmd.Parameters.AddWithValue("@regno", eventArguments.Trim());
+    //        cmd.Connection = con;
+    //        con.Open();
+    //        dr = cmd.ExecuteReader();
+
+    //        if (dr.Read())
+    //        {
+    //            strajax = Convert.ToString(dr["name"]);
+    //            Session["sname"] = Convert.ToString(dr["name"]);
+    //        }
+    //        else
+    //        {
+    //            strajax = "User Does Not Exist!";
+    //        }
+    //        dr.Close();
+    //        con.Close();
+    //    }
+    //    else
+    //    {
+    //        strajax = "Required field cannot be blank !";
+    //    }
+    //}
+    //#endregion
+
+    private void ResetControls()
+    {
+        txtUserID.Text = string.Empty;
+        TxtAmount.Text = string.Empty;
+        TxtEpassword.Text = string.Empty;
+        txtRemark.Text = string.Empty;
+    }
+
+    //private string GetSponsorName(string regno)
+    //{
+    //    string name = string.Empty;
+    //    try
+    //    {
+    //        con = new SqlConnection(method.str);
+    //        com = new SqlCommand("select appmstfname from AppMst where AppMstRegNo=@regno", con);
+    //        com.Parameters.AddWithValue("@regno", Session["userId"].ToString().Trim());
+    //        con.Open();
+    //        name = com.ExecuteScalar().ToString();
+    //        con.Close();
+    //    }
+    //    catch
+    //    {
+    //    }
+    //    return name;
+
+    //}
+
+    string check;
+    public string pagecheck()
+    {
+
+        try
+        {
+            SqlDataReader dr;
+            con = new SqlConnection(method.str);
+            com = new SqlCommand("pageblock", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@type", 4);
+            con.Open();
+            dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+
+
+                if (Convert.ToDouble(dr["flag"].ToString()) > 0)
+                {
+
+                    check = dr["flag"].ToString();
+                }
+
+                else
+                {
+                    check = "0";
+                }
+            }
+
+            dr.Close();
+            con.Close();
+
+
+            return check;
+
+        }
+        catch (Exception ex)
+        {
+            check = "0";
+            return check;
+        }
+        finally
+        {
+
+        }
+    }
+    protected void txtUserID_TextChanged(object sender, EventArgs e)
+    {
+        con = new SqlConnection(method.str);
+        SqlCommand cmd = new SqlCommand();
+        SqlDataReader dr;
+
+        cmd.CommandText = "userinfo";
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@regno", txtUserID.Text);
+
+        cmd.Connection = con;
+        con.Open();
+        dr = cmd.ExecuteReader();
+
+        if (dr.Read())
+        {
+            lblUser.Text = dr["name"].ToString();
+            lblUser.ForeColor = Color.Green;
+            //lblBalance.Text =  dr["UserBal"].ToString();
+        }
+        else
+        {
+            ViewState["error"] = "User does not exists";
+            lblUser.Text = "User does not exists" + " <img  src='../user_images/cross.png' width='25px' height='25px'/>";
+            lblUser.ForeColor = Color.Red;
+        }
+        dr.Close();
+        con.Close();
+    }
+
+    //public Boolean usercheck()
+    //{
+    //    if ((ViewState["type"].ToString() == "2") && (ViewState["membership"].ToString() == "4" || ViewState["membership"].ToString() == "5"))
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
+
+    private void rdbtnchkd()
+    {
+        if (rdbtn1.Checked == true)
+        {
+            TxtEpassword.TextMode = TextBoxMode.SingleLine;
+        }
+        else
+        {
+            TxtEpassword.TextMode = TextBoxMode.Password;
+        }
+    }
+
+
+    [WebMethod]
+    public static string GenerateOTP(string UserName, string Amount)
+    {
+        string Result = "0";
+        DataTable dt = new DataTable();
+        SqlConnection con = new SqlConnection(method.str);
+        SqlDataAdapter da = new SqlDataAdapter();
+        da = new SqlDataAdapter("GenerateOTP", con);
+        da.SelectCommand.Parameters.AddWithValue("@RegNo", UserName);
+        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+        da.Fill(dt);
+        if (dt.Rows.Count > 0)
+        {
+            utility objUtil = new utility();
+            string msg = "Dear " + UserName.Trim() + " To Pay Rs. " + Amount.Trim() +
+                " from your CJ Wallet use OTP. OTP is " + dt.Rows[0]["OTP"].ToString().Trim() +
+                ". Don't share with anyone.";
+            if (Convert.ToDecimal(Amount) > 0)
+            {
+                objUtil.SENDOTP(dt.Rows[0]["AppMstMobile"].ToString().Trim(), msg);
+            }
+            else
+            {
+
+            }
+        }
+
+        return Result;
+    }
+    [WebMethod]
+    public static string VerifyOTP(string UserName, string OTP)
+    {
+
+        SqlConnection con = new SqlConnection(method.str);
+        SqlCommand com = new SqlCommand("VerifyOTP", con);
+        com.CommandType = CommandType.StoredProcedure;
+        com.Parameters.AddWithValue("@RegNo", UserName);
+        com.Parameters.AddWithValue("@OTP", OTP);
+        com.Parameters.Add("@IsValid", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+        con.Open();
+        com.ExecuteNonQuery();
+        string Result = com.Parameters["@IsValid"].Value.ToString();
+        if (Result == "0")
+        {
+
+            //divbind.Enabled = false;
+        }
+        else
+        {
+        }
+        return Result;
+    }
+
+    protected void rdbtn1_CheckedChanged(object sender, EventArgs e)
+    {
+        rdbtnchkd();
+    }
+}

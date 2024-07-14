@@ -31,7 +31,7 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
 
             if (!Page.IsPostBack)
             {
-                BindBlogDetails();
+                BindApprovedPANList();
             }
         }
         catch
@@ -42,13 +42,13 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
 
 
     }
-    protected void GridAllBlogs_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    protected void GridApprovedPANDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        GridAllBlogs.PageIndex = e.NewPageIndex;
-        BindBlogDetails();
+        GridApprovedPANDetails.PageIndex = e.NewPageIndex;
+        BindApprovedPANList();
     }
 
-    public void BindBlogDetails()
+    public void BindApprovedPANList()
     {
         try
         {
@@ -59,13 +59,13 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                GridAllBlogs.DataSource = dt;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = dt;
+                GridApprovedPANDetails.DataBind();
             }
             else
             {
-                GridAllBlogs.DataSource = null;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = null;
+                GridApprovedPANDetails.DataBind();
             }
 
         }
@@ -75,7 +75,7 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
         }
     }
 
-    //protected void GridAllBlogs_RowDataBound(object sender, GridViewRowEventArgs e)
+    //protected void GridApprovedPANDetails_RowDataBound(object sender, GridViewRowEventArgs e)
     //{
     //    if (e.Row.RowType == DataControlRowType.DataRow)
     //    {
@@ -206,7 +206,7 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
         {
             string username, userid, mobileno, text = string.Empty;
             GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
-            string id = GridAllBlogs.DataKeys[row.RowIndex].Value.ToString();
+            string id = GridApprovedPANDetails.DataKeys[row.RowIndex].Value.ToString();
 
             DropDownList ddlAR = (DropDownList)row.FindControl("ddlApproveReject");
             string apprej = ddlAR.SelectedValue.ToString();
@@ -252,7 +252,7 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
                 }
 
             }
-            BindBlogDetails();
+            BindApprovedPANList();
         }
         catch
         {
@@ -273,25 +273,25 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
             if (ddlSearch.SelectedValue.ToString() == "1")
             {
                 cmd.Parameters.AddWithValue("@status", 2);
-                GridAllBlogs.Columns[0].Visible = false;
+                GridApprovedPANDetails.Columns[0].Visible = false;
             }
             else
             {
                 cmd.Parameters.AddWithValue("@status", 1);
-                GridAllBlogs.Columns[0].Visible = true;
+                GridApprovedPANDetails.Columns[0].Visible = true;
             }
             da = new SqlDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                GridAllBlogs.DataSource = dt;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = dt;
+                GridApprovedPANDetails.DataBind();
             }
             else
             {
-                GridAllBlogs.DataSource = null;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = null;
+                GridApprovedPANDetails.DataBind();
             }
         }
 
@@ -314,24 +314,24 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
             if (dt.Rows.Count > 0)
             {
 
-                GridAllBlogs.DataSource = dt;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = dt;
+                GridApprovedPANDetails.DataBind();
                 if (dt.Rows[0]["sts"].ToString() == "Approved")
                 {
                     utility.MessageBox(this, "User is Already Approved.");
-                    GridAllBlogs.Columns[0].Visible = false;
+                    GridApprovedPANDetails.Columns[0].Visible = false;
                 }
                 else
                 {
                     utility.MessageBox(this, "User Approval Pending.");
-                    GridAllBlogs.Columns[0].Visible = true;
+                    GridApprovedPANDetails.Columns[0].Visible = true;
                 }
 
             }
             else
             {
-                GridAllBlogs.DataSource = null;
-                GridAllBlogs.DataBind();
+                GridApprovedPANDetails.DataSource = null;
+                GridApprovedPANDetails.DataBind();
             }
         }
         catch
@@ -394,7 +394,7 @@ public partial class secretadmin_PANApprovedByAdmin : System.Web.UI.Page
         }
 
         Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri);
-        GridAllBlogs.DataBind();
+        GridApprovedPANDetails.DataBind();
 
 
     }

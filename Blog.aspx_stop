@@ -1,0 +1,54 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Blog.aspx.cs" Inherits="secretadmin_Blog" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+     <link rel="stylesheet" href="css/pe-icon-7-stroke.min.css?v=0.1"/>
+   
+   
+    <style>
+        .blogcontainer{
+    padding:10px 100px;
+}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="blogcontainer">
+           
+            
+                
+            <h1 id="h1" runat="server"></h1>
+             <div class="row">
+                <div class="col-md-9">
+                    <div class="post-meta">
+                        <span class="post-author"><i class="pe-7s-user"></i> <a href="#">Administrator</a></span>
+                        <span class="post-date"><i class="pe-7s-clock"></i> <asp:Label runat="server" ID="lblCreated_DT" /></span>
+                    </div>
+                    <p> <asp:Label runat="server" ID="lblDescription" /></p>
+                    <section>
+                        <asp:Label runat="server" ID="lblContent" />
+                    </section>
+                    <div runat="server" id="divComments">
+                        <label>Comments:</label>
+                        <asp:TextBox ID="comments" runat="server" Width="100%" Rows="3" TextMode="MultiLine"/>
+                        <asp:Button runat="server" ID="post" Text="Post" CssClass="btn btn-primary" onclick="post_click"/>
+                        <asp:Repeater runat="server" ID="rptComments">
+                            <ItemTemplate>
+                                <p><%#Eval("comments") %><br />
+                                 <%#Eval("comment_by") %> &nbsp; (<%#Eval("comment_dt") %>) </p></panel>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
+                <div class="col-md-3"><h4>Recent Blogs</h4>
+                    <ul class="dropdown" runat="server" id="tabs"> </ul>
+                </div>
+            </div>
+         </div>
+    </form>
+</body>
+</html>

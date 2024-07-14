@@ -25,7 +25,19 @@ public partial class secretadmin_WeeklyPayoutStatement : System.Web.UI.Page
             DataTable dt = objDu.GetDataTableSP(param, "GetWeekltyPayoutStatment");
             if (dt.Rows.Count > 0)
             {
-                                     
+                // lbl_TPL lbl_TPR lbl_NPL lbl_NPR
+                //lblTotalBVGroupA lblTotalBVGroupB    lbl_CFL lbl_CFR
+                //  lblTotalMatchedBVGroupA  lblTotalMatchedBVGroupB
+                //lblTotalMatchedBVGroupA.Text = dt.Rows[0][" "].ToString();
+                //lblTotalMatchedBVGroupB.Text = dt.Rows[0][" "].ToString();
+                //     <% --lbl_BFL lbl_BFR lbl_NPL  lbl_NPR lbl_TML  lbl_TMR lbl_CFL  lbl_CFR  lblTotalBVGroupA  lblTotalBVGroupB-- %>
+                lblRank.Text = dt.Rows[0]["RankName"].ToString();
+                lblTotalBVGroupA.Text = dt.Rows[0]["TPL"].ToString();
+                lblTotalBVGroupB.Text = dt.Rows[0]["TPR"].ToString();
+                lbl_TPL.Text = dt.Rows[0]["TPL"].ToString();
+                lbl_TPR.Text = dt.Rows[0]["TPR"].ToString();
+                lbl_NPL.Text = dt.Rows[0]["NPL"].ToString();
+                lbl_NPR.Text = dt.Rows[0]["NPR"].ToString();
 
                 lbl_TML.Text = dt.Rows[0]["CPL"].ToString();
                 lbl_TMR.Text = dt.Rows[0]["CPR"].ToString();

@@ -101,7 +101,7 @@ public partial class admin_PaymentReport1 : System.Web.UI.Page
                     lbl_Inc_1_per.Text = sdr["Inc_Per_1"].ToString();
 
                     lbl_Inc_2.Text = sdr["Inc_2"].ToString();
-                    lbl_Inc_3_per.Text = sdr["Inc_Per_2"].ToString();
+                    lbl_Inc_2_per.Text = sdr["Inc_Per_2"].ToString();
 
                     lbl_Inc_3.Text = sdr["Inc_3"].ToString();
                     lbl_Inc_3_per.Text = sdr["Inc_Per_3"].ToString();

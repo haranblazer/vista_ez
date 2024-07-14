@@ -36,9 +36,11 @@ public partial class compliance_documents : Page
     }
     public void BindGrid()
     {
-        SqlParameter[] param = new SqlParameter[] { new SqlParameter("@DisplayType", "HOME") };
+        SqlParameter[] param = new SqlParameter[] { 
+            //new SqlParameter("@DisplayType", "HOME")
+            };
         DataUtility objDu = new DataUtility();
-        DataTable dt = objDu.GetDataTableSP(param, "GetDownload");
+        DataTable dt = objDu.GetDataTable("Select Title, FileName from DownloadMst where status=1 and DocType=4 and  DisplayType='All'");
         GridView1.DataSource = dt;
         GridView1.DataBind(); 
     }

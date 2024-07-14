@@ -35,10 +35,8 @@
             }
         }
     </style>
-      <script src="blog/app/app.js" type="text/javascript"></script>
 </head>
 <body>
-   
     <form id="form1" runat="server">
         <%--<div id="preloader">
             <div class="preloader-inner">
@@ -193,9 +191,9 @@
 
 
 
-                                <li><a class="txt" id="A433" runat="server" href="PaymentReport1.aspx">Payout</a></li>
-                                <li><a class="txt" id="A21" runat="server" href="Repayoutdate.aspx">Payout Date</a></li>
-
+                                <li><a class="txt" id="A433" runat="server" href="PaymentReport1.aspx">Monthly Payout</a></li>
+                                <li><a class="txt" id="A21" runat="server" href="Repayoutdate.aspx">Monthly Payout Date</a></li>
+				<li><a class="txt" id="A200" runat="server" href="TopEarner.aspx"> Top Earners</a></li>
 
 
 
@@ -225,7 +223,7 @@
                                 <li><a class="txt" id="A97" runat="server" href="Loyality_Retail_Booster.aspx">AWC Loyalty Report (BDM)</a></li>
                                 <li><a class="txt" id="A7" runat="server" href="BusinessInformation.aspx">Total Income Report (BDM)</a></li>
                                 <li><a class="txt" id="A124" runat="server" href="Send_wallet_whatsapp.aspx">Send Wallet & Whatsapp</a></li>--%>
-                                <li><a class="txt" id="A23" runat="server" href="payoutlist1.aspx">Payout Report</a></li>
+                                <li><a class="txt" id="A23" runat="server" href="payoutlist1.aspx">Monthly Payout Report</a></li>
                                 <li><a class="txt" id="A24" runat="server" href="Reward_New.aspx">Reward List</a></li>
                             </ul>
                         </li>
@@ -237,8 +235,9 @@
                             <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivPayoutDispatchReports">
                                 <%--   <li><a id="PayoutList" runat="server" href="payoutlist.aspx">First Purchase Payout Report</a></li>--%>
 
-                                <li><a id="A64" runat="server" href="MonthlyPayoutList.aspx">Monthly Payout Report</a></li>
-                                <li><a class="txt" id="A44" runat="server" href="payoutlist1.aspx">Payout Report</a></li>
+                                <li><a id="A64" runat="server" href="MonthlyPayoutList.aspx"> Payout Report</a></li>
+                                <li><a class="txt" id="A44" runat="server" href="payoutlist1.aspx"> Monthly Payout Report</a></li>
+                               
                                 <li><a id="A39" runat="server" href="FranchisePayoutDetails.aspx" style="display: none;">Franchise Commission Payout Report</a></li>
                             </ul>
                         </li>
@@ -533,10 +532,10 @@
                                 <span class="nav-text">Blog</span>
                             </a>
                             <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="UlBlog">
-                                <li><a id="BL31" runat="server" href="blog/AllBlogs.aspx">Posts</a></li>
-                                <li><a id="BL34" runat="server" href="AddNewBlog.aspx">Comments</a></li>
-                                <li><a id="BL35" runat="server" href="Categories.aspx">Categories</a></li>
-                                <li><a id="BL36" runat="server" href="Tags.aspx">Tags</a></li>
+                                <li><a id="BL31" runat="server" href="/secretadmin/AllBlogs.aspx">Posts</a></li>
+                                <li><a id="BL34" runat="server" href="BlogComments.aspx">Comments</a></li>
+                                <li><a id="BL35" runat="server" href="BlogCategories.aspx">Categories</a></li>
+                                <li><a id="BL36" runat="server" href="BlogTags.aspx">Tags</a></li>
                             </ul>
                         </li>
                         <li class="">
@@ -544,6 +543,7 @@
                                 <span class="nav-text">Permission Settings</span>
                             </a>
                             <ul aria-expanded="false" class="left mm-collapse" style="height: 14px;" runat="server" id="DivAdminPer">
+
                                 <li><a id="CreateAdmin" runat="server" href="CreateAdmin.aspx">New User Creation</a></li>
                                 <li><a id="A1" runat="server" href="LockAdmin.aspx">Login Access</a></li>
                                 <li><a id="EditAdmin" runat="server" href="EditAdmin.aspx">Edit it Access Permissions</a></li>
@@ -634,13 +634,13 @@
             Footer end
         ***********************************-->
         <!-- Required vendors -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript" ></script>
         <script src="js/global.min.js"></script>
         <%--<script src="js/Chart.bundle.min.js"></script>--%>
         <script src="js/jquery.nice-select.min.js"></script>
         <!-- Apex Chart -->
         <%--  <script src="js/apexchart.js"></script>--%>
         <!-- Chart piety plugin files -->
-
         <script src="js/jquery.peity.min.js"></script>
         <!-- Dashboard 1 -->
         <script src="js/dashboard-1.js"></script>
@@ -649,7 +649,6 @@
         <script src="js/dlabnav-init.js?v=0.1"></script>
         <script src="js/demo.js"></script>
         <script src="js/styleSwitcher.js"></script>
-       
         <%--  <script>
 
             $(window).on('load', function () {

@@ -4,13 +4,16 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+
+    <%--<script src="https://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script> --%>
 
 
-    <script src="https://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
     <script src="datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
     <link href="datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
     <script src="datepick/jquery.datepick.js" type="text/javascript"></script>
-    <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <%-- <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>--%>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
 
@@ -146,10 +149,8 @@
     </div>
     <br />
     <div class="alert alert-primary alert-dismissible fade show">
-
         <strong>Note!</strong> Special characters not allowed( !@#$%^&*()_+|\}]{[:;"'?/.>,<~ )
-									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                                    </button>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
     </div>
 
     <asp:Panel ID="Pro" runat="server">
@@ -174,15 +175,15 @@
             <div class="col-sm-4">
                 <asp:CheckBox runat="server" ID="chk_variant" />
             </div>
-             <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
             <div class="col-sm-2 control-label">Display Product<b><span style="color: Red">*</span></b></div>
             <div class="col-sm-4">
                 <asp:TextBox ID="txt_Prod_Display" runat="server" ValidationGroup="p" CausesValidation="True" MaxLength="30" CssClass="form-control"></asp:TextBox>
             </div>
-             <div class="col-sm-2 control-label">Brand</div>
+            <div class="col-sm-2 control-label">Brand</div>
             <div class="col-sm-4">
-                <asp:DropDownList ID="ddl_bid" runat="server" CssClass="form-control"> 
+                <asp:DropDownList ID="ddl_bid" runat="server" CssClass="form-control">
                 </asp:DropDownList>
             </div>
 
@@ -345,10 +346,11 @@
 
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txtDescription1" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
 
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtDescription1.ClientID%>');
+                        //CKEDITOR.replace('<%=txtDescription1.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtDescription1'));
                     </script>
                     <label id="Label1" runat="server">
                     </label>
@@ -374,9 +376,10 @@
                 <div class="clearfix"></div>
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txtDescription2" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtDescription2.ClientID%>');
+                        //CKEDITOR.replace('<%=txtDescription2.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtDescription2'));
                     </script>
                     <label id="Label2" runat="server"></label>
                 </div>
@@ -398,9 +401,11 @@
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txtDescription3" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtDescription3.ClientID%>');
+                        //CKEDITOR.replace('<%=txtDescription3.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtDescription3'));
+
                     </script>
                     <label id="Label3" runat="server">
                     </label>
@@ -422,9 +427,10 @@
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txtDescription4" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtDescription4.ClientID%>');
+                        //CKEDITOR.replace('<%=txtDescription4.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtDescription4'));
                     </script>
                     <label id="Label4" runat="server">
                     </label>
@@ -443,10 +449,11 @@
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txtDescription5" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
 
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtDescription5.ClientID%>');
+                        //CKEDITOR.replace('<%=txtDescription5.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtDescription5'));
                     </script>
                     <label id="Label5" runat="server">
                     </label>
@@ -462,10 +469,11 @@
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
                     <asp:TextBox ID="txt_manufacture_detail" runat="server" placeholder="Description" TextMode="MultiLine"
-                        CssClass="form-control" Rows="3"></asp:TextBox>
+                        CssClass="form-control" Rows="3" ClientIDMode="Static"></asp:TextBox>
 
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txt_manufacture_detail.ClientID%>');
+                        //CKEDITOR.replace('<%=txt_manufacture_detail.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txt_manufacture_detail'));
                     </script>
                     <label id="Label9" runat="server">
                     </label>
@@ -491,9 +499,11 @@
                     <b>Ingredients Description 1:</b>
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
-                    <asp:TextBox ID="txtPD8" runat="server" placeholder="Description" TextMode="MultiLine" CssClass="form-control" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtPD8" runat="server" placeholder="Description" TextMode="MultiLine"
+                        CssClass="form-control" Rows="4" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtPD8.ClientID%>');
+                        //CKEDITOR.replace('<%=txtPD8.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtPD8'));
                     </script>
                     <label id="Label6" runat="server">
                     </label>
@@ -517,9 +527,11 @@
                     <b>Ingredients Description 2:</b>
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
-                    <asp:TextBox ID="txtPD9" runat="server" placeholder="Description" TextMode="MultiLine" CssClass="form-control" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtPD9" runat="server" placeholder="Description" TextMode="MultiLine"
+                        CssClass="form-control" Rows="2" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtPD9.ClientID%>');
+                        //CKEDITOR.replace('<%=txtPD9.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtPD9'));
                     </script>
                     <label id="Label7" runat="server">
                     </label>
@@ -543,9 +555,11 @@
                     <b>Ingredients Description 3:</b>
                 </div>
                 <div class="col-sm-12" style="padding-top: 7px;">
-                    <asp:TextBox ID="txtPD10" runat="server" placeholder="Description" TextMode="MultiLine" CssClass="form-control" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtPD10" runat="server" placeholder="Description" TextMode="MultiLine"
+                        CssClass="form-control" Rows="2" ClientIDMode="Static"></asp:TextBox>
                     <script type="text/javascript" lang="javascript">
-                        CKEDITOR.replace('<%=txtPD10.ClientID%>');
+                        //CKEDITOR.replace('<%=txtPD10.ClientID%>');
+                        ClassicEditor.create(document.querySelector('#txtPD10'));
                     </script>
                     <label id="Label8" runat="server">
                     </label>
@@ -782,8 +796,18 @@
         }
 
 
+        .ck-placeholder {
+            height: 400px;
+        }
+
         .cke_contents {
             height: 500px !important;
+        }
+
+
+        .ck.ck-editor__editable_inline > :last-child {
+            margin-bottom: var(--ck-spacing-large);
+            height: 400px;
         }
     </style>
 </asp:Content>

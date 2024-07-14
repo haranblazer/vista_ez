@@ -26,9 +26,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                   
                 </tr>
             </tfoot>
         </table>
@@ -70,25 +68,22 @@
                     for (var i = 0; i < data.d.length; i++) {
  
                         json.push([
-                            i + 1,
-                            data.d[i].UserId,
+                            i + 1, 
                             data.d[i].UserName,
-                            data.d[i].First_Purchase_BV,
-                            data.d[i].Self_Repurchase_BV,
-                            data.d[i].GBVAMT,
-                            data.d[i].TotalMatched,
-                            data.d[i].CarryLeft,
-                            data.d[i].CarryRight,
+                            data.d[i].UserId,
                             data.d[i].CurrRank,
                             data.d[i].NextRank,
-     
-                            data.d[i].RequiredMatched,
-                            data.d[i].HighestLegId,
-                            data.d[i].HighestLegGBV,
-                            data.d[i].SecondLegId,
-                            data.d[i].SecondLegGBV,
-                            data.d[i].RestLegId,
-                            data.d[i].RestLegGBV, 
+                            parseFloat(data.d[i].First_Purchase_BV) + parseFloat(data.d[i].Self_Repurchase_BV),
+                            data.d[i].FreshBV_A,
+                            data.d[i].FreshBV_B,
+                            data.d[i].FreshMatcheBV,
+                            data.d[i].TotalGroupBV_A,
+                            data.d[i].TotalGroupBV_B, 
+                            data.d[i].TotalBV,
+                            data.d[i].CarryLeft,
+                            data.d[i].CarryRight,
+                            data.d[i].TotalMatched,
+                           
                         ]);
                     }
                     
@@ -101,25 +96,21 @@
                         data: json,
                         columns: [
                             { title: "#" },
-                            { title: "UserId" },
+                           
                             { title: "User Name" },
-                            { title: "First <br>Purchase <%=method.PV%>" },
-                            { title: "Self <br>Repurchase <%=method.PV%>" },
-                            { title: "Total <br> <%=method.GBV%>" },
-                            { title: "Total <br>Matched" },
-                            { title: "Carry <br>Forward Left" },
-                            { title: "Carry <br>Forward Right" },
-                            { title: "Curr. <br>Rank" },
-                            { title: "Next <br>Rank" },
-                            { title: "Required <br>Matched" },
-
-                            { title: "Highest <br>Leg Id" },
-                            { title: "Highest <br>Leg GBV" },
-                            { title: "Second <br>Leg Id" },
-                            { title: "Second <br>Leg GBV" },
-                            { title: "Rest <br>Leg Id" },
-                            { title: "Rest <br>Leg GBV" },
-                             
+                            { title: "UserId" },
+                            { title: "Current Rank" },
+                            { title: "Next Rank " },
+                            { title: "Personal<br>Repurchase" },
+                            { title: "Fresh BV A" },
+                            { title: "Fresh BV B" },
+                            { title: "Fresh <br>Matched BV" },
+                            { title: "Total Group<br>BV A" },
+                            { title: "Total Group<br>BV B" },
+                            { title: "Total BV" },
+                            { title: "Carry<br>Forward A" },
+                            { title: "Carry<br>Forward B" },
+                            { title: "Total Matched" },
                         ],
                         "lengthMenu": [[15, 100, -1], [15, 100, "All"]],
                         "pageLength": 15,

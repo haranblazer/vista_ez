@@ -120,6 +120,8 @@ public partial class secretadmin_OnlinePayment : System.Web.UI.Page
         string Amount = dglst.DataKeys[row.RowIndex].Values[1].ToString();
         string b_Srno = dglst.DataKeys[row.RowIndex].Values[2].ToString();
         TextBox txt_PayStatus = (TextBox)row.FindControl("txt_PayStatus");
+        TextBox txt_UserRemark = (TextBox)row.FindControl("txt_UserRemark");
+
 
         try
         {
@@ -135,6 +137,13 @@ public partial class secretadmin_OnlinePayment : System.Web.UI.Page
 
             if (e.CommandName.Equals("Success"))
             {
+
+                if (string.IsNullOrEmpty(txt_UserRemark.Text))
+                {
+                    utility.MessageBox(this, "Please enter remark.");
+                    txt_UserRemark.Focus();
+                    return;
+                }
                 DataUtility objDUT = new DataUtility();
 
                 SqlParameter[] sqlparam = new SqlParameter[] {
@@ -144,6 +153,8 @@ public partial class secretadmin_OnlinePayment : System.Web.UI.Page
                         new SqlParameter("@TXNAMOUNT", Amount),
                         new SqlParameter("@STATUS", "TXN_SUCCESS"),
                         new SqlParameter("@RESPMSG", txt_PayStatus.Text.Trim()),
+                        new SqlParameter("@UserRemark", txt_UserRemark.Text.Trim()),
+
                         new SqlParameter("@REPONSE", "Approved by Admin"),
                         new SqlParameter("@OnlineRemark", ""),
                         new SqlParameter("@LogId", System.Web.HttpContext.Current.Session["admin"].ToString()),
@@ -151,7 +162,7 @@ public partial class secretadmin_OnlinePayment : System.Web.UI.Page
                 };
 
 
-                DataTable dt = objDUT.GetDataTableSP(sqlparam, "Usp_OnlineSucessProcess");
+                DataTable dt =objDUT.GetDataTableSP(sqlparam, "Usp_OnlineSucessProcess");
                 if (dt.Rows.Count > 0)
                 {
                     if (dt.Rows[0]["Status"].ToString() == "1")

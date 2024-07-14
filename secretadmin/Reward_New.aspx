@@ -35,6 +35,16 @@
                 </div>
                
             </div>
+    <script src="datepick/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="datepick/jquery.datepick.js" type="text/javascript"></script>
+<link href="datepick/jquery.datepick.css" rel="stylesheet" type="text/css" />
+<script> var $JD = $.noConflict(true); </script>
+<script type="text/javascript">
+    $JD(function () {
+        $JD('#<%=txtFromDate.ClientID%>').datepick({ dateFormat: 'dd/mm/yyyy' });
+        $JD('#<%=txtToDate.ClientID%>').datepick({ dateFormat: 'dd/mm/yyyy' });
+    });
+</script>
       <link href="../Grid_js_css/jquery.dataTables.min.css" rel="stylesheet" />
   <link href="../Grid_js_css/buttons.dataTables.css" rel="stylesheet" />
 

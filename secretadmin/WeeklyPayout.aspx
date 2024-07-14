@@ -35,18 +35,14 @@
     <div class="table-responsive" style="border: none">
         <table class="table table-striped table-hover">
             <tr style="border: 1px solid #ddd;">
-                <td class="top_table">Total New Members Joined
-                </td>
-                <td class="top_table">Total New Members
-                </td>
-                <td class="top_table">Total Purchasing Members
-                </td>
-                <td class="top_table">Total Counts Generated
-                </td>
-                <td class="top_table">Total TPV Generated
-                </td>
-                <td class="top_table">Last payout was generated
-                </td>
+                <td class="top_table">Total New Members Joined </td>
+                <td class="top_table">Total New Members </td>
+                <td class="top_table">Total Paid Members </td>
+                <%--<td class="top_table">Total Counts Generated  </td>--%>
+
+                <td class="top_table">Total PV Generated </td>
+                 <td class="top_table">Total Amount </td> 
+                <td class="top_table">Last payout was generated  </td>
             </tr>
 
             <tr style="border: 1px solid #ddd;">
@@ -60,7 +56,7 @@
                     <asp:Label ID="lblpaidUsers" runat="server" Text="0" Font-Names="Arial"></asp:Label>
                 </td>
                 <td class="top_table">
-                    <asp:Label ID="lbltotalcollection" runat="server" Text="0" Font-Names="Arial"></asp:Label>
+                    <asp:Label ID="lbltotalBV" runat="server" Text="0" Font-Names="Arial"></asp:Label>
                 </td>
                 <td class="top_table">
                     <asp:Label ID="lbltotalamount" runat="server" Text="0" Font-Names="Arial"></asp:Label>
@@ -102,7 +98,7 @@
                     <span style="font-size: 14px; font-family: Arial;"><strong>Amount</strong></span>
                 </td>
                 <td style="padding-right: 20px; width: 25%; height: 25px; text-align: left" class="top_table">
-                    <span style="font-size: 14px; font-family: Arial;"><strong>% of TPV</strong></span>
+                    <span style="font-size: 14px; font-family: Arial;"><strong>% of PV</strong></span>
                 </td>
             </tr>
 

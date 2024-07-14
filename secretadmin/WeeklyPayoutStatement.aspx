@@ -27,7 +27,7 @@
 
         body {
             position: relative;
-            width: 22cm; /* height: 29.7cm; */
+            width: 24cm; /* height: 29.7cm; */
             margin: 0 auto;
             color: #001028;
             background: #FFFFFF;
@@ -124,7 +124,7 @@
                         <br>
                         <div style="text-align: center;">
                             <strong>
-                                <p style="background: #f7f7f7; padding: 10px; font-size: 20px;">
+                                <p style="background: #fff0f0; padding: 10px; font-size: 20px;">
                                     Payout Statement
                  <asp:Label ID="lblmonthyear" runat="server"></asp:Label>
                                     From Date : 
@@ -133,7 +133,7 @@
                  <asp:Label ID="lbltodate" runat="server" Text=""></asp:Label>
                                 </p>
                                 <div class="clearfix"></div>
-                                <p style="background: #f7f7f7; padding: 10px; font-size: 20px;">
+                                <p style="background: #ecdaff; padding: 10px; font-size: 20px;">
                                     Payout No 
                      <asp:Label ID="lblpayoutno" runat="server" Text=""></asp:Label>
                                 </p>
@@ -168,7 +168,7 @@
                     
                         <asp:Label ID="lbl_sponsor" runat="server"></asp:Label>
                                 </p>
-                                <p style="background: #f7f7f7; padding: 10px; font-size: 15px;">
+                                <p style="background: #ecdaff; padding: 10px; font-size: 15px;">
                                     PAN : 
                      
                         <asp:Label ID="lbl_PAN" runat="server"></asp:Label>
@@ -180,33 +180,33 @@
                 <div class="row">
                     <div class="col-md-6">
                         <br>
-                        <div style="background: #f7f7f7; padding: 15px;">
+                        <div style="background: #fff0f0; padding: 15px;">
                             <table class="table table-bordered text-center" rules="all">
                                 <tbody>
                                     <tr>
-                                        <td colspan="2" style="text-align: center"><b style="font-size: medium;">Business Details</b>
+                                        <td colspan="2" style="text-align: center"><b style="font-size: medium;">Weekly Business Report</b>
                                         </td>
 
                                     </tr>
 
                                     <tr style="display: none;">
-                                        <td width="50%">B/F Self Cumulative TPV
+                                        <td width="70%">B/F Self Cumulative TPV
                                         </td>
-                                        <td width="50%" class="text-right">
+                                        <td width="30%" class="text-right">
                                             <asp:Label ID="lbl_BF_self_TPV" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr style="display: none;">
-                                        <td width="50%">Current Self TPV
+                                        <td width="70%">Current Self TPV
                                         </td>
-                                        <td width="50%" class="text-right">
+                                        <td width="30%" class="text-right">
                                             <asp:Label ID="lbl_self_TPV" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr style="display: none;">
-                                        <td width="50%">C/F Self Cumulative TPV
+                                        <td width="70%">C/F Self Cumulative TPV
                                         </td>
-                                        <td width="50%" class="text-right">
+                                        <td width="70%" class="text-right">
                                             <asp:Label ID="lbl_CF_self_TPV" runat="server"></asp:Label>
                                         </td>
                                     </tr>
@@ -219,7 +219,7 @@
                                             <asp:Label ID="lbl_TopperType" runat="server"></asp:Label>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="display: none;">
                                         <td width="50%" style="font-weight: 700;"><%=method.PV%> Matched
                                         </td>
                                         <td width="50%" style="text-align: right">
@@ -234,14 +234,14 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                                    <tr style="display: none;">
                                         <td width="50%" style="font-weight: 700;">Rank
                                         </td>
                                         <td width="50%" style="text-align: right">
                                             <asp:Label ID="lbl_TopperRank" runat="server"></asp:Label>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="display: none;">
                                         <td width="50%" style="font-weight: 700;">Status
                                         </td>
                                         <td width="50%" style="text-align: right">
@@ -249,7 +249,7 @@
                                         </td>
                                     </tr>
 
-                                      <tr>
+                                    <tr style="display: none;">
                                         <td width="50%" style="font-weight: 700;"><%=method.PV %>
                                         </td>
                                         <td width="50%" style="text-align: right">
@@ -263,85 +263,123 @@
                                             <asp:Label ID="lbl_BF_G_TPV" runat="server"></asp:Label>
                                         </td>
                                     </tr>
+                                     <tr>
+     <td width="70%" style="font-weight: 700;">First Purchase BV
+     </td>
+     <td width="30%" style="text-align: right">
+         <asp:Label ID="lbl_FPBV" runat="server">0</asp:Label>
+     </td>
+ </tr>
+                                     <tr>
+     <td width="50%" style="font-weight: 700;">Self Purchase BV
+     </td>
+     <td width="50%" style="text-align: right">
+         <asp:Label ID="lbl_SRBV" runat="server">0</asp:Label>
+     </td>  </tr>
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">Carry Forward Left
+                                        <td width="70%" style="font-weight: 700;">Brought Forward BV Group A
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_BFL" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>    
+                                        <td width="70%" style="font-weight: 700;">Brought Forward BV Group B
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_BFR" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <%--//Total Pair BV A - TPL, Total Pair BV B - TPR, New Pair BV A- NPL , New Pair BV B - NPR--%>
+                                    <tr style="display: none;">
+                                        <td width="50%" style="font-weight: 700;">Total BV A
                                         </td>
                                         <td width="50%" style="text-align: right">
+                                            <asp:Label ID="lbl_TPL" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <td width="50%" style="font-weight: 700;">Total BV B
+                                        </td>
+                                        <td width="50%" style="text-align: right">
+                                            <asp:Label ID="lbl_TPR" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Weekly Fresh BV Group A
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_NPL" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>   
+                                        <td width="70%" style="font-weight: 700;">Weekly Fresh BV Group B
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_NPR" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Total Weekly BV Including Brought Forward Group A
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_HDBV" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Total Weekly BV Including Brought Forward & Self Puchase Group B
+
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_ROLBV" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Weekly Matched  BV Group A
+
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_TML" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>   
+                                        <td width="70%" style="font-weight: 700;">Weekly Matched  BV Group B
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lbl_TMR" runat="server">0</asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Carry Forward BV Group A
+
+                                        </td>
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_CFL" runat="server">0</asp:Label>
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">Carry Forward Right
+                                        <td width="70%" style="font-weight: 700;">Carry Forward BV Group B
+
                                         </td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_CFR" runat="server">0</asp:Label>
                                         </td>
                                     </tr>
-                                      
+                                   
+                                       
 
-                                      <tr>
-      <td width="50%" style="font-weight: 700;">Total Matched Left
-      </td>
-      <td width="50%" style="text-align: right">
-          <asp:Label ID="lbl_TML" runat="server">0</asp:Label>
-      </td>
-  </tr>
-                                                                        <tr>
-    <td width="50%" style="font-weight: 700;">Total Matched Right
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_TMR" runat="server">0</asp:Label>
-    </td>
-</tr>
-                                                                        <tr>
-    <td width="50%" style="font-weight: 700;">Brought Forward Left
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_BFL" runat="server">0</asp:Label>
-    </td>
-</tr>
-                                                                        <tr>
-    <td width="50%" style="font-weight: 700;">Brought Forward Right
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_BFR" runat="server">0</asp:Label>
-    </td>
-                                                                                                                <tr>
-    <td width="50%" style="font-weight: 700;">Self Repurchase BV
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_SRBV" runat="server">0</asp:Label>
-    </td>
-                                                                                                                                   <tr>
-    <td width="50%" style="font-weight: 700;">First Purchase BV
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_FPBV" runat="server">0</asp:Label>
-    </td>
-                                                                                                                                                                                                <tr>
-    <td width="50%" style="font-weight: 700;">Highest Downline BV
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_HDBV" runat="server">0</asp:Label>
-    </td>
-</tr>
-                                                                                                                                                                                                <tr>
-    <td width="50%" style="font-weight: 700;">Second Highest BV
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_SHBV" runat="server">0</asp:Label>
-    </td>
-</tr>
-                                                                                                                                                                                                <tr>
-    <td width="50%" style="font-weight: 700;">Rest of Legs BV
-    </td>
-    <td width="50%" style="text-align: right">
-        <asp:Label ID="lbl_ROLBV" runat="server">0</asp:Label>
-    </td>
-</tr>
-</tr>
-</tr>
-</tr>
+                                        <tr style="display: none;">
+                                            <td width="50%" style="font-weight: 700;">Second Highest BV
+                                            </td>
+                                            <td width="50%" style="text-align: right">
+                                                <asp:Label ID="lbl_SHBV" runat="server">0</asp:Label>
+                                            </td>
+                                        </tr>
+
+                                   
+                                
 
 
                                 </tbody>
@@ -353,7 +391,7 @@
                     <div class="col-md-6">
 
                         <br>
-                        <div style="background: #f7f7f7; padding: 15px; margin-left: 10px;">
+                        <div style="background: #ecdaff; padding: 15px; margin-left: 10px;">
                             <table class="table table-bordered text-center" rules="all">
                                 <tbody>
                                     <tr>
@@ -363,35 +401,35 @@
                                     </tr>
 
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">Matching Bonus</td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="70%" style="font-weight: 700;">Matching Bonus</td>
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_MatchingInc" runat="server"></asp:Label>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">Total Payout
+                                        <td width="70%" style="font-weight: 700;">Total Payout
                                         </td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_Incentive" runat="server"></asp:Label></td>
                                     </tr>
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">TDS
+                                        <td width="70%" style="font-weight: 700;">TDS
                                         </td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_TDS" runat="server"></asp:Label></td>
                                     </tr>
 
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;">PC Charges
+                                        <td width="70%" style="font-weight: 700;">Admin Charges
                                         </td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="30%" style="text-align: right">
                                             <asp:Label ID="lbl_PCCharges" runat="server"></asp:Label></td>
                                     </tr>
                                     <tr>
-                                        <td width="50%" style="font-weight: 700;"><b>Net Amount</b>
+                                        <td width="70%" style="font-weight: 700;"><b>Net Amount</b>
                                         </td>
-                                        <td width="50%" style="text-align: right">
+                                        <td width="30%" style="text-align: right">
                                             <b>
                                                 <asp:Label ID="lbl_TotalIncome" runat="server"></asp:Label>
                                             </b>
@@ -400,7 +438,60 @@
 
                                 </tbody>
                             </table>
-                            <br>
+                           
+                           
+                        </div>
+                        <br />
+
+                        <div style="background: #ecdaff; padding: 15px; margin-left: 10px;">
+                            <table class="table table-bordered text-center" rules="all">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" style="font-weight: 700; text-align: center"><b style="font-size: medium;">Total Business Report</b>
+                                        </td>
+
+                                    </tr>
+                                    <%--   //lblRank lblTotalBVGroupA lblTotalBVGroupB lblTotalMatchedBVGroupA  lblTotalMatchedBVGroupB--%>
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Rank</td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lblRank" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Total BV Group A
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lblTotalBVGroupA" runat="server"></asp:Label></td>
+                                    </tr>
+                                    <tr>   
+                                        <td width="70%" style="font-weight: 700;">Total BV Group B
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lblTotalBVGroupB" runat="server"></asp:Label></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Total Matched BV Group A
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <asp:Label ID="lblTotalMatchedBVGroupA" runat="server"></asp:Label></td>
+                                    </tr>
+                                  
+                                    <tr>
+                                        <td width="70%" style="font-weight: 700;">Total Matched BV Group B
+                                        </td>
+                                        <td width="30%" style="text-align: right">
+                                            <b>
+                                                <asp:Label ID="lblTotalMatchedBVGroupB" runat="server"></asp:Label>
+                                            </b>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                             
                             <br>
                         </div>
                     </div>
@@ -468,7 +559,7 @@
                 /*position: relative;
                 padding: 10px 0 0 22%;*/
                 margin-bottom: 30px;
-                width: 20cm;
+                width: 23cm;
                 margin: auto;
             }
 

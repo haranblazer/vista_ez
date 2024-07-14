@@ -94,9 +94,9 @@
 
 
     <div class="table-responsive">
-        <asp:GridView ID="GridAllBlogs" runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="50"
+        <asp:GridView ID="GridApprovedPANDetails" runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="50"
             EmptyDataText="No Data Found." DataKeyNames="appmstid" CssClass="table table-striped table-hover"
-            OnPageIndexChanging="GridAllBlogs_PageIndexChanging">
+            OnPageIndexChanging="GridApprovedPANDetails_PageIndexChanging">
             <Columns>
                 <asp:TemplateField Visible="false">
                     <HeaderTemplate>

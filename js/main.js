@@ -16,7 +16,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     06. Our Product Activation
     07. Our Product Activation Two
     08. Best Seller Activation
-    09. Best Seller Activation searchResults
+    09. Best Seller Activation Two
     10. Blog Activation
     11. Daily Deal Activation
     12. Single Deal Activation

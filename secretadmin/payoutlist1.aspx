@@ -93,6 +93,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -200,7 +201,7 @@
                         data.d[i].Dispatch_Amount,
                         data.d[i].Remark,
                         data.d[i].PP,
-
+                            data.d[i].PayoutDate,
                         ]);
                     }
 
@@ -240,30 +241,22 @@
                            // { title: "<%=method.PV%>" },
                             //{ title: "<%=method.GBV%>" },
 
-                            { title: "Startup<br>Bonus" },
-                            { title: "Performance<br>Bonus" },
-                            { title: "Lifestyle<br>Bonus" },
-                            { title: "Prime Club<br>Bonus" },
-                            { title: "Leadership<br>Bonus" },
+                            { title: "Startup<br>Club Bonus" },
+                            { title: "Achievers <br>Club Bonus" },
+                            { title: "Star<br>Club Bonus" },
+                            { title: "Prime <br>Club Bonus" },
+                            { title: "Unicorn<br> Club Bonus" },
                             { title: "Royalty<br>Club Bonus" },
                             { title: "Self Purchase<br>Bonus" },
-                            //{ title: "Self Rep.<br>Bonus" },
-                            //{ title: "S.Matching<br>Bonus" },
-                            //{ title: "StartUp<br>Bonus" }, 
-                            //{ title: "Performace<br>Fund" },
-                            //{ title: "Lifestyle<br>Fund" },
-                            //{ title: "Prime Club<br>Bonus" },
-                            //{ title: "Leadership<br>Bonus" },
-                            //{ title: "Royalty<br>Club Bonus" },
-                            //{ title: "DDD<br>Club Bonus" },
+                             
 
-                            //{ title: "A<br>Club Bonus" }, 
                             { title: "Total<br>Income" },
                             { title: "TDS" },
                             { title: "Admin<br>Charges" },
                             { title: "Dispatch<br>Amount" },
                             { title: "Remark" },
                             { title: "Partial<br>Paid/Paid" },
+                            { title: "Payout <br>Elegible Date" },
                         ],
                         "lengthMenu": [[15, 50, 100, -1], [15, 50, 100, "All"]],
                         "pageLength": 15,

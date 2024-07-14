@@ -63,7 +63,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             int count = dr.FieldCount;
             for (int i = 0; i < count; i++)
             {
-                brand += "<div class='col-md-3 p-2'><img src='images/brand_logo/" + dr["Img"].ToString() + "' width='100%'></div>";
+                brand += "<div class='col-md-3 p-2'><img src='../images/brand_logo/" + dr["Img"].ToString() + "' width='100%'></div>";
             }
             //brand += "";
         }
@@ -87,7 +87,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             str_menu += "<li><a href='#' class='drop-icon'>Shop</a>";
             str_menu += "<ul class='ht-dropdown'>";
 
-            str_menu_start += "<li class='position-static'><a href='Default'>home</a></li>";
+            str_menu_start += "<li class='position-static'><a href='../Default'>home</a></li>";
 
 
             // str_menu_start += "<li><a href='#' class='drop-icon'>Our Brands</a><ul class='ht-dropdown megamenu megamenu-three p-1 row d-flex justify-content-center'><div class='col-md-3 p-2'><img src='images/brand_logo/blossom_biapers.jpg' width='100%'></div><div class='col-md-3 p-2'><img src='images/brand_logo/keep_moving.jpg' width='100%'></div><div class='col-md-3 p-2'><img src='images/brand_logo/kira_&_kira.jpg' width='100%'></div><div class='col-md-3 p-2'><img src='images/brand_logo/shine_bull.jpg' width='100%'></div><div class='col-md-3 p-2'><img src='images/brand_logo/sachveda.jpg' width='100%'></div><div class='col-md-3 p-2'><img src='images/brand_logo/kremlin.jpg' width='100%'></div></ul></a></li>";
@@ -96,7 +96,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             str_menu_start += BindBrand();
 
 
-            str_menu_start += "<li class='position-static'> <a href='about-us.aspx'>About us</a> </li>";
+            str_menu_start += "<li class='position-static'> <a href='../about-us.aspx'>About us</a> </li>";
 
 
 
@@ -108,7 +108,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             str_menu_start_mobile += "<li>";
             str_menu_start_mobile += "<a href='javascript:void(0)'>Our Brands</a>";
             str_menu_start_mobile += "<ul class='submobile-mega-dropdown row'>";
-            str_menu_start_mobile += "<div class='col-4 p-0'><img src='images/brand_logo/blossom_biapers.jpg' width='100%'></div><div class='col-4 p-0'><img src='images/brand_logo/keep_moving.jpg' width='100%'></div><div class='col-4 p-0'><img src='images/brand_logo/kira_&_kira.jpg' width='100%'></div><div class='col-4 p-0'><img src='images/brand_logo/shine_bull.jpg' width='100%'></div><div class='col-4 p-0'><img src='images/brand_logo/sachveda.jpg' width='100%'></div><div class='col-4 p-0'><img src='images/brand_logo/kremlin.jpg' width='100%'></div>";
+            str_menu_start_mobile += "<div class='col-4 p-0'><img src='../images/brand_logo/blossom_biapers.jpg' width='100%'></div><div class='col-4 p-0'><img src='../images/brand_logo/keep_moving.jpg' width='100%'></div><div class='col-4 p-0'><img src='../images/brand_logo/kira_&_kira.jpg' width='100%'></div><div class='col-4 p-0'><img src='../images/brand_logo/shine_bull.jpg' width='100%'></div><div class='col-4 p-0'><img src='../images/brand_logo/sachveda.jpg' width='100%'></div><div class='col-4 p-0'><img src='../images/brand_logo/kremlin.jpg' width='100%'></div>";
             str_menu_start_mobile += "</ul>";
             str_menu_start_mobile += "</li>";
             str_menu_start_mobile += "<li> <a href='about-us.aspx'>About EZ</a>  </li>";
@@ -137,8 +137,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
                             if (dr["catid"].ToString() == dr1["catid"].ToString())
                             {
                                 string subcategory = dr1["SubCatName"].ToString().Replace(" ", "-");
-                                str_menu += "<li><a href='products?c=" + dr1["catid"].ToString() + "&sc=" + dr1["SubCatId"].ToString() + "&title=" + subcategory + "'>" + subcategory + "</a></li>";
-                                str_menu_mobile += "<li><a href='products?c=" + dr1["catid"].ToString() + "&sc=" + dr1["SubCatId"].ToString() + "&title=" + subcategory + "'>" + subcategory + "</a></li>";
+                                str_menu += "<li><a href='../products?c=" + dr1["catid"].ToString() + "&sc=" + dr1["SubCatId"].ToString() + "&title=" + subcategory + "'>" + subcategory + "</a></li>";
+                                str_menu_mobile += "<li><a href='../products?c=" + dr1["catid"].ToString() + "&sc=" + dr1["SubCatId"].ToString() + "&title=" + subcategory + "'>" + subcategory + "</a></li>";
                             }
                         }
                         str_menu += "</ul>";
@@ -188,11 +188,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }*/
 
 
-            str_menu_last += "<li class='position-static'> <a href='VideoGallery.aspx'>Gallery</a> </li>";
-            str_menu_last += "<li class='position-static'> <a href='contact-us.aspx'>Contact Us</a> </li>";
+            str_menu_last += "<li class='position-static'> <a href='../VideoGallery.aspx'>Gallery</a> </li>";
+            str_menu_last += "<li class='position-static'> <a href='../contact-us.aspx'>Contact Us</a> </li>";
 
-            str_menu_last_mobile += "<li> <a href='VideoGallery.aspx'>Gallery</a> </li>";
-            str_menu_last_mobile += "<li> <a href='contact-us.aspx'>Contact Us</a> </li>";
+            str_menu_last_mobile += "<li> <a href='../VideoGallery.aspx'>Gallery</a> </li>";
+            str_menu_last_mobile += "<li> <a href='../contact-us.aspx'>Contact Us</a> </li>";
 
 
             li_Menu.InnerHtml = str_menu_start + str_menu + str_menu_last;

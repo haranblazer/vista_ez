@@ -1,0 +1,436 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IDCard.aspx.cs" MasterPageFile="user.master" Inherits="admin_IDCard" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ID Card</title>
+    <style type="text/css">
+        .my-header
+        {
+            display: none;
+        }
+        #my-footer
+        {
+            display: none;
+        }
+        .image-resize
+        {
+            width: 142px;
+            height: 142px;
+            border-radius: 50%;
+        }
+        tr:nth-child(odd) {
+    background-color: none!important;
+    box-shadow: none!important;
+    border: none;
+}
+tr:nth-child(even) {
+    background-color: none!important;
+    box-shadow: none!important;
+    border: none;
+}
+        
+        /* *
+        {
+            margin: 0px;
+            font-size: 9px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0px;
+        }
+        body
+        {
+            margin: 0;
+            font-size: 9px !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }*/
+        .style1
+        {
+            font-size: 6px;
+        }
+        table tr td
+        {
+            font-size: 15px;
+            color: #315787;
+            font-weight: bold;
+        }
+        .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+blink
+{
+    font-size:18px;
+    color:Red;
+    }
+    
+    p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    }
+    </style>
+    <script language="javascript" type="text/javascript">
+        function printDiv() {
+
+            var divToPrint = document.getElementById('DivIdToPrint');
+
+            var newWin = window.open('', 'Print-Window');
+
+            newWin.document.open();
+
+            newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+            newWin.document.close();
+
+            setTimeout(function () { newWin.close(); }, 10);
+
+        }
+    </script>
+    <script>
+        // When the user clicks on <div>, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+</script>
+</head>
+<body>
+    
+   
+
+
+   <div class="container-fluid page__container">
+        <div class="panel card card-body">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                <center>
+    <div id='DivIdToPrint'>
+    <table id="lblprint" runat="server" cellpadding="0">
+        
+        <tbody>
+            <tr>
+                <td valign="top">
+                    <asp:DataList ID="Datalist1" runat="server" RepeatDirection="Horizontal" CellPadding="3"
+                        Font-Names="Verdana" RepeatColumns="4">
+                        <ItemStyle BackColor="White" ForeColor="Black" />
+                        <ItemTemplate>
+                            <table cellspacing="5" cellpadding="3" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td style="color: Black; background-color: White;">
+                                            <div class="article">
+                                            
+                                                <div style="border: 1px solid #000000; font-size: 10px; 
+                                                    background-repeat: no-repeat; height: 480px; width: 362px;     border-radius: 15px;">
+                                                    <div style="margin-top:10px">
+                                                        <table width="100%" >
+                                                            <tbody>
+                                                                <tr style="background:none!important">
+                                                                    <td align="center">
+                                                                         <%--<img class="image-resize" src='../images/<%# Bind("logo") %>'></img>--%>
+                                                                           <asp:Image ID="Image2" runat="server"  ImageUrl='<%# "~/images/"+Eval("CompanyLogo") %>' width="250px" />
+                                                                        <%-- <img src="../images/logo.png" >--%>
+                                                                  
+                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div style="padding-left: 113px;">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%--<img class="image-resize" src='<%# Bind("imagename") %>'></img>--%>
+                                                                        <asp:Image ID="Image1" runat="server" class="image-resize" ImageUrl='<%# "~/images/KYC/ProfileImage/"+Eval("imagename") %>' Width="115px" Height="122px" style=" border: 5px solid #30527f; border-radius: 20px;" />
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                      <div style="">
+                                                        <table width="100%" style>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                     <p style="font-size: 20px; text-align:center; color: #2d5584;font-weight: bold;">
+                                                                    <asp:Label ID="lblName" runat="server"  Text='<%# Bind("appmstfname") %>'></asp:Label>
+                                                                    </p>
+                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div style="padding-left: 18px; padding-top: 10px;" class="article">
+                                                        <table>
+                                                            <tbody>
+                                                                 <%--<tr>
+                                                                   <td>
+                                                                        <p style="font-size: 15px; color: #0c3569;font-weight: bold;">
+                                                                            Name:
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                         <p style="font-size: 15px; color: #0c3569;font-weight: bold;">
+                                                                            
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>--%>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold; margin-top: 5px;     margin-bottom: 0px;">
+                                                                            User ID :
+                                                                           
+                                                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("appmstregno") %>'></asp:Label>
+                                                                        
+                                                                        </p>
+                                                                    </td>
+                                                                   
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold; margin-top: 5px;     margin-bottom: 0px;">
+                                                                            State :
+                                                                       
+                                                                     
+                                                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Appmststate") %>'></asp:Label>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                 <tr>
+                                                                    <td>
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold; margin-top: 5px;     margin-bottom: 0px;">
+                                                                          Generation Rank :
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("RePurchase_rankName") %>'></asp:Label>
+
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold; margin-top: 5px;     margin-bottom: 0px;">
+                                                                         Topper Rank :
+                                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Binary_rank") %>'></asp:Label>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div style="margin-top:37px;">
+                                                    <table width="100%" style="background:#315787; border-radius: 0px 0px 10px 10px;">
+                                                            <tbody>
+                                                                <tr style="background:none!important">
+                                                                    <td align="center">                                                                    
+                                                                    <p style="font-size: 15px; color: #fff;font-weight: bold; margin-top: 15px;  margin-bottom: 0px;">
+                                                                         
+                                                                          <asp:Label ID="Label1" runat="server" Text='<%# Bind("CoWebsite") %>'></asp:Label>
+                                                                        </p>
+                                                                        <p style="font-size: 15px; color: #fff;font-weight: bold;     margin-top: 0px; margin-bottom: 15px;">
+                                                                          Customer Care No. <asp:Label ID="Label6" runat="server" Text='<%# Bind("CustomerCareNo") %>'></asp:Label> 
+                                                                        </p>                                                                  
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                         <td style="color: Black; background-color: White;">
+                                            <div class="article">
+                                                <div style="border: 1px solid #000000; font-size: 10px;
+                                                    background-repeat: no-repeat; height: 480px; width: 362px;     border-radius: 15px; ">
+                                                     <div style="">
+                                                        <table width="100%" style="">
+                                                            <tbody>
+                                                                <tr style="background:none!important">
+                                                                    <td align="center">
+                                                                    
+                                                                   
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold;  margin-bottom: 0px;    margin-top: 15px;">
+                                                                          The Id holder is authorised to sell products of Toptime Network Pvt. LTD.
+                                                                         </p>      
+                                                                  
+                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div style="">
+                                                        <table width="100%" style="">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td align="center">
+                                                                  <asp:Image ID="Image3" runat="server"  ImageUrl='<%# "~/images/"+Eval("CompanyLogo") %>' width="250px" />
+                                                                  
+                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div style="">
+                                                        <table width="100%" style="">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td >
+                                                                    
+                                                                   
+                                                                        <p style="font-size: 15px; color: #808080;font-weight: bold;   margin-bottom: 0px;   margin-top: 15px;">
+                                                                          <ul style="margin:0px;">
+                                                                          <li>Quality Products</li>
+                                                                          <li>Transparent Business Plan</li>
+                                                                          <li>World Class Own Manufacturing</li>
+                                                                          </ul>
+                                                                         </p>      
+                                                                  
+                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div style="width:90%;     margin: auto;">
+                                                    <center>
+                                                    <hr /></center>
+                                                     <p style="font-size: 15px; color: #808080; margin-bottom: 0px; font-weight: bold;">
+                                                    In case of loss/if found return it to:
+                                                    </p>
+                                                     <p style="font-size: 17px; color: #000;font-weight: bold;  margin-bottom: 0px;">
+                                                    Toptime Network Pvt. Ltd.
+                                                    </p>
+
+                                                     <p style="font-size: 13px; color: #808080;  margin-bottom: 0px;">
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("CoAddres2") %>'></asp:Label>
+                                                    </p>
+                                                     <p style="font-size: 17px; color: #000;  margin-bottom: 0px;font-weight: bold;">
+                                                     Corporate Office:
+                                                     </p>
+                                                      <p style="font-size: 13px; color: #808080;  margin-bottom: 0px;">
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("CoAddress") %>'></asp:Label></p>
+<center>
+<hr />
+                                                     <p style="font-size: 12px; color: #808080;  margin-bottom: 0px;">
+                                                    This is computer generated Id card.
+                                                    </p></center>
+                                                    </div>
+
+                                                    
+
+
+
+                                                    
+
+
+
+                                                    </div>
+                                                    </div>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ItemTemplate>
+                    </asp:DataList>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <table id="tbl">
+        <tr>
+            <td style="text-align: center;">
+                <%--   <asp:Button ID="Button1" runat="server" Text="PRINT" OnClientClick="PrintDiv()" />--%>
+                <input type="button"  onclick="printDiv()" class="btn btn-success" value="Print" />
+            </td>
+        </tr>
+    </table>
+
+     <div class="popup" onclick="myFunction()"><blink>Printer Setting ?</blink>
+  <span class="popuptext" id="myPopup">
+      <img src="images/popup.jpg" /></span>
+</div>
+</center>
+</div>
+</div>
+</div>
+</div>
+ </div>
+    <%---------------------New--------------- --%>
+    <%--  <table cellpadding="0" style="display:none;">
+         
+        </table>--%>
+
+          <script type="text/javascript">
+              function blink() {
+                  var blinks = document.getElementsByTagName('blink');
+                  for (var i = blinks.length - 1; i >= 0; i--) {
+                      var s = blinks[i];
+                      s.style.visibility = (s.style.visibility === 'visible') ? 'hidden' : 'visible';
+                  }
+                  window.setTimeout(blink, 1000);
+              }
+              if (document.addEventListener) document.addEventListener("DOMContentLoaded", blink, false);
+              else if (window.addEventListener) window.addEventListener("load", blink, false);
+              else if (window.attachEvent) window.attachEvent("onload", blink);
+              else window.onload = blink;
+    </script>
+</body>
+</html>
+</asp:Content>

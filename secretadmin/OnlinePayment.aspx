@@ -125,6 +125,15 @@
                         <%--<asp:LinkButton ID="lnkinvoiceno" Text='<%#Eval("invoiceno") %>' runat="server" DataTextField="InvoiceNo" PostBackUrl="../Common/Invoice.aspx?id={0}" />--%>
                     </ItemTemplate>
                 </asp:TemplateField>
+
+                 <asp:TemplateField HeaderText="Remark">
+                    <ItemTemplate>
+                        <asp:TextBox ID="txt_UserRemark" runat="server" Text='<%#Eval("UserRemark") %>' CssClass="form-control" 
+                            Width="120px" TextMode="MultiLine"></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+
                 <asp:BoundField DataField="OnlineMsg" HeaderText="Online Response" />
                 <asp:BoundField DataField="BillingType" HeaderText="Billing Type" />
 

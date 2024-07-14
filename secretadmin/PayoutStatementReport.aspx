@@ -118,7 +118,7 @@
                     <br>
                     <div style="text-align: center;">
                         <strong>
-                            <p style="background: #f7f7f7; padding: 10px; font-size: 20px;">
+                            <p style="background: #fff0f0; padding: 10px; font-size: 20px;">
                                 Payout Statement
                             <asp:Label ID="lblmonthyear" runat="server"></asp:Label>
                                 From Date : 
@@ -127,7 +127,7 @@
                             <asp:Label ID="lbltodate" runat="server" Text=""></asp:Label>
                             </p>
                             <div class="clearfix"></div>
-                            <p style="background: #f7f7f7; padding: 10px; font-size: 20px;">
+                            <p style="background: #ecdaff; padding: 10px; font-size: 20px;">
                                 Payout No 
                                 <asp:Label ID="lblpayoutno" runat="server" Text=""></asp:Label>
                             </p>
@@ -138,33 +138,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <br>
-                    <div style="background: #f7f7f7; padding: 15px;">
+                    <div style="background: #fff0f0; padding: 15px;">
                         <table class="table table-bordered text-center" rules="all">
-                            <tbody>
-                             <%--   Inc1 = @ST_B 	-- Startup Bonus 
-		Inc2 = @P_B 	-- Performance Bonus
-		Inc3 =@LST_B 	-- Lifestyle Bonus
-		Inc4 =@PC_B		-- Prime Club Bonus
-		Inc5 =@LB		-- Leadership Bonus
-		Inc6 =@RC_B 	-- Royalty Club Bonus
-		
-		Inc7 =@SP 		-- Self Purchase Bonus--%>
+                            <tbody> 
                                 <tr style="font-weight: 700;">
-                                    <td>Startup Bonus
+                                    <td>Startup Club Bonus
                                     </td>
                                     <td style="text-align: right;">
                                         <asp:Label ID="lbl_Inc1" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                                 <tr style="font-weight: 700;">
-                                    <td>Performance Bonus
+                                    <td>Achievers Club Bonus
                                     </td>
                                     <td style="text-align: right;">
                                         <asp:Label ID="lbl_Inc2" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                                 <tr style="font-weight: 700;">
-                                    <td>Lifestyle Bonus
+                                    <td>Star Club Bonus
                                     </td>
                                     <td style="text-align: right;">
                                         <asp:Label ID="lbl_Inc3" runat="server"></asp:Label>
@@ -186,7 +178,7 @@
                                 </tr>
 
                                 <tr style="font-weight: 700;">
-                                    <td>Leadership Bonus
+                                    <td>Unicorn Club Bonus
                                     </td>
                                     <td style="text-align: right;">
                                         <asp:Label ID="lbl_Inc5" runat="server"></asp:Label>
@@ -316,7 +308,7 @@
                 <div class="col-md-6">
 
                     <br>
-                    <div style="background: #f7f7f7; padding: 15px; margin-left: 10px;">
+                    <div style="background: #ecdaff; padding: 15px; margin-left: 10px;">
                         <table class="table table-bordered text-center" rules="all">
                             <tbody>
 
@@ -600,7 +592,7 @@
                 /*position: relative;
                 padding: 10px 0 0 22%;*/
                 margin-bottom: 30px;
-                width: 20cm;
+                width: 22cm;
                 margin: auto;
             }
 

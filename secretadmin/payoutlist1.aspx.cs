@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Data; 
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public partial class admin_payoutlist1 : System.Web.UI.Page
 {
@@ -130,6 +131,7 @@ public partial class admin_payoutlist1 : System.Web.UI.Page
                 data.Inc7 = dr["Inc7"].ToString();
                 data.PP = dr["PP"].ToString();
                 data.Matched = dr["tp"].ToString();
+                 data.PayoutDate = dr["PayoutDate"].ToString();
                 //data.PanApiName = dr["PanApiName"].ToString();
                 //data.OnlinePanVerify = dr["OnlinePanVerify"].ToString();
                 details.Add(data);
@@ -214,7 +216,7 @@ public partial class admin_payoutlist1 : System.Web.UI.Page
         public string Inc7 { get; set; }
         public string PP { get; set; }
         public string Matched { get; set; }
-
+         public string PayoutDate { get; set; }
     }
 
 

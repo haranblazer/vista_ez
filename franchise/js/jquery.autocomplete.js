@@ -297,7 +297,7 @@ $.Autocompleter = function(input, options) {
 					if( !result ) {
 						if (options.multiple) {
 							var words = trimWords($input.val()).slice(0, -1);
-				//			$input.val( words.join(options.multipleSeparator) + (words.length ? options.multipleSeparator : "") );
+							$input.val( words.join(options.multipleSeparator) + (words.length ? options.multipleSeparator : "") );
 						}
 						else
 							$input.val( "" );
@@ -307,7 +307,7 @@ $.Autocompleter = function(input, options) {
 		}
 		if (wasVisible)
 			// position cursor at end of input field
-			//$.Autocompleter.Selection(input, input.value.length, input.value.length);
+			$.Autocompleter.Selection(input, input.value.length, input.value.length);
 	};
 
 	function receiveData(q, data) {

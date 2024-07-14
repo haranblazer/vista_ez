@@ -26,7 +26,7 @@ public partial class secretadmin_currentBusReport : System.Web.UI.Page
         DataUtility objDu = new DataUtility();
         try
         {
-            SqlDataReader dr = objDu.GetDataReaderSP("CurrentBus_report");
+            SqlDataReader dr = objDu.GetDataReaderSP("CurrentBus_report_New");
             utility objutil = new utility();
             while (dr.Read())
             {
@@ -35,23 +35,19 @@ public partial class secretadmin_currentBusReport : System.Web.UI.Page
                 data.UserName = dr["UserName"].ToString();
                 data.First_Purchase_BV = dr["First_Purchase_BV"].ToString();
                 data.Self_Repurchase_BV = dr["Self_Repurchase_BV"].ToString();
-                data.GBVAMT = dr["GBVAMT"].ToString();
                 data.TotalMatched = dr["TotalMatched"].ToString();
                 data.CarryLeft = dr["CarryLeft"].ToString();
                  
                 data.CarryRight = dr["CarryRight"].ToString();
                 data.CurrRank = dr["CurrRank"].ToString();
                 data.NextRank = dr["NextRank"].ToString();
-                data.RequiredMatched = dr["RequiredMatched"].ToString();
-                data.HighestLegId = dr["HighestLegId"].ToString();
-                data.HighestLegGBV = dr["HighestLegGBV"].ToString();
-                data.SecondLegId = dr["SecondLegId"].ToString();
 
-
-                data.SecondLegGBV = dr["SecondLegGBV"].ToString();
-                data.RestLegId = dr["RestLegId"].ToString();
-                data.RestLegGBV = dr["RestLegGBV"].ToString();
-                
+                data.FreshBV_A = dr["CurrGroupA"].ToString();
+                data.FreshBV_B = dr["CurrGroupB"].ToString();
+                data.FreshMatcheBV = dr["CurrMatchedBV"].ToString();
+                data.TotalGroupBV_A = dr["TotalGroupA"].ToString();
+                data.TotalGroupBV_B = dr["TotalGroupB"].ToString();
+                data.TotalBV = dr["TotalBV"].ToString();
 
                 details.Add(data);
             }
@@ -67,22 +63,19 @@ public partial class secretadmin_currentBusReport : System.Web.UI.Page
         public string UserName { get; set; }
         public string First_Purchase_BV { get; set; }
         public string Self_Repurchase_BV { get; set; }
-        public string GBVAMT { get; set; }
         public string TotalMatched { get; set; }
-
-
         public string CarryLeft { get; set; }
         public string CarryRight { get; set; }
         public string CurrRank { get; set; }
         public string NextRank { get; set; }
-        public string RequiredMatched { get; set; }
-        public string HighestLegId { get; set; }
+        public string FreshBV_A { get; set; }
+        public string FreshBV_B { get; set; }
+        public string FreshMatcheBV { get; set; }
+        public string TotalGroupBV_A { get; set; }
+        public string TotalGroupBV_B { get; set; }
+        public string TotalBV { get; set; }
 
-        public string HighestLegGBV { get; set; }
-        public string SecondLegId { get; set; }
-        public string SecondLegGBV { get; set; }
-        public string RestLegId { get; set; }
-        public string RestLegGBV { get; set; } 
+
 
 
     }

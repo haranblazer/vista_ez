@@ -7477,4 +7477,7 @@ h4 {
     font-weight:500;
         transition: all .5 ease;
 }
+.color-red{
+    color:red;
+}
 
